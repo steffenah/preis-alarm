@@ -1537,5 +1537,15 @@
     "title": "1000 Leuchtspur BB´s 0,20g Softairkugeln Softair Kugeln",
     "price": 13.5,
     "first_seen": "2026-06-02T15:15:42.554101"
+  },
+  "egun_softair::20392610": {
+    "title": "Heckler & Koch HK416 A5 Sportsline inkl. Anbauteile",
+    "price": 350.0,
+    "first_seen": "2026-06-02T18:56:38.605607"
+  },
+  "egun_softair::20391446": {
+    "title": "Smith & Wesson 629 Competitor CO2 6mm",
+    "price": 130.0,
+    "first_seen": "2026-06-02T18:56:38.605620"
   }
 }
