@@ -49,7 +49,7 @@
       "min_price": 0.0,
       "max_price": 150.0,
       "sofortkauf_only": false,
-      "enabled": true
+      "enabled": false
     }
   ]
 }
