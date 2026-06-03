@@ -25,19 +25,6 @@
       "max_price": 150.0
     },
     {
-      "id": "91a62d6d",
-      "name": "Ipad",
-      "url": "https://www.kleinanzeigen.de/s-oldenburg/ipad/k0l3108r10",
-      "site_type": "kleinanzeigen",
-      "keywords": [
-        "Ipad"
-      ],
-      "min_price": 20.0,
-      "max_price": 0.0,
-      "sofortkauf_only": false,
-      "enabled": false
-    },
-    {
       "id": "305166a9",
       "name": "Eudurino",
       "url": "https://www.kleinanzeigen.de/s-oldenburg/edorino/k0l3108",
