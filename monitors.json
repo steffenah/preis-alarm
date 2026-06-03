@@ -26,13 +26,13 @@
     },
     {
       "id": "305166a9",
-      "name": "Ipad",
+      "name": "Edurino",
       "url": "https://www.kleinanzeigen.de/s-oldenburg/Edurino/k0l3108r10",
       "site_type": "kleinanzeigen",
       "keywords": [
         "Edurino"
       ],
-      "min_price": 20.0,
+      "min_price": 0.0,
       "max_price": 0.0,
       "sofortkauf_only": false,
       "enabled": false
