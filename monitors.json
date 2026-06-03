@@ -39,17 +39,17 @@
     },
     {
       "id": "16c3e4ee",
-      "name": "Tv",
-      "url": "https://www.kleinanzeigen.de/s-oldenburg/tv/k0l3108",
+      "name": "Samsung Tablet",
+      "url": "https://www.kleinanzeigen.de/s-oldenburg/samsung-tablet/k0l3108",
       "site_type": "kleinanzeigen",
       "keywords": [
-        "TV 75 Zoll",
-        "75 Zoll"
+        "Tablet",
+        "Samsung Tablet"
       ],
       "min_price": 0.0,
       "max_price": 150.0,
       "sofortkauf_only": false,
-      "enabled": false
+      "enabled": true
     }
   ]
 }
