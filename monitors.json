@@ -35,7 +35,7 @@
       "min_price": 0.0,
       "max_price": 0.0,
       "sofortkauf_only": false,
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "16c3e4ee",
