@@ -38,20 +38,6 @@
       "enabled": false
     },
     {
-      "id": "e4307051",
-      "name": "Tv",
-      "url": "https://www.kleinanzeigen.de/s-oldenburg/tv/k0l3108",
-      "site_type": "kleinanzeigen",
-      "keywords": [
-        "TV 75 Zoll",
-        "75 Zoll"
-      ],
-      "min_price": 100.0,
-      "max_price": 0.0,
-      "sofortkauf_only": false,
-      "enabled": false
-    },
-    {
       "id": "305166a9",
       "name": "Eudurino",
       "url": "https://www.kleinanzeigen.de/s-oldenburg/edorino/k0l3108",
