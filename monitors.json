@@ -36,20 +36,6 @@
       "max_price": 0.0,
       "sofortkauf_only": false,
       "enabled": true
-    },
-    {
-      "id": "16c3e4ee",
-      "name": "Samsung Tablet",
-      "url": "https://www.kleinanzeigen.de/s-oldenburg/samsung-tablet/k0l3108",
-      "site_type": "kleinanzeigen",
-      "keywords": [
-        "Tablet",
-        "Samsung Tablet"
-      ],
-      "min_price": 0.0,
-      "max_price": 150.0,
-      "sofortkauf_only": false,
-      "enabled": true
     }
   ]
 }
