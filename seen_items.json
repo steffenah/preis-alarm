@@ -1792,5 +1792,10 @@
     "title": "VFC Glock G17/18C GBB-Magazin, Long-Type, neuwertig",
     "price": 33.5,
     "first_seen": "2026-06-05T18:17:17.277533"
+  },
+  "egun_softair::20390609": {
+    "title": "Army Armament R60 GBB \"Begadi Special Version\" mit 4 Magazinen und Reddot",
+    "price": 180.0,
+    "first_seen": "2026-06-05T20:18:00.317039"
   }
 }
