@@ -35,6 +35,15 @@
       "url": "https://egun.de/market/list_items.php?query=&cat=492&t=&page=1",
       "max_price": 0,
       "enabled": true
+    },
+    {
+      "id": "2wgaszs6",
+      "name": "Game boy sp",
+      "platform": "ebay",
+      "keyword": "Game Boy Advance Sp",
+      "url": "",
+      "max_price": 0,
+      "enabled": true
     }
   ]
 }
