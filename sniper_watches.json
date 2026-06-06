@@ -44,6 +44,15 @@
       "url": "",
       "max_price": 0,
       "enabled": true
+    },
+    {
+      "id": "0cmzskpc",
+      "name": "Playstation 5",
+      "platform": "ebay",
+      "keyword": "Playstation 5",
+      "url": "",
+      "max_price": 0,
+      "enabled": true
     }
   ]
 }
