@@ -10,10 +10,20 @@ from github import Github, GithubException
 
 # ── Seiten-Config ──────────────────────────────────────────────────────────────
 st.set_page_config(
-    page_title="Monitor Einstellungen",
+    page_title="Preis-Alarm",
     page_icon="🛒",
     layout="wide",
 )
+
+# ── PWA-Setup: App-Manifest + Mobile-Tags injizieren ───────────────────────────
+st.markdown("""
+<link rel="manifest" href="data:application/manifest+json,%7B%22name%22%3A%22Preis-Alarm%22%2C%22short_name%22%3A%22Preis-Alarm%22%2C%22start_url%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%23111111%22%2C%22theme_color%22%3A%22%2322a04a%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22https%3A%2F%2Fem-content.zobj.net%2Fsource%2Fgoogle%2F387%2Fshopping-cart_1f6d2.png%22%2C%22sizes%22%3A%22192x192%22%2C%22type%22%3A%22image%2Fpng%22%7D%5D%7D">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Preis-Alarm">
+<link rel="apple-touch-icon" href="https://em-content.zobj.net/source/google/387/shopping-cart_1f6d2.png">
+<meta name="theme-color" content="#22a04a">
+""", unsafe_allow_html=True)
 
 # ── Hilfsfunktionen ────────────────────────────────────────────────────────────
 
@@ -54,7 +64,44 @@ def detect_site_type(url: str) -> str:
         return "egun"
     if "kleinanzeigen.de" in url:
         return "kleinanzeigen"
+    if "ebay.de" in url or "ebay.com" in url:
+        return "ebay"
     return "generic"
+
+
+# ── Sniper-Watches (eBay-Auktionen) ────────────────────────────────────────────
+
+def load_sniper_watches() -> list[dict]:
+    try:
+        repo = get_repo()
+        f = repo.get_contents("sniper_watches.json")
+        return json.loads(f.decoded_content).get("watches", [])
+    except Exception:
+        return []
+
+
+def save_sniper_watches(watches: list[dict]) -> bool:
+    try:
+        repo = get_repo()
+        new_content = json.dumps({"watches": watches}, ensure_ascii=False, indent=2)
+        try:
+            f = repo.get_contents("sniper_watches.json")
+            repo.update_file(
+                "sniper_watches.json",
+                "chore: sniper watches via Web-UI aktualisiert [skip ci]",
+                new_content,
+                f.sha,
+            )
+        except GithubException:
+            repo.create_file(
+                "sniper_watches.json",
+                "chore: sniper watches angelegt [skip ci]",
+                new_content,
+            )
+        return True
+    except Exception as e:
+        st.error(f"Fehler beim Speichern: {e}")
+        return False
 
 
 # ── Login ──────────────────────────────────────────────────────────────────────
@@ -91,9 +138,15 @@ def show_app():
         st.markdown("---")
         st.caption("Änderungen werden direkt zu GitHub synchronisiert und beim nächsten 10-Minuten-Lauf aktiv.")
 
-    st.title("🛒 Monitor Einstellungen")
+    st.title("🛒 Preis-Alarm")
 
-    tab_monitors, tab_email, tab_info = st.tabs(["📋 Meine Monitore", "📧 E-Mail", "ℹ️ Hilfe & URLs"])
+    tab_monitors, tab_sniper, tab_email, tab_install, tab_info = st.tabs([
+        "📋 Meine Monitore",
+        "🔨 Auktions-Sniper",
+        "📧 E-Mail",
+        "📱 App installieren",
+        "ℹ️ Hilfe & URLs",
+    ])
 
     # ── Tab: Monitore ──────────────────────────────────────────────────────────
     with tab_monitors:
@@ -194,6 +247,95 @@ def show_app():
                         st.success(f"✅ Monitor »{n_name}« hinzugefügt!")
                         st.rerun()
 
+    # ── Tab: Auktions-Sniper ───────────────────────────────────────────────────
+    with tab_sniper:
+        st.subheader("🔨 eBay Auktions-Sniper")
+        st.markdown(
+            "Findet Auktionen, die **kurz vor dem Ende** stehen und noch **keine Gebote** haben – "
+            "perfekt für Schnäppchen-Jäger. Du bekommst eine E-Mail mit hoher Priorität."
+        )
+
+        watches = load_sniper_watches()
+        st.caption(f"Aktive Suchen: {len(watches)}")
+
+        for i, w in enumerate(watches):
+            is_enabled = w.get("enabled", True)
+            status = "🟢" if is_enabled else "⏸️"
+
+            hcol1, hcol2 = st.columns([5, 1])
+            with hcol1:
+                exp = st.expander(f"{status} {w.get('name', 'Ohne Namen')}  ·  »{w.get('keyword', '')}«", expanded=False)
+            with hcol2:
+                pause_label = "▶️ An" if not is_enabled else "⏸️ Aus"
+                if st.button(pause_label, key=f"snipause_{i}", use_container_width=True):
+                    watches[i] = {**w, "enabled": not is_enabled}
+                    if save_sniper_watches(watches):
+                        st.rerun()
+
+            with exp:
+                col1, col2 = st.columns(2)
+                with col1:
+                    s_name = st.text_input("Name", value=w.get("name", ""), key=f"sn_name_{i}")
+                    s_kw   = st.text_input("Suchbegriff", value=w.get("keyword", ""), key=f"sn_kw_{i}",
+                                           help="z.B.  playstation 5  oder  iphone 15")
+                with col2:
+                    s_max  = st.number_input("Maximalpreis (€)  (0 = egal)", value=float(w.get("max_price", 0)), min_value=0.0, step=5.0, key=f"sn_max_{i}")
+                    s_active = st.checkbox("Aktiv", value=w.get("enabled", True), key=f"sn_active_{i}")
+
+                bcol1, bcol2, _ = st.columns([1, 1, 3])
+                with bcol1:
+                    if st.button("💾 Speichern", key=f"sn_save_{i}", use_container_width=True):
+                        watches[i] = {
+                            **w,
+                            "name": s_name,
+                            "keyword": s_kw,
+                            "max_price": s_max,
+                            "enabled": s_active,
+                        }
+                        if save_sniper_watches(watches):
+                            st.success("✅ Gespeichert!")
+                with bcol2:
+                    if st.button("🗑 Löschen", key=f"sn_del_{i}", use_container_width=True):
+                        watches.pop(i)
+                        if save_sniper_watches(watches):
+                            st.rerun()
+
+        st.markdown("---")
+        st.subheader("➕ Neue Sniper-Suche")
+
+        with st.form("new_sniper", clear_on_submit=True):
+            col1, col2 = st.columns(2)
+            with col1:
+                sn_name = st.text_input("Name *", placeholder="z.B. PS5 Schnäppchen")
+                sn_kw   = st.text_input("Suchbegriff *", placeholder="playstation 5")
+            with col2:
+                sn_max  = st.number_input("Maximalpreis (€)  (0 = egal)", min_value=0.0, step=5.0)
+                sn_active = st.checkbox("Sofort aktivieren", value=True)
+
+            if st.form_submit_button("➕ Hinzufügen", use_container_width=True, type="primary"):
+                if not sn_name or not sn_kw:
+                    st.error("Name und Suchbegriff sind Pflichtfelder.")
+                else:
+                    watches.append({
+                        "id": str(uuid.uuid4())[:8],
+                        "name": sn_name,
+                        "keyword": sn_kw,
+                        "max_price": sn_max,
+                        "enabled": sn_active,
+                    })
+                    if save_sniper_watches(watches):
+                        st.success(f"✅ »{sn_name}« angelegt!")
+                        st.rerun()
+
+        st.markdown("---")
+        st.info(
+            "**So funktioniert's:**\n"
+            "- Alle 10 Min durchsuchen wir eBay-Auktionen nach deinem Suchbegriff\n"
+            "- Endet eine Auktion in **5–15 Minuten** UND hat **0 Gebote** → 📧 sofort E-Mail\n"
+            "- Maximalpreis filtert Auktionen, die schon zu teuer sind\n"
+            "- Jede Auktion wird nur **einmal** gemeldet"
+        )
+
     # ── Tab: E-Mail ────────────────────────────────────────────────────────────
     with tab_email:
         st.subheader("📧 E-Mail Einstellungen")
@@ -221,6 +363,45 @@ def show_app():
                         "https://github.com/steffenah/preis-alarm/actions")
             except Exception as e:
                 st.error(str(e))
+
+    # ── Tab: App installieren ──────────────────────────────────────────────────
+    with tab_install:
+        st.subheader("📱 Preis-Alarm als App installieren")
+        st.markdown(
+            "Du kannst diese Webseite als **App auf dein Handy oder den PC packen** – "
+            "dann öffnet sie sich wie eine echte App im Vollbild, mit eigenem Icon."
+        )
+
+        st.markdown("---")
+        st.markdown("### 📱 Android (Chrome / Edge)")
+        st.markdown("""
+        1. Öffne **https://preis-alarm-dmoxajghdbetoa4mvtqrdk.streamlit.app/** in Chrome
+        2. Tippe oben rechts auf das **⋮ Menü**
+        3. Wähle **„App installieren"** oder **„Zum Startbildschirm hinzufügen"**
+        4. Bestätige → ein 🛒 Icon erscheint auf deinem Startbildschirm
+        """)
+
+        st.markdown("### 🍎 iPhone (Safari)")
+        st.markdown("""
+        1. Öffne die Seite in **Safari** (nicht Chrome!)
+        2. Tippe unten auf das **Teilen-Symbol** (Quadrat mit Pfeil nach oben)
+        3. Wische nach unten und wähle **„Zum Home-Bildschirm hinzufügen"**
+        4. Tippe rechts oben auf **„Hinzufügen"**
+        """)
+
+        st.markdown("### 💻 Windows / Mac (Chrome / Edge)")
+        st.markdown("""
+        1. Öffne die Seite in Chrome oder Edge
+        2. In der Adressleiste rechts: **„App installieren"-Icon** (kleines Monitor-Symbol)
+        3. Klick → die App wird wie ein normales Programm installiert
+        4. Du findest sie im Startmenü unter „Preis-Alarm"
+        """)
+
+        st.markdown("---")
+        st.success(
+            "**Vorteil:** Die App startet ohne Browser-Leiste, hat ein eigenes Icon und "
+            "kann (bei iOS später auch) Benachrichtigungen empfangen."
+        )
 
     # ── Tab: Hilfe ─────────────────────────────────────────────────────────────
     with tab_info:

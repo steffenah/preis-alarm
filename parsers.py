@@ -49,9 +49,104 @@ def detect_site_type(url: str) -> str:
         return "egun"
     if "kleinanzeigen.de" in url:
         return "kleinanzeigen"
+    if "ebay.de" in url or "ebay.com" in url:
+        return "ebay"
     if "airsoft-verzeichnis.de" in url:
         return "airsoft_verzeichnis"
     return "generic"
+
+
+# ── eBay Auktions-Parser ──────────────────────────────────────────────────────
+
+def parse_ebay_auctions(soup: BeautifulSoup) -> list[dict]:
+    """
+    Parst eBay-Suchergebnisse für Auktionen.
+    Liefert Auktionen mit: id, title, price, bids, time_left_minutes, url.
+    """
+    listings = []
+    seen_ids: set[str] = set()
+
+    for li in soup.find_all("li", class_=re.compile(r"s-item")):
+        # Titel + Link
+        link = li.find("a", class_=re.compile(r"s-item__link"))
+        if not link:
+            continue
+        href = link.get("href", "")
+        m_id = re.search(r"/itm/(?:[^/]+/)?(\d+)", href)
+        if not m_id:
+            continue
+        item_id = m_id.group(1)
+        if item_id in seen_ids:
+            continue
+        seen_ids.add(item_id)
+
+        title_tag = li.find(class_=re.compile(r"s-item__title"))
+        title = title_tag.get_text(" ", strip=True) if title_tag else ""
+        title = re.sub(r"^Neues Angebot\s*", "", title, flags=re.IGNORECASE)
+        if not title or title.lower().startswith("shop on ebay"):
+            continue
+
+        # Preis
+        price = None
+        price_tag = li.find(class_=re.compile(r"s-item__price"))
+        if price_tag:
+            raw = price_tag.get_text(" ", strip=True)
+            pm = re.search(r"([\d.,]+)", raw.replace(".", "").replace(",", "."))
+            if pm:
+                try:
+                    price = float(pm.group(1))
+                except ValueError:
+                    pass
+
+        # Gebote
+        bids = 0
+        bid_tag = li.find(class_=re.compile(r"s-item__bid"))
+        if bid_tag:
+            bm = re.search(r"(\d+)", bid_tag.get_text(" ", strip=True))
+            if bm:
+                bids = int(bm.group(1))
+
+        # Auktion? (Sofortkäufe ohne Gebot-Tag rausfiltern)
+        purchase_tag = li.find(class_=re.compile(r"s-item__purchase-options"))
+        is_buyitnow = purchase_tag and "sofort" in purchase_tag.get_text(" ", strip=True).lower()
+        if is_buyitnow and not bid_tag:
+            continue   # reiner Sofortkauf interessiert uns nicht
+
+        # Restzeit (z.B. "14 Std 33 Min" oder "23 Min 45 Sek")
+        time_left_min = None
+        time_tag = li.find(class_=re.compile(r"s-item__time-left|s-item__time-end"))
+        if time_tag:
+            t_text = time_tag.get_text(" ", strip=True)
+            total_min = 0
+            mt = re.search(r"(\d+)\s*Tag", t_text, re.IGNORECASE)
+            if mt:
+                total_min += int(mt.group(1)) * 24 * 60
+            mh = re.search(r"(\d+)\s*Std", t_text, re.IGNORECASE)
+            if mh:
+                total_min += int(mh.group(1)) * 60
+            mm = re.search(r"(\d+)\s*Min", t_text, re.IGNORECASE)
+            if mm:
+                total_min += int(mm.group(1))
+            ms = re.search(r"(\d+)\s*Sek", t_text, re.IGNORECASE)
+            if ms and total_min == 0:
+                total_min = 1   # < 1 Min als 1 zählen
+            if total_min > 0 or ms:
+                time_left_min = total_min
+
+        item_url = href.split("?")[0]
+        listings.append({
+            "id": item_id,
+            "title": title,
+            "price": price,
+            "auction_price": price,
+            "sofortkauf_price": None,
+            "bids": bids,
+            "time_left_min": time_left_min,
+            "is_sofortkauf": False,
+            "url": item_url,
+        })
+
+    return listings
 
 
 # ── eGun ─────────────────────────────────────────────────────────────────────
@@ -258,6 +353,8 @@ def get_listings(monitor: dict) -> list[dict]:
         return parse_egun(soup)
     elif site_type == "kleinanzeigen":
         return parse_kleinanzeigen(soup)
+    elif site_type == "ebay":
+        return parse_ebay_auctions(soup)
     elif site_type == "airsoft_verzeichnis":
         return parse_airsoft_verzeichnis(soup, url)
     else:

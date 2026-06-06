@@ -18,6 +18,12 @@ from bs4 import BeautifulSoup
 BASE_DIR   = Path(__file__).parent
 SEEN_FILE  = BASE_DIR / "seen_items.json"
 MON_FILE   = BASE_DIR / "monitors.json"
+SNIPER_FILE = BASE_DIR / "sniper_watches.json"
+SNIPER_NOTIFIED_FILE = BASE_DIR / "sniper_notified.json"
+
+# Sniper-Konfiguration: Auktion endet in 5-15 Minuten + 0 Gebote → benachrichtigen
+SNIPER_WINDOW_MIN_LO = 5
+SNIPER_WINDOW_MIN_HI = 15
 
 # Zugangsdaten aus GitHub Secrets
 SENDER_EMAIL    = os.environ["SENDER_EMAIL"]
@@ -113,6 +119,119 @@ def matches(item: dict, monitor: dict) -> bool:
     return True
 
 
+def load_sniper_watches() -> list[dict]:
+    if not SNIPER_FILE.exists():
+        return []
+    with open(SNIPER_FILE, encoding="utf-8") as f:
+        return json.load(f).get("watches", [])
+
+
+def load_sniper_notified() -> dict:
+    if not SNIPER_NOTIFIED_FILE.exists():
+        return {}
+    with open(SNIPER_NOTIFIED_FILE, encoding="utf-8") as f:
+        return json.load(f)
+
+
+def save_sniper_notified(notified: dict):
+    # Alte Einträge (> 24h) löschen
+    now = datetime.now()
+    pruned = {}
+    for key, ts in notified.items():
+        try:
+            old = datetime.fromisoformat(ts)
+            if (now - old).total_seconds() < 24 * 3600:
+                pruned[key] = ts
+        except Exception:
+            pass
+    with open(SNIPER_NOTIFIED_FILE, "w", encoding="utf-8") as f:
+        json.dump(pruned, f, ensure_ascii=False, indent=2)
+
+
+def send_sniper_email(watch_name: str, alerts: list[dict]):
+    count = len(alerts)
+    subject = f"🔨 AUKTION ENDET BALD · {watch_name} ({count})"
+    lines = [f"Diese Auktionen für »{watch_name}« enden bald OHNE Gebote:\n"]
+    for a in alerts:
+        lines.append(f"• {a['title']}")
+        lines.append(f"  Aktueller Preis: {a['price']:.2f} €" if a.get('price') else "  Preis unbekannt")
+        lines.append(f"  Endet in:        ~{a['time_left_min']} Min")
+        lines.append(f"  Gebote:          {a.get('bids', 0)}")
+        lines.append(f"  Link:            {a['url']}")
+        lines.append("")
+    lines += [f"\nGefunden am: {datetime.now().strftime('%d.%m.%Y um %H:%M Uhr')}"]
+
+    msg = MIMEMultipart("alternative")
+    msg["Subject"] = subject
+    msg["From"]    = SENDER_EMAIL
+    msg["To"]      = RECIPIENT_EMAIL
+    msg["X-Priority"] = "1"
+    msg["Importance"] = "high"
+    msg.attach(MIMEText("\n".join(lines), "plain", "utf-8"))
+
+    with smtplib.SMTP_SSL("smtp.gmail.com", 465) as s:
+        s.login(SENDER_EMAIL, SENDER_PASSWORD)
+        s.sendmail(SENDER_EMAIL, RECIPIENT_EMAIL, msg.as_string())
+    log(f"  → Sniper-Mail gesendet: {subject}")
+
+
+def run_sniper():
+    from parsers import fetch, parse_ebay_auctions
+    watches = load_sniper_watches()
+    if not watches:
+        return
+    notified = load_sniper_notified()
+    log(f"=== eBay-Sniper: {len(watches)} Suche(n) ===")
+
+    for w in watches:
+        if not w.get("enabled", True):
+            continue
+        name = w.get("name", "Sniper")
+        keyword = w.get("keyword", "").strip()
+        if not keyword:
+            continue
+        max_price = w.get("max_price", 0)
+
+        # eBay-Such-URL: nur Auktionen, nach Endzeit sortiert
+        url = f"https://www.ebay.de/sch/i.html?_nkw={keyword.replace(' ', '+')}&LH_Auction=1&_sop=1"
+        log(f"[{name}] suche: {keyword}")
+        try:
+            soup = fetch(url)
+            auctions = parse_ebay_auctions(soup)
+        except Exception as e:
+            log(f"[{name}] FEHLER: {e}")
+            continue
+
+        log(f"[{name}] {len(auctions)} Auktionen gefunden.")
+        alerts = []
+        for a in auctions:
+            tl = a.get("time_left_min")
+            if tl is None:
+                continue
+            if not (SNIPER_WINDOW_MIN_LO <= tl <= SNIPER_WINDOW_MIN_HI):
+                continue
+            if a.get("bids", 0) > 0:
+                continue
+            if max_price and a.get("price") and a["price"] > max_price:
+                continue
+            # Schon benachrichtigt?
+            key = f"{w.get('id', name)}::{a['id']}"
+            if key in notified:
+                continue
+            notified[key] = datetime.now().isoformat()
+            alerts.append(a)
+
+        if alerts:
+            try:
+                send_sniper_email(name, alerts)
+            except Exception as e:
+                log(f"[{name}] Mail-Fehler: {e}")
+        else:
+            log(f"[{name}] keine Schnäppchen-Auktionen.")
+
+    save_sniper_notified(notified)
+
+
 def main():
     log("=== Monitor Cloud-Lauf gestartet ===")
     monitors = load_monitors()
@@ -154,6 +273,13 @@ def main():
             log(f"[{monitor['name']}] keine neuen Treffer.")
 
     save_seen(seen)
+
+    # eBay-Auktions-Sniper
+    try:
+        run_sniper()
+    except Exception as e:
+        log(f"Sniper Fehler: {e}")
+
     log("=== Lauf beendet ===")
 
 
