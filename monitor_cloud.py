@@ -252,31 +252,55 @@ def _median(values: list[float]) -> float:
     return s[n // 2] if n % 2 else (s[n // 2 - 1] + s[n // 2]) / 2
 
 
-def update_history_and_score(bucket_key: str, items: list[dict], hist: dict) -> list[dict]:
+def _bucket_for_item(base_key: str, title: str, keywords: list[str]) -> str:
     """
-    Fügt Preise zum Bucket hinzu, gibt items mit 'deal_score' (% unter Median) zurück.
-    bucket_key z.B. 'monitor_id::610a6e59' oder 'sniper::abc123'
+    Bestimmt den Preis-Bucket für ein Item.
+    - Wenn keywords definiert: bucket = base::keyword (erstes Keyword im Titel)
+    - Sonst: bucket = base::_all_
     """
-    bucket = hist.setdefault(bucket_key, {"samples": [], "median": 0.0})
-    # Neue Preise sammeln
-    new_prices = []
+    title_lower = title.lower()
+    for kw in keywords:
+        kw_clean = kw.strip().lower()
+        if kw_clean and kw_clean in title_lower:
+            return f"{base_key}::{kw_clean}"
+    return f"{base_key}::_all_"
+
+
+def update_history_and_score(base_key: str, items: list[dict], hist: dict,
+                             keywords: list[str] = None) -> list[dict]:
+    """
+    Fügt Preise zum passenden Bucket (pro Keyword) hinzu, gibt items mit 'deal_score' zurück.
+    base_key z.B. 'monitor::abc' oder 'sniper::xyz'.
+    keywords-Liste bestimmt die Gruppierung.
+    """
+    keywords = keywords or []
+
+    # Pro Item den richtigen Bucket finden + Preis hinzufügen
+    item_buckets = {}   # item_id → bucket_key
     for it in items:
+        b = _bucket_for_item(base_key, it.get("title", ""), keywords)
+        item_buckets[id(it)] = b
+        bucket = hist.setdefault(b, {"samples": [], "median": 0.0})
         p = it.get("sofortkauf_price") or it.get("auction_price") or it.get("price")
         if p and p > 0:
-            new_prices.append(p)
-    bucket["samples"].extend(new_prices)
-    # Median neu berechnen
-    if len(bucket["samples"]) >= DEAL_MIN_SAMPLES:
-        bucket["median"] = _median(bucket["samples"])
+            bucket["samples"].append(p)
 
-    # Items mit Score versehen
-    median = bucket["median"]
-    if median > 0:
-        for it in items:
-            p = it.get("sofortkauf_price") or it.get("auction_price") or it.get("price") or 0
-            if p > 0:
-                it["deal_score"] = round((1 - p / median) * 100, 1)   # % unter Median
-                it["median_price"] = round(median, 2)
+    # Mediane neu berechnen (für alle berührten Buckets)
+    touched = set(item_buckets.values())
+    for b in touched:
+        bucket = hist[b]
+        if len(bucket["samples"]) >= DEAL_MIN_SAMPLES:
+            bucket["median"] = _median(bucket["samples"])
+
+    # Score pro Item
+    for it in items:
+        b = item_buckets[id(it)]
+        median = hist[b].get("median", 0)
+        p = it.get("sofortkauf_price") or it.get("auction_price") or it.get("price") or 0
+        if median > 0 and p > 0:
+            it["deal_score"] = round((1 - p / median) * 100, 1)
+            it["median_price"] = round(median, 2)
+            it["bucket"] = b
     return items
 
 
@@ -408,9 +432,11 @@ def run_sniper(history: dict = None):
         log(f"[{name}] {len(auctions)} Auktionen gefunden"
             + (f" (Filter: {keywords})" if keywords else "")
             + (f" (Negativ: {exclude_keywords})" if exclude_keywords else "") + ".")
-        # Preishistorie pflegen für diese Sniper-Suche
-        sniper_bucket = f"sniper::{w.get('id', name)}"
-        auctions = update_history_and_score(sniper_bucket, auctions, history)
+        # Preishistorie pflegen für diese Sniper-Suche (pro Keyword bei eGun;
+        # bei eBay nutzen wir den Suchbegriff selbst als 1 Keyword)
+        sniper_base = f"sniper::{w.get('id', name)}"
+        bucket_kws = keywords if keywords else ([w.get("keyword","").strip()] if w.get("keyword") else [])
+        auctions = update_history_and_score(sniper_base, auctions, history, bucket_kws)
         alerts = []
         for a in auctions:
             tl = a.get("time_left_min")
@@ -469,12 +495,9 @@ def main():
             continue
 
         log(f"[{monitor['name']}] {len(listings)} Einträge gefunden.")
-        # Preishistorie pflegen + Score berechnen
-        bucket = f"monitor::{monitor['id']}"
-        listings = update_history_and_score(bucket, listings, history)
-        median = history.get(bucket, {}).get("median", 0)
-        if median:
-            log(f"[{monitor['name']}] Markt-Median: {median:.2f} €")
+        # Preishistorie pflegen + Score berechnen (Bucket pro Keyword!)
+        base = f"monitor::{monitor['id']}"
+        listings = update_history_and_score(base, listings, history, monitor.get("keywords", []))
 
         new_items = []
         for item in listings:
