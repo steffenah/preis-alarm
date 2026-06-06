@@ -1797,5 +1797,65 @@
     "title": "Army Armament R60 GBB \"Begadi Special Version\" mit 4 Magazinen und Reddot",
     "price": 180.0,
     "first_seen": "2026-06-05T20:18:00.317039"
+  },
+  "egun_softair::20332564": {
+    "title": "Tokyo Marui Biohazard Samurai Edge",
+    "price": 250.0,
+    "first_seen": "2026-06-06T09:34:21.988229"
+  },
+  "egun_softair::20377906": {
+    "title": "unbekannter PVC Verschluss / Freie Teile / Soft Air",
+    "price": 1.0,
+    "first_seen": "2026-06-06T09:34:21.988239"
+  },
+  "egun_softair::20373368": {
+    "title": "G&G Wildhog 0,5 M4 M16",
+    "price": 100.0,
+    "first_seen": "2026-06-06T09:34:21.988243"
+  },
+  "egun_softair::20392845": {
+    "title": "Ssg10 kurzer Lauf,Skope, Schalldämpfer und Zubehör",
+    "price": 100.0,
+    "first_seen": "2026-06-06T09:34:21.988245"
+  },
+  "egun_softair::20368481": {
+    "title": "Sig Sauer Proforce P320 - M17 Airsoft",
+    "price": 200.0,
+    "first_seen": "2026-06-06T09:34:21.988247"
+  },
+  "egun_softair::20391564": {
+    "title": "Ruger Superhawk cal. 6mm BB",
+    "price": 60.0,
+    "first_seen": "2026-06-06T09:34:21.988249"
+  },
+  "egun_softair::20391637": {
+    "title": "HK G36 / SL8 Picatinny Sight Rail mit Notvisier",
+    "price": 50.0,
+    "first_seen": "2026-06-06T09:34:21.988251"
+  },
+  "egun_softair::20346351": {
+    "title": "Custom Magpul CAM870 + 12 MK3 Shells",
+    "price": 550.0,
+    "first_seen": "2026-06-06T09:34:21.988252"
+  },
+  "egun_softair::20304455": {
+    "title": "Aim-O E33 Style 3x Magnifier, AO 5348-BK",
+    "price": 59.0,
+    "first_seen": "2026-06-06T09:34:21.988254"
+  },
+  "egun_softair::20368889": {
+    "title": "COLT M4A1 CQBR SoftAir AEG 6mmBBs",
+    "price": 76.0,
+    "first_seen": "2026-06-06T09:34:21.988270"
+  },
+  "egun_softair::20215154": {
+    "title": "Softair Pistolen 6mmBBS",
+    "price": 50.0,
+    "first_seen": "2026-06-06T09:34:21.988272"
+  },
+  "egun_softair::20385847": {
+    "title": "Heckler & Koch MP5 K-PDW 4,5 mm (.177)",
+    "price": 56.0,
+    "first_seen": "2026-06-06T09:34:21.988280"
   }
 }
