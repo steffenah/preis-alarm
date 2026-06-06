@@ -81,6 +81,11 @@
         "playtation 5",
         "playsation 5",
         "playsttion 5"
+      ],
+      "keywords": [],
+      "exclude_keywords": [
+        "Defekt",
+        "Bastler"
       ]
     }
   ]
