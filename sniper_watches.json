@@ -7,7 +7,15 @@
       "keyword": "Edurino",
       "url": "",
       "max_price": 0,
-      "enabled": true
+      "enabled": true,
+      "typo_variants": [
+        "eurino",
+        "edrino",
+        "eduino",
+        "edurno",
+        "edurio",
+        "deurino"
+      ]
     },
     {
       "id": "xnga4th6",
