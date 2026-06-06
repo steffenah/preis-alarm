@@ -262,7 +262,9 @@ function renderSniper() {
     const pauseLabel = enabled ? "⏸️ Aus" : "▶️ An";
     const plat = w.platform || "ebay";
     const platIcon = plat === "egun" ? "🛒" : "🅴";
-    const sub = plat === "ebay" ? (w.keyword || "") : (w.url || "").slice(0, 60);
+    const typoCount = (w.typo_variants || []).length;
+    const typoHint = typoCount ? ` 🎯+${typoCount}` : "";
+    const sub = plat === "ebay" ? `${w.keyword || ""}${typoHint}` : (w.url || "").slice(0, 60);
     return `
     <div class="card" data-i="${i}" data-kind="sniper">
       <div class="card-header">
@@ -288,6 +290,10 @@ function renderSniper() {
           </label>
           <label class="full sniper-keyword" ${plat === "egun" ? 'style="display:none"' : ""}>
             eBay-Suchbegriff <input data-field="keyword" value="${esc(w.keyword || "")}">
+          </label>
+          <label class="full sniper-typos" ${plat === "egun" ? 'style="display:none"' : ""}>
+            🎯 Tippfehler-Varianten (kommagetrennt, werden zusätzlich gesucht)
+            <input data-field="typo_variants" value="${esc((w.typo_variants || []).join(", "))}" placeholder="z.B. plystation 5, playsation 5">
           </label>
           <label class="full sniper-url" ${plat === "ebay" ? 'style="display:none"' : ""}>
             eGun Kategorie-URL <input data-field="url" value="${esc(w.url || "")}">
@@ -367,6 +373,9 @@ document.addEventListener("click", async (e) => {
       if (typeof fields.exclude_keywords === "string") {
         fields.exclude_keywords = fields.exclude_keywords.split(",").map(s => s.trim()).filter(Boolean);
       }
+      if (typeof fields.typo_variants === "string") {
+        fields.typo_variants = fields.typo_variants.split(",").map(s => s.trim()).filter(Boolean);
+      }
       sniperWatches[i] = { ...sniperWatches[i], ...fields };
       if (await saveSniper()) { toast("Gespeichert"); renderSniper(); }
     }
@@ -377,18 +386,17 @@ document.addEventListener("click", async (e) => {
     }
     if (a === "sn-typos") {
       const orig = sniperWatches[i];
-      const variants = typoVariants(orig.keyword || "");
-      if (!variants.length) { toast("Keine Varianten möglich", "error"); return; }
-      if (!confirm(`Folgende ${variants.length} Tippfehler-Suchen anlegen?\n\n${variants.join(", ")}\n\nDas erzeugt ${variants.length} neue Sniper-Watches.`)) return;
-      variants.forEach(v => {
-        sniperWatches.push({
-          ...orig,
-          id: uuid(),
-          name: `${orig.name} 🎯 ${v}`,
-          keyword: v,
-        });
-      });
-      if (await saveSniper()) { toast(`${variants.length} Varianten angelegt`); renderSniper(); }
+      const existing = orig.typo_variants || [];
+      const generated = typoVariants(orig.keyword || "");
+      // Dedup gegen vorhandene Varianten
+      const newOnes = generated.filter(v => !existing.includes(v) && v !== orig.keyword);
+      if (!newOnes.length) { toast("Alle Varianten bereits vorhanden", "error"); return; }
+      if (!confirm(`Folgende ${newOnes.length} Tippfehler-Varianten zur Suche »${orig.name}« hinzufügen?\n\n${newOnes.join(", ")}\n\nDie Suche bleibt eine Watch, sucht aber zusätzlich nach diesen Varianten.`)) return;
+      sniperWatches[i] = {
+        ...orig,
+        typo_variants: [...existing, ...newOnes],
+      };
+      if (await saveSniper()) { toast(`${newOnes.length} Varianten hinzugefügt`); renderSniper(); }
     }
     return;
   }
@@ -404,6 +412,7 @@ document.addEventListener("change", (e) => {
   if (sel.dataset?.field === "platform") {
     const card = sel.closest(".card");
     card.querySelector(".sniper-keyword").style.display = sel.value === "ebay" ? "" : "none";
+    card.querySelector(".sniper-typos").style.display   = sel.value === "ebay" ? "" : "none";
     card.querySelector(".sniper-url").style.display     = sel.value === "egun" ? "" : "none";
     card.querySelector(".sniper-filter").style.display  = sel.value === "egun" ? "" : "none";
   }

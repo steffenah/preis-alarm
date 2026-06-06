@@ -401,6 +401,7 @@ def run_sniper(history: dict = None):
         max_price = w.get("max_price", 0)
 
         # URL + Parser je nach Plattform
+        auctions = []
         try:
             if platform == "egun":
                 url = w.get("url", "").strip()
@@ -413,14 +414,25 @@ def run_sniper(history: dict = None):
                 # Nur Auktionen (mit Gebotsstand) behalten
                 auctions = [i for i in items if i.get("bids") is not None]
             else:
+                # eBay: Original-Suchbegriff + alle Tippfehler-Varianten in 1 Watch
                 keyword = w.get("keyword", "").strip()
                 if not keyword:
                     log(f"[{name}] kein Suchbegriff – übersprungen.")
                     continue
-                url = f"https://www.ebay.de/sch/i.html?_nkw={keyword.replace(' ', '+')}&LH_Auction=1&_sop=1"
-                log(f"[{name}] (eBay) suche: {keyword}")
-                soup = fetch(url)
-                auctions = parse_ebay_auctions(soup)
+                typo_variants = [v.strip() for v in w.get("typo_variants", []) if v.strip()]
+                search_terms = [keyword] + typo_variants
+                seen_ids = set()
+                for term in search_terms:
+                    try:
+                        url = f"https://www.ebay.de/sch/i.html?_nkw={term.replace(' ', '+')}&LH_Auction=1&_sop=1"
+                        log(f"[{name}] (eBay) suche: {term}")
+                        soup = fetch(url)
+                        for a in parse_ebay_auctions(soup):
+                            if a["id"] not in seen_ids:
+                                seen_ids.add(a["id"])
+                                auctions.append(a)
+                    except Exception as e:
+                        log(f"[{name}] FEHLER bei '{term}': {e}")
         except Exception as e:
             log(f"[{name}] FEHLER: {e}")
             continue
