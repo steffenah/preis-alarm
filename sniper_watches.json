@@ -26,6 +26,15 @@
       "url": "",
       "max_price": 0,
       "enabled": true
+    },
+    {
+      "id": "ktckju4x",
+      "name": "Alles",
+      "platform": "egun",
+      "keyword": "",
+      "url": "https://egun.de/market/list_items.php?query=&cat=492&t=&page=1",
+      "max_price": 0,
+      "enabled": true
     }
   ]
 }
