@@ -33,12 +33,36 @@ HEADERS_KLEINANZEIGEN = {
 }
 
 
+HEADERS_EBAY = {
+    **HEADERS,
+    "Referer": "https://www.ebay.de/",
+    "sec-ch-ua": '"Chromium";v="124", "Google Chrome";v="124"',
+    "sec-ch-ua-mobile": "?0",
+    "sec-ch-ua-platform": '"Windows"',
+    "Sec-Fetch-Dest": "document",
+    "Sec-Fetch-Mode": "navigate",
+    "Sec-Fetch-Site": "same-origin",
+    "Sec-Fetch-User": "?1",
+    "Upgrade-Insecure-Requests": "1",
+    "Cache-Control": "max-age=0",
+}
+
+
 def fetch(url: str) -> BeautifulSoup:
-    headers = HEADERS_KLEINANZEIGEN if "kleinanzeigen.de" in url else HEADERS
+    if "kleinanzeigen.de" in url:
+        headers = HEADERS_KLEINANZEIGEN
+    elif "ebay.de" in url or "ebay.com" in url:
+        headers = HEADERS_EBAY
+    else:
+        headers = HEADERS
     session = requests.Session()
     # Erst die Startseite aufrufen (Cookie holen), dann die eigentliche URL
     if "kleinanzeigen.de" in url:
         session.get("https://www.kleinanzeigen.de/", headers=headers, timeout=15)
+    elif "ebay.de" in url:
+        session.get("https://www.ebay.de/", headers=headers, timeout=15)
+    elif "ebay.com" in url:
+        session.get("https://www.ebay.com/", headers=headers, timeout=15)
     resp = session.get(url, headers=headers, timeout=30)
     resp.raise_for_status()
     return BeautifulSoup(resp.text, "html.parser")
@@ -58,81 +82,87 @@ def detect_site_type(url: str) -> str:
 
 # ── eBay Auktions-Parser ──────────────────────────────────────────────────────
 
+def _parse_ebay_time(text: str):
+    """'Noch 14 Std 33 Min' / 'Noch 11 Min' → Minuten als int. None wenn nichts."""
+    total_min = 0
+    found = False
+    mt = re.search(r"(\d+)\s*Tag", text, re.IGNORECASE)
+    if mt:
+        total_min += int(mt.group(1)) * 24 * 60; found = True
+    mh = re.search(r"(\d+)\s*Std", text, re.IGNORECASE)
+    if mh:
+        total_min += int(mh.group(1)) * 60; found = True
+    mm = re.search(r"(\d+)\s*Min", text, re.IGNORECASE)
+    if mm:
+        total_min += int(mm.group(1)); found = True
+    ms = re.search(r"(\d+)\s*Sek", text, re.IGNORECASE)
+    if ms and total_min == 0:
+        total_min = 1; found = True
+    return total_min if found else None
+
+
 def parse_ebay_auctions(soup: BeautifulSoup) -> list[dict]:
     """
-    Parst eBay-Suchergebnisse für Auktionen.
-    Liefert Auktionen mit: id, title, price, bids, time_left_minutes, url.
+    Parst eBay-Suchergebnisse für Auktionen (neue s-card Struktur, 2026).
+    Liefert: id, title, price, bids, time_left_min, url.
     """
     listings = []
     seen_ids: set[str] = set()
 
-    for li in soup.find_all("li", class_=re.compile(r"s-item")):
-        # Titel + Link
-        link = li.find("a", class_=re.compile(r"s-item__link"))
+    cards = soup.find_all(class_=re.compile(r"^s-card$"))
+    for card in cards:
+        # Link + ID
+        link = card.find("a", class_=re.compile(r"s-card__link"))
         if not link:
             continue
         href = link.get("href", "")
-        m_id = re.search(r"/itm/(?:[^/]+/)?(\d+)", href)
+        m_id = re.search(r"/itm/(\d+)", href)
         if not m_id:
             continue
         item_id = m_id.group(1)
         if item_id in seen_ids:
             continue
-        seen_ids.add(item_id)
 
-        title_tag = li.find(class_=re.compile(r"s-item__title"))
+        title_tag = card.find(class_=re.compile(r"s-card__title"))
         title = title_tag.get_text(" ", strip=True) if title_tag else ""
-        title = re.sub(r"^Neues Angebot\s*", "", title, flags=re.IGNORECASE)
+        title = re.sub(r"\s*Wird in neuem Fenster.*$", "", title)
         if not title or title.lower().startswith("shop on ebay"):
             continue
 
-        # Preis
+        # Preis aus s-card__price ("EUR 355,00")
         price = None
-        price_tag = li.find(class_=re.compile(r"s-item__price"))
+        price_tag = card.find(class_=re.compile(r"s-card__price"))
         if price_tag:
             raw = price_tag.get_text(" ", strip=True)
-            pm = re.search(r"([\d.,]+)", raw.replace(".", "").replace(",", "."))
+            pm = re.search(r"([\d.]+,\d{1,2}|\d+)", raw.replace(".", ""))
             if pm:
                 try:
-                    price = float(pm.group(1))
+                    price = float(pm.group(1).replace(",", "."))
                 except ValueError:
                     pass
 
-        # Gebote
-        bids = 0
-        bid_tag = li.find(class_=re.compile(r"s-item__bid"))
-        if bid_tag:
-            bm = re.search(r"(\d+)", bid_tag.get_text(" ", strip=True))
+        # Attribute durchsuchen für "X Gebote" + "Restzeit Noch ..."
+        bids = None  # None = kein Auktion-Attribut gefunden
+        time_left_min = None
+        for attr in card.find_all(class_=re.compile(r"s-card__attribute")):
+            atxt = attr.get_text(" ", strip=True)
+            # "0 Gebote" oder "1 Gebot" oder "12 Gebote"
+            bm = re.search(r"(\d+)\s*Gebot", atxt, re.IGNORECASE)
             if bm:
                 bids = int(bm.group(1))
+            # "Restzeit Noch 11 Min" oder "Noch 1 Tag 2 Std"
+            if "Restzeit" in atxt or "Noch" in atxt:
+                t = _parse_ebay_time(atxt)
+                if t is not None:
+                    time_left_min = t
 
-        # Auktion? (Sofortkäufe ohne Gebot-Tag rausfiltern)
-        purchase_tag = li.find(class_=re.compile(r"s-item__purchase-options"))
-        is_buyitnow = purchase_tag and "sofort" in purchase_tag.get_text(" ", strip=True).lower()
-        if is_buyitnow and not bid_tag:
-            continue   # reiner Sofortkauf interessiert uns nicht
+        # Nur echte Auktionen behalten (mind. eines von beiden gefunden)
+        if bids is None and time_left_min is None:
+            continue
+        if bids is None:
+            bids = 0
 
-        # Restzeit (z.B. "14 Std 33 Min" oder "23 Min 45 Sek")
-        time_left_min = None
-        time_tag = li.find(class_=re.compile(r"s-item__time-left|s-item__time-end"))
-        if time_tag:
-            t_text = time_tag.get_text(" ", strip=True)
-            total_min = 0
-            mt = re.search(r"(\d+)\s*Tag", t_text, re.IGNORECASE)
-            if mt:
-                total_min += int(mt.group(1)) * 24 * 60
-            mh = re.search(r"(\d+)\s*Std", t_text, re.IGNORECASE)
-            if mh:
-                total_min += int(mh.group(1)) * 60
-            mm = re.search(r"(\d+)\s*Min", t_text, re.IGNORECASE)
-            if mm:
-                total_min += int(mm.group(1))
-            ms = re.search(r"(\d+)\s*Sek", t_text, re.IGNORECASE)
-            if ms and total_min == 0:
-                total_min = 1   # < 1 Min als 1 zählen
-            if total_min > 0 or ms:
-                time_left_min = total_min
-
+        seen_ids.add(item_id)
         item_url = href.split("?")[0]
         listings.append({
             "id": item_id,
