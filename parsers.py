@@ -271,7 +271,7 @@ def parse_egun(soup: BeautifulSoup) -> list[dict]:
                 sofortkauf_price = all_prices[0] if all_prices else None
                 is_sofortkauf = True
 
-        # Bild-URL aus der Zeile holen
+        # Bild-URL aus der Zeile holen (eGun liefert oft RELATIVE URLs!)
         image_url = None
         if row:
             img = row.find("img")
@@ -281,6 +281,8 @@ def parse_egun(soup: BeautifulSoup) -> list[dict]:
                     src = "https:" + src
                 elif src.startswith("/"):
                     src = "https://egun.de" + src
+                elif not src.startswith("http"):
+                    src = "https://egun.de/market/" + src.lstrip("/")
                 image_url = src
 
         listings.append({

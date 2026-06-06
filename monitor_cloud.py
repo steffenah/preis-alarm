@@ -91,8 +91,11 @@ def send_telegram(text: str, urgent: bool = False) -> bool:
 
 def send_telegram_photo(photo_url: str, caption: str, urgent: bool = False) -> bool:
     """Schickt ein Bild mit Caption (max 1024 Zeichen)."""
-    if not TELEGRAM_BOT_TOKEN or not TELEGRAM_CHAT_ID:
-        return False
+    if not TELEGRAM_BOT_TOKEN or not TELEGRAM_CHAT_ID or not photo_url:
+        return send_telegram(caption, urgent=urgent)
+    # Telegram braucht http(s) URLs
+    if not photo_url.startswith("http"):
+        return send_telegram(caption, urgent=urgent)
     ok = _tg_call("sendPhoto", {
         "chat_id": TELEGRAM_CHAT_ID,
         "photo": photo_url,
@@ -103,7 +106,7 @@ def send_telegram_photo(photo_url: str, caption: str, urgent: bool = False) -> b
     if ok:
         log(f"  → Telegram-Photo gesendet")
         return True
-    # Fallback: ohne Bild
+    # Fallback nur wenn echt fehlgeschlagen
     return send_telegram(caption, urgent=urgent)
 
 
@@ -120,8 +123,8 @@ def send_email(monitor_name: str, new_items: list[dict], min_price: float, max_p
 
     lines = [f"Neue Treffer für »{monitor_name}«:\n"]
     for item in new_items:
-        score = item.get("deal_score")
-        fire = " 🔥 SCHNÄPPCHEN!" if score and score >= DEAL_THRESHOLD_PCT else ""
+        score = item.get("deal_score") or 0
+        fire = " 🔥 SCHNÄPPCHEN!" if score >= DEAL_THRESHOLD_PCT else ""
         lines.append(f"• {item['title']}{fire}")
         if item.get("auction_price") is not None:
             lines.append(f"  Aktuelles Gebot:  {item['auction_price']:.2f} €")
@@ -130,8 +133,10 @@ def send_email(monitor_name: str, new_items: list[dict], min_price: float, max_p
         if not item.get("auction_price") and not item.get("sofortkauf_price"):
             p = item.get("price")
             lines.append(f"  Preis: {f'{p:.2f} €' if p else 'nicht angegeben'}")
-        if score and item.get("median_price"):
-            lines.append(f"  Markt-Median:     {item['median_price']:.2f} €  ({score:+.0f}%)")
+        if item.get("median_price") and score >= DEAL_THRESHOLD_PCT:
+            lines.append(f"  Markt-Median:     {item['median_price']:.2f} €  (-{score:.0f}% Schnäppchen)")
+        elif item.get("median_price"):
+            lines.append(f"  Markt-Median:     {item['median_price']:.2f} €")
         lines += [f"  Link:  {item['url']}", ""]
     lines += [
         f"\nGefunden am: {datetime.now().strftime('%d.%m.%Y um %H:%M Uhr')}",
@@ -156,8 +161,9 @@ def send_email(monitor_name: str, new_items: list[dict], min_price: float, max_p
 
     # Erst die mit Bildern (max 5)
     for item in items_with_image[:5]:
-        score = item.get("deal_score")
-        fire = " 🔥" if score and score >= DEAL_THRESHOLD_PCT else ""
+        score = item.get("deal_score") or 0
+        is_deal = score >= DEAL_THRESHOLD_PCT
+        fire = " 🔥 SCHNÄPPCHEN" if is_deal else ""
         caption = f"🔔 <b>{monitor_name}</b>{fire}\n\n<b>{item['title'][:200]}</b>\n"
         if item.get("auction_price"):
             caption += f"  Gebot: {item['auction_price']:.2f} €\n"
@@ -165,11 +171,10 @@ def send_email(monitor_name: str, new_items: list[dict], min_price: float, max_p
             caption += f"  Sofortkauf: {item['sofortkauf_price']:.2f} €\n"
         elif item.get("price") and not item.get("auction_price"):
             caption += f"  Preis: {item['price']:.2f} €\n"
-        if score and item.get("median_price"):
-            caption += f"  📊 Markt: {item['median_price']:.0f} € ({score:+.0f}%)\n"
+        if is_deal and item.get("median_price"):
+            caption += f"  📊 Markt: {item['median_price']:.0f} € (<b>-{score:.0f}%</b>)\n"
         caption += f'\n<a href="{item["url"]}">Anzeigen</a>'
-        # urgent=True bei Schnäppchen, sonst still
-        send_telegram_photo(item["image_url"], caption, urgent=(score and score >= DEAL_THRESHOLD_PCT))
+        send_telegram_photo(item["image_url"], caption, urgent=is_deal)
         header_sent = True
 
     # Restliche als Text-Sammelnachricht
@@ -482,10 +487,10 @@ def main():
                 }
                 if matches(item, monitor):
                     new_items.append(item)
-                    score = item.get("deal_score")
-                    fire = " 🔥" if score and score >= DEAL_THRESHOLD_PCT else ""
-                    log(f"  NEU{fire}: {item['title'][:55]}  {item.get('price','-')}EUR"
-                        + (f" (-{score}%)" if score else ""))
+                    score = item.get("deal_score") or 0
+                    fire = " 🔥" if score >= DEAL_THRESHOLD_PCT else ""
+                    score_str = f" ({score:+.0f}% vs. Median)" if score else ""
+                    log(f"  NEU{fire}: {item['title'][:55]}  {item.get('price','-')}EUR{score_str}")
 
         if new_items:
             try:
