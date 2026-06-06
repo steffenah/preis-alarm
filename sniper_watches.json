@@ -17,6 +17,15 @@
       "url": "",
       "max_price": 0,
       "enabled": true
+    },
+    {
+      "id": "xnga4th6",
+      "name": "Gameboy Advance SP",
+      "platform": "ebay",
+      "keyword": "Gameboy Advance SP",
+      "url": "",
+      "max_price": 0,
+      "enabled": true
     }
   ]
 }
