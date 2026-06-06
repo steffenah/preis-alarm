@@ -648,1234 +648,346 @@
     "price": 60.0,
     "first_seen": "2026-05-28T20:42:22.291972"
   },
-  "610a6e59::3420463375": {
-    "title": "Fernseher  und Monitor defekt",
-    "price": 5.0,
-    "first_seen": "2026-05-28T22:52:36.115947"
+  "20382772": {
+    "title": "Heckler & Koch HK45 mit Metallschlitten GBB 6mm BB schwarz",
+    "price": 50.0,
+    "is_sofortkauf": true,
+    "first_seen": "2026-05-29T13:08:46.226392"
   },
-  "egun_softair::20361356": {
+  "20382757": {
+    "title": "Tokyo Marui Hi-Capa 5.1 Gas-Blow-Back 6mm BB",
+    "price": 70.0,
+    "is_sofortkauf": true,
+    "first_seen": "2026-05-29T13:08:46.226578"
+  },
+  "20385617": {
+    "title": "Walther PPQ Airsoft Pistole Metallschlitten",
+    "price": 1.5,
+    "is_sofortkauf": false,
+    "first_seen": "2026-05-29T13:08:46.226730"
+  },
+  "20362248": {
+    "title": "Legends Makarov Pistole CO2 + Lederholster",
+    "price": 70.0,
+    "is_sofortkauf": true,
+    "first_seen": "2026-05-29T13:08:46.226874"
+  },
+  "20362253": {
+    "title": "WeiTech M1911 in Schwarz + Extra Magazin",
+    "price": 95.0,
+    "is_sofortkauf": true,
+    "first_seen": "2026-05-29T13:08:46.227012"
+  },
+  "20343995": {
+    "title": "ICS Visierung für Airsoft Guns",
+    "price": 8.0,
+    "is_sofortkauf": true,
+    "first_seen": "2026-05-29T13:08:46.227346"
+  },
+  "20382102": {
+    "title": "Softair Sniper Dongsan K.T.W. KTW Winchester M70 Begadi 6mm",
+    "price": 10.5,
+    "is_sofortkauf": false,
+    "first_seen": "2026-05-29T13:08:46.227555"
+  },
+  "20388014": {
+    "title": "MP APC9 GBB von B&T Archwick 6mm BB neu und OVP",
+    "price": 289.0,
+    "is_sofortkauf": true,
+    "first_seen": "2026-05-29T13:08:46.227726"
+  },
+  "20382182": {
+    "title": "AK47M CO2 4,5mm Vers.3 AKM SCHWARZ Yunker DDR NVA Klappschaft",
+    "price": 499.0,
+    "is_sofortkauf": true,
+    "first_seen": "2026-05-29T13:08:46.227872"
+  },
+  "20368614": {
+    "title": "VFC VR16 Fighter Carbine MK2M S-AEG Komplettset + LiPo + Red Dot + Zubehör",
+    "price": 280.0,
+    "is_sofortkauf": true,
+    "first_seen": "2026-05-29T13:08:46.228012"
+  },
+  "20361356": {
     "title": "Wei-ETech MSK Open-Bolt Gas-Blow-Back 6mm BB schwarz",
-    "price": 101.0,
-    "first_seen": "2026-05-29T08:33:38.602629"
+    "price": 102.0,
+    "is_sofortkauf": false,
+    "first_seen": "2026-05-29T13:08:46.228150"
   },
-  "610a6e59::3151638426": {
-    "title": "VOLTCRAFT Energy Monitor 4000 Pro Energiekostenmessgerät",
-    "price": 15.0,
-    "first_seen": "2026-05-29T08:33:39.288014"
-  },
-  "91a62d6d::3420539913": {
-    "title": "Apple iPad Air 5. Generation, 64GB, Wi-Fi",
-    "price": 100.0,
-    "first_seen": "2026-05-29T08:33:41.018907"
-  },
-  "91a62d6d::3420523532": {
-    "title": "Apple Smart Folio iPad Air",
-    "price": 35.0,
-    "first_seen": "2026-05-29T08:33:41.018936"
-  },
-  "91a62d6d::3420507829": {
-    "title": "iPad Pro 11“ M4 Cellular + 512 GB - Silber",
-    "price": 760.0,
-    "first_seen": "2026-05-29T08:33:41.018948"
-  },
-  "egun_softair::20378873": {
+  "20378873": {
     "title": "Inokatsu M4 GBB SOPMOD Bastel-Set",
     "price": 750.0,
-    "first_seen": "2026-05-29T15:23:33.138893"
+    "is_sofortkauf": true,
+    "first_seen": "2026-05-31T17:55:47.373562"
   },
-  "egun_softair::20296719": {
+  "20296719": {
     "title": "10.000 Soft Air BB´s Umarex Combat Zone Kugeln 6mm - 0,12 Gramm",
     "price": 5.0,
-    "first_seen": "2026-05-29T15:23:33.138923"
+    "is_sofortkauf": true,
+    "first_seen": "2026-05-31T17:55:47.373932"
   },
-  "610a6e59::3420806302": {
-    "title": "Bildschirm - Monitor",
-    "price": null,
-    "first_seen": "2026-05-29T15:23:35.082708"
-  },
-  "egun_softair::20385238": {
+  "20385238": {
     "title": "Walther PPQ Metallschlitten Springer 6mm BB schwarz",
-    "price": 1.5,
-    "first_seen": "2026-05-29T18:18:48.910186"
+    "price": 7.16,
+    "is_sofortkauf": false,
+    "first_seen": "2026-05-31T17:55:47.374136"
   },
-  "egun_softair::20371102": {
+  "20371102": {
     "title": "Novritsch Airsoft Set",
-    "price": 213.0,
-    "first_seen": "2026-05-29T18:18:48.910198"
+    "price": 246.99,
+    "is_sofortkauf": false,
+    "first_seen": "2026-05-31T17:55:47.374287"
   },
-  "egun_softair::20350580": {
+  "20350580": {
     "title": "SMC9, GTP9 und Shorty Shotgun",
-    "price": 499.0,
-    "first_seen": "2026-05-29T18:18:48.910202"
+    "price": 399.0,
+    "is_sofortkauf": true,
+    "first_seen": "2026-05-31T17:55:47.374630"
   },
-  "610a6e59::3420965820": {
-    "title": "AOC Gaming Monitor",
-    "price": null,
-    "first_seen": "2026-05-29T18:18:50.901099"
-  },
-  "91a62d6d::3420979787": {
-    "title": "Combo Touch Tastatur für 12,9“ iPad Pro",
-    "price": 10.0,
-    "first_seen": "2026-05-29T18:18:51.857474"
-  },
-  "egun_softair::20386171": {
+  "20386171": {
     "title": "Sniper nadel gewehr",
-    "price": 50.0,
-    "first_seen": "2026-05-29T23:45:29.536957"
+    "price": 76.0,
+    "is_sofortkauf": false,
+    "first_seen": "2026-05-31T17:55:47.374855"
   },
-  "610a6e59::3421187228": {
-    "title": "Dell Alienware AW3225QF",
-    "price": 570.0,
-    "first_seen": "2026-05-29T23:45:30.602912"
-  },
-  "610a6e59::3421300981": {
-    "title": "PC-Monitor",
-    "price": 55.0,
-    "first_seen": "2026-05-30T08:07:07.673445"
-  },
-  "610a6e59::3421292385": {
-    "title": "Samsung QB 13R - M | Sign Board/ Bildschirm/ TV Full HD",
-    "price": 125.0,
-    "first_seen": "2026-05-30T08:07:07.673475"
-  },
-  "610a6e59::3421219398": {
-    "title": "Video Gegensprechanlage Video door phone 2 Monitore",
-    "price": 129.0,
-    "first_seen": "2026-05-30T08:07:07.673481"
-  },
-  "egun_softair::20386369": {
+  "20386369": {
     "title": "Softair Mini Uzi",
     "price": 140.0,
-    "first_seen": "2026-05-30T10:14:43.580107"
+    "is_sofortkauf": false,
+    "first_seen": "2026-05-31T17:55:47.375083"
   },
-  "egun_softair::20373627": {
+  "20389537": {
+    "title": "Magpul K2 Grip 3 Stück",
+    "price": 75.0,
+    "is_sofortkauf": true,
+    "first_seen": "2026-05-31T17:55:47.375304"
+  },
+  "20373627": {
     "title": "Drum-Mag AK für Cyma oder baugleich (elektr.)",
-    "price": 59.99,
-    "first_seen": "2026-05-30T10:14:43.580118"
+    "price": 39.99,
+    "is_sofortkauf": true,
+    "first_seen": "2026-05-31T17:55:47.375513"
   },
-  "egun_softair::20358158": {
+  "20358158": {
     "title": "AKS74UN AEG (CYMA)",
-    "price": 159.99,
-    "first_seen": "2026-05-30T10:14:43.580139"
+    "price": 99.99,
+    "is_sofortkauf": true,
+    "first_seen": "2026-05-31T17:55:47.375715"
   },
-  "610a6e59::3421369593": {
-    "title": "LG 34GL750 Gaming-Monitor (144Hz / HDR10 / 21:9 UltraWide)",
-    "price": 250.0,
-    "first_seen": "2026-05-30T10:14:45.327074"
-  },
-  "egun_softair::20381444": {
+  "20381444": {
     "title": "Komplettes Airsoft set",
     "price": 350.0,
-    "first_seen": "2026-05-30T11:47:01.432476"
+    "is_sofortkauf": false,
+    "first_seen": "2026-05-31T17:55:47.375943"
   },
-  "610a6e59::3421513806": {
-    "title": "Monitorhalterung für 3 Monitore – Maclean MC-137 mit Gasfeder",
-    "price": 50.0,
-    "first_seen": "2026-05-30T11:47:02.300473"
-  },
-  "610a6e59::3421586711": {
-    "title": "Doppel- Monitor Halterung",
-    "price": 15.0,
-    "first_seen": "2026-05-30T12:52:03.877973"
-  },
-  "610a6e59::3421536873": {
-    "title": "iiyama ProLite XUB2493HS (23,8 Zoll) – IPS Office Monitor",
-    "price": 65.0,
-    "first_seen": "2026-05-30T12:52:03.878006"
-  },
-  "610a6e59::3421688474": {
-    "title": "Monitor 22 Zoll",
-    "price": 15.0,
-    "first_seen": "2026-05-30T14:28:11.437875"
-  },
-  "egun_softair::20364640": {
+  "20364640": {
     "title": "S-AEG Softair / Airsoft Gewehr BGS M4412B Sniper",
     "price": 12.0,
-    "first_seen": "2026-05-30T17:49:18.516907"
+    "is_sofortkauf": false,
+    "first_seen": "2026-05-31T17:55:47.376108"
   },
-  "egun_softair::20364648": {
+  "20364648": {
     "title": "GSG Schmeisser MP40 Vollmetall S-AEG",
     "price": 98.99,
-    "first_seen": "2026-05-30T18:52:48.432036"
+    "is_sofortkauf": false,
+    "first_seen": "2026-05-31T17:55:47.376262"
   },
-  "91a62d6d::3421914136": {
-    "title": "M1 12,9 Zoll ipad Pro mit Zubehör",
-    "price": 530.0,
-    "first_seen": "2026-05-30T18:52:50.568052"
-  },
-  "egun_softair::20364705": {
+  "20364705": {
     "title": "GSG SG-S Spring Series Federdruck/Shotgun Short Softair / Airsoft Gewehr",
     "price": 15.5,
-    "first_seen": "2026-05-30T20:08:18.390116"
+    "is_sofortkauf": false,
+    "first_seen": "2026-05-31T17:55:47.376403"
   },
-  "610a6e59::3421942579": {
-    "title": "Beamer Acer P1173 3D SVGA DLP-Projektor",
-    "price": 110.0,
-    "first_seen": "2026-05-30T20:08:19.154691"
-  },
-  "e4307051::2923780153": {
-    "title": "Ferienhaus Istrien, Kroatien mit Pool ab 1.500,00 € / Woche",
-    "price": 1500.0,
-    "first_seen": "2026-05-30T20:08:20.564717"
-  },
-  "e4307051::3421259978": {
-    "title": "Bärensuite Fewo 8, Nordsee Esens, Sauna, Hunde willkommen",
-    "price": 59.0,
-    "first_seen": "2026-05-30T20:08:20.564734"
-  },
-  "e4307051::3421951985": {
-    "title": "LG Fernseher",
-    "price": 30.0,
-    "first_seen": "2026-05-30T20:08:20.564739"
-  },
-  "e4307051::3421942656": {
-    "title": "DENON AVR-X6200W AV-Receiver – Dolby Atmos / 4K – mit Fehler",
-    "price": 200.0,
-    "first_seen": "2026-05-30T20:08:20.564741"
-  },
-  "e4307051::3421916589": {
-    "title": "Fernseher 32 Zoll Samsung",
-    "price": 22.0,
-    "first_seen": "2026-05-30T20:08:20.564745"
-  },
-  "e4307051::3421853221": {
-    "title": "Smart TV 55 Zoll, 3 D fähig",
-    "price": 280.0,
-    "first_seen": "2026-05-30T20:08:20.564748"
-  },
-  "e4307051::2664122562": {
-    "title": "Preiswerte Monteurwohnungen in Oldenburg, Delmenhorst, Bremen - verschiedene Stadtteile und für jede Gruppenstärke",
-    "price": 20.0,
-    "first_seen": "2026-05-30T20:08:20.564751"
-  },
-  "e4307051::3421795551": {
-    "title": "Samsung tv, wäscheständer, Ikea Regal, Ikea Drehstuhl, Spiegel",
-    "price": null,
-    "first_seen": "2026-05-30T20:08:20.564755"
-  },
-  "e4307051::3421753931": {
-    "title": "Fernseher von Samsung",
-    "price": 50.0,
-    "first_seen": "2026-05-30T20:08:20.564758"
-  },
-  "e4307051::3421640831": {
-    "title": "Fernseher Philips",
-    "price": 100.0,
-    "first_seen": "2026-05-30T20:08:20.564761"
-  },
-  "e4307051::3421639595": {
-    "title": "PHILIPS 65 Zoll OLED,  Ambilight TV",
-    "price": 800.0,
-    "first_seen": "2026-05-30T20:08:20.564764"
-  },
-  "e4307051::3421602617": {
-    "title": "Konvolut an DVDS von TV Movie",
-    "price": 25.0,
-    "first_seen": "2026-05-30T20:08:20.564767"
-  },
-  "e4307051::3421585721": {
-    "title": "Modernes HiFi-Rack / TV-Regal aus Glas & Metall (80 cm breit)",
-    "price": 150.0,
-    "first_seen": "2026-05-30T20:08:20.564769"
-  },
-  "e4307051::3421539290": {
-    "title": "Samsung The Frame Smart TV 55 Zoll",
-    "price": 550.0,
-    "first_seen": "2026-05-30T20:08:20.564772"
-  },
-  "e4307051::3421495625": {
-    "title": "ok. Fernseher auf mobilem Rollständer",
-    "price": 110.0,
-    "first_seen": "2026-05-30T20:08:20.564778"
-  },
-  "e4307051::3421478318": {
-    "title": "Tv-Unterschrank",
-    "price": 80.0,
-    "first_seen": "2026-05-30T20:08:20.564781"
-  },
-  "e4307051::3421430050": {
-    "title": "Philips 49PUS 6561/12 (49 Zoll) 4K Ultra-HD.LED,Smart TV,Android",
-    "price": 200.0,
-    "first_seen": "2026-05-30T20:08:20.564783"
-  },
-  "e4307051::3421414782": {
-    "title": "Phi­lips 55PUS8809/12(55 Zoll)4K Ultra HD,LED,3D,Smart TV,Android",
-    "price": 370.0,
-    "first_seen": "2026-05-30T20:08:20.564786"
-  },
-  "e4307051::3421375685": {
-    "title": "TV-Board mit Glasvitrine",
-    "price": 480.0,
-    "first_seen": "2026-05-30T20:08:20.564789"
-  },
-  "e4307051::3421335107": {
-    "title": "Ferienwohnung  Nordseeküste -Westerholt 2-5 Personen☀️",
-    "price": 62.0,
-    "first_seen": "2026-05-30T20:08:20.564791"
-  },
-  "e4307051::3421316595": {
-    "title": "Ferienwohnung Nordseeküste-Westerholt 2-4Personen☀️",
-    "price": 54.0,
-    "first_seen": "2026-05-30T20:08:20.564794"
-  },
-  "e4307051::3421292385": {
-    "title": "Samsung QB 13R - M | Sign Board/ Bildschirm/ TV Full HD",
-    "price": 125.0,
-    "first_seen": "2026-05-30T20:08:20.564797"
-  },
-  "e4307051::3421292163": {
-    "title": "Philips 55PUS6551/12 (55 Zoll) 4K Ultra-HD,LED,Smart TV,Android",
-    "price": 230.0,
-    "first_seen": "2026-05-30T20:08:20.564800"
-  },
-  "e4307051::3421281214": {
-    "title": "Panasonic TX-65DXW784 (65 Zoll) 4K Ultra HD,LED,3D,Smart TV",
-    "price": 400.0,
-    "first_seen": "2026-05-30T20:08:20.564802"
-  },
-  "e4307051::3421277449": {
-    "title": "Lowboard / Sideboard / TV-Bank",
-    "price": null,
-    "first_seen": "2026-05-30T20:08:20.564804"
-  },
-  "e4307051::3421267913": {
-    "title": "Fernseher 52 Zoll zu verkaufen",
-    "price": 100.0,
-    "first_seen": "2026-05-30T20:08:20.564807"
-  },
-  "egun_softair::20291023": {
-    "title": "Softair G3 mit Tasche und viel Zubehör",
-    "price": 110.0,
-    "first_seen": "2026-05-30T21:14:16.655683"
-  },
-  "egun_softair::20364748": {
+  "20364748": {
     "title": "GSG MB08 Sniper Federdruck Softair / Airsoft Gewehr",
     "price": 48.5,
-    "first_seen": "2026-05-30T22:15:58.221365"
+    "is_sofortkauf": false,
+    "first_seen": "2026-05-31T17:55:47.376538"
   },
-  "egun_softair::20364780": {
+  "20364780": {
     "title": "Softair / Airsoft Gewehr Cybergun FN P90 TR AEG",
     "price": 55.55,
-    "first_seen": "2026-05-30T22:15:58.221377"
+    "is_sofortkauf": false,
+    "first_seen": "2026-05-31T17:55:47.376680"
   },
-  "egun_softair::20387779": {
+  "20387779": {
     "title": "Hi-Capa 5.1 Tokyo Marui",
     "price": 23.0,
-    "first_seen": "2026-05-30T22:15:58.221381"
+    "is_sofortkauf": false,
+    "first_seen": "2026-05-31T17:55:47.376829"
   },
-  "e4307051::3041226040": {
-    "title": "Familienfreundl. 6 Personen Wohnmobil mieten Navi TV Kamera Solar",
-    "price": 129.0,
-    "first_seen": "2026-05-30T22:16:00.763730"
-  },
-  "e4307051::3421996543": {
-    "title": "dvh   shrank tv",
-    "price": null,
-    "first_seen": "2026-05-30T22:16:00.763742"
-  },
-  "e4307051::3421989186": {
-    "title": "Beschädigter Smart Tech TV 65 Zoll",
-    "price": 20.0,
-    "first_seen": "2026-05-30T22:16:00.763747"
-  },
-  "egun_softair::20389537": {
-    "title": "Magpul K2 Griff",
-    "price": 50.0,
-    "first_seen": "2026-05-30T23:18:12.842812"
-  },
-  "610a6e59::3422012984": {
-    "title": "tragbarer Monitor 15 Zoll",
-    "price": null,
-    "first_seen": "2026-05-30T23:18:14.995423"
-  },
-  "91a62d6d::3422013691": {
-    "title": "Apple Pencil",
-    "price": 25.0,
-    "first_seen": "2026-05-31T01:32:48.990083"
-  },
-  "610a6e59::3422126111": {
-    "title": "Monitor LG FLATRON W2243T-PF",
-    "price": null,
-    "first_seen": "2026-05-31T09:21:48.359767"
-  },
-  "91a62d6d::3422225913": {
-    "title": "Ipad Pro 13 Zoll 2025 256gb",
-    "price": 900.0,
-    "first_seen": "2026-05-31T09:21:49.068899"
-  },
-  "e4307051::3422195525": {
-    "title": "Philips 55” 4K Ambilight TV – 55PUS8010/12",
-    "price": 340.0,
-    "first_seen": "2026-05-31T09:21:50.500032"
-  },
-  "e4307051::3422190509": {
-    "title": "Terratec Cinergy S2 PCI DVB-S2 PC HD TV-Karte inkl. CI-Slot-Addon",
-    "price": 15.0,
-    "first_seen": "2026-05-31T09:21:50.500046"
-  },
-  "e4307051::3422154704": {
-    "title": "Philips Smart TV 5300 series 40 Zoll  Fernseher LED Full HD",
-    "price": 50.0,
-    "first_seen": "2026-05-31T09:21:50.500051"
-  },
-  "e4307051::1462148381": {
-    "title": "Ferienhaus Dänemark, Juni frei, WiFi, Pool, Sauna, etc. - Hund OK",
-    "price": 299.0,
-    "first_seen": "2026-05-31T09:21:50.500054"
-  },
-  "e4307051::3422102405": {
-    "title": "Philips LCD Fernseher 37 Zoll (37PFL8404H/12)",
-    "price": 50.0,
-    "first_seen": "2026-05-31T09:21:50.500057"
-  },
-  "610a6e59::3422374232": {
-    "title": "NEU - Gawfolk 32 Zoll 2K 180hz Monitor -Gratis Versand nur Heute",
-    "price": 169.0,
-    "first_seen": "2026-05-31T11:15:42.183330"
-  },
-  "610a6e59::3422333728": {
-    "title": "Monitor BenQ zu verschenken",
-    "price": null,
-    "first_seen": "2026-05-31T11:15:42.183345"
-  },
-  "e4307051::3422393947": {
-    "title": "Bernd das Brot Lampe Leuchte KIKA TV 2004 Rarität",
-    "price": 125.0,
-    "first_seen": "2026-05-31T11:15:44.708948"
-  },
-  "e4307051::3422392136": {
-    "title": "Philips OLED 55 POS9002/12",
-    "price": 350.0,
-    "first_seen": "2026-05-31T11:15:44.708961"
-  },
-  "e4307051::3422295661": {
-    "title": "Grundig Fernseher",
-    "price": 50.0,
-    "first_seen": "2026-05-31T11:15:44.708964"
-  },
-  "e4307051::3422261528": {
-    "title": "METZ 58 Zoll LED-TV  – voll funktionsfähig",
-    "price": 250.0,
-    "first_seen": "2026-05-31T11:15:44.708967"
-  },
-  "e4307051::3422236957": {
-    "title": "Sat Receiver von Wisi",
-    "price": 10.0,
-    "first_seen": "2026-05-31T11:15:44.708971"
-  },
-  "egun_softair::20375570": {
+  "20375570": {
     "title": "Legends Luftpistole 1911",
     "price": 180.0,
-    "first_seen": "2026-05-31T12:50:36.378827"
+    "is_sofortkauf": false,
+    "first_seen": "2026-05-31T17:55:47.376967"
   },
-  "610a6e59::3422480412": {
-    "title": "Neumann LH 65 Monitor-Stative (2 Stück) – original – neigbar",
-    "price": 296.0,
-    "first_seen": "2026-05-31T12:50:37.395455"
-  },
-  "91a62d6d::3422508688": {
-    "title": "iPad Pro 11 M4 5G in Space Black mit 256 GB + Magic Keyboard",
-    "price": 1050.0,
-    "first_seen": "2026-05-31T12:50:38.149807"
-  },
-  "e4307051::3422532068": {
-    "title": "TV Schrank",
-    "price": 80.0,
-    "first_seen": "2026-05-31T12:50:41.352199"
-  },
-  "e4307051::3422502999": {
-    "title": "Weißes TV-Board",
-    "price": 75.0,
-    "first_seen": "2026-05-31T12:50:41.352210"
-  },
-  "e4307051::3422475791": {
-    "title": "TV  Lowboard",
-    "price": 35.0,
-    "first_seen": "2026-05-31T12:50:41.352214"
-  },
-  "e4307051::3422468081": {
-    "title": "Samsung 37 Zoll",
-    "price": 30.0,
-    "first_seen": "2026-05-31T12:50:41.352216"
-  },
-  "e4307051::3422443649": {
-    "title": "HD+ Karte 12 Monate NEU und 1 Modul dabei",
-    "price": 100.0,
-    "first_seen": "2026-05-31T12:50:41.352219"
-  },
-  "e4307051::3422424749": {
-    "title": "TV zu verschenken",
-    "price": null,
-    "first_seen": "2026-05-31T12:50:41.352222"
-  },
-  "e4307051::3422421335": {
-    "title": "Schwenkbare TV Halterung",
-    "price": 15.0,
-    "first_seen": "2026-05-31T12:50:41.352224"
-  },
-  "egun_softair::20386290": {
+  "20386290": {
     "title": "Umarex Beinholster",
     "price": 1.0,
-    "first_seen": "2026-05-31T14:43:34.520592"
+    "is_sofortkauf": false,
+    "first_seen": "2026-05-31T17:55:47.377106"
   },
-  "610a6e59::3422623035": {
-    "title": "NEU - Gawfolk 34 Zoll 2K 120hz Monitor -Gratis Versand nur Heute",
-    "price": 159.0,
-    "first_seen": "2026-05-31T14:43:35.782391"
-  },
-  "610a6e59::3422611442": {
-    "title": "Monitor BenQ 24 Zoll 60Hz",
-    "price": 60.0,
-    "first_seen": "2026-05-31T14:43:35.782407"
-  },
-  "610a6e59::3422605456": {
-    "title": "NEU - Gawfolk 32 Zoll 2K 180hz Monitor -Gratis Versand nur Heute",
-    "price": 165.0,
-    "first_seen": "2026-05-31T14:43:35.782430"
-  },
-  "610a6e59::3422556779": {
-    "title": "Samsung SyncMaster S24B420 Monitor 24 Zoll",
-    "price": 25.0,
-    "first_seen": "2026-05-31T14:43:35.782434"
-  },
-  "91a62d6d::3422601983": {
-    "title": "Magic Keyboard 11th Generation IPad Pro 2020",
-    "price": 99.0,
-    "first_seen": "2026-05-31T14:43:37.770793"
-  },
-  "e4307051::3422695612": {
-    "title": "Fernseher Samsung 75 Zoll",
-    "price": 480.0,
-    "first_seen": "2026-05-31T14:43:39.030538"
-  },
-  "e4307051::3422690811": {
-    "title": "TV Ständer Höhenverstellbar & Schwenkbar 32-70 Zoll",
-    "price": 55.0,
-    "first_seen": "2026-05-31T14:43:39.030574"
-  },
-  "e4307051::3422683564": {
-    "title": "Amazon Fire TV Stick 4K inkl. Zubehör und Fernebdienung",
-    "price": 23.0,
-    "first_seen": "2026-05-31T14:43:39.030582"
-  },
-  "e4307051::3422678943": {
-    "title": "Fernseher Dyon",
-    "price": null,
-    "first_seen": "2026-05-31T14:43:39.030586"
-  },
-  "e4307051::3422675714": {
-    "title": "Sideboard/ Tv-Schrank",
-    "price": 105.0,
-    "first_seen": "2026-05-31T14:43:39.030589"
-  },
-  "e4307051::3422576321": {
-    "title": "SAMSUNG Fernseher 42\"",
-    "price": 100.0,
-    "first_seen": "2026-05-31T14:43:39.030592"
-  },
-  "e4307051::3422564249": {
-    "title": "Beschädigter Smart Tech TV 65 Zoll",
-    "price": 10.0,
-    "first_seen": "2026-05-31T14:43:39.030595"
-  },
-  "e4307051::3422557458": {
-    "title": "TV-Bank/ Sideboard Ikea",
-    "price": 15.0,
-    "first_seen": "2026-05-31T14:43:39.030598"
-  },
-  "610a6e59::3422825381": {
-    "title": "27\"Zoll Acer Gaming Monitor 1ms Reaktionszeit",
-    "price": 70.0,
-    "first_seen": "2026-05-31T15:56:28.935542"
-  },
-  "610a6e59::3422806257": {
-    "title": "HP S230tm 23 Zoll Touchscreen Monitor + HD Webcam",
-    "price": 50.0,
-    "first_seen": "2026-05-31T15:56:28.935574"
-  },
-  "610a6e59::3422802000": {
-    "title": "LG 32 Zoll IPS Monitor (32MP58HQ-P) | Full HD | Top Zustand",
-    "price": 65.0,
-    "first_seen": "2026-05-31T15:56:28.935588"
-  },
-  "91a62d6d::3422805127": {
-    "title": "iPad 7. Generation – 32 GB – Top-Zustand inkl. Zubehör",
-    "price": 75.0,
-    "first_seen": "2026-05-31T15:56:30.505267"
-  },
-  "e4307051::3422796968": {
-    "title": "Sony Fernseher mit TV-Schrank zu verkaufen",
-    "price": 80.0,
-    "first_seen": "2026-05-31T15:56:32.960589"
-  },
-  "e4307051::3422791740": {
-    "title": "Universum TV Fernseher - FT-LCD 8184 DVDp",
-    "price": 10.0,
-    "first_seen": "2026-05-31T15:56:32.960600"
-  },
-  "e4307051::3422788557": {
-    "title": "Fernseher Philips 32PW8651/12, SDTV, 100Hz-Modell",
-    "price": null,
-    "first_seen": "2026-05-31T15:56:32.960604"
-  },
-  "610a6e59::3422868106": {
-    "title": "BenQ 24“ LCD Monitor für Gaming und Büro",
-    "price": 25.0,
-    "first_seen": "2026-05-31T17:07:55.931147"
-  },
-  "91a62d6d::3422885609": {
-    "title": "Ipad air 5. Gen 64gb + Applepen 2",
-    "price": 425.0,
-    "first_seen": "2026-05-31T17:07:57.575962"
-  },
-  "e4307051::3422929419": {
-    "title": "Blaupunkt LCD-TV 43 Zoll: Fußball-WM ohne Streit um Fernbedienung",
-    "price": 55.0,
-    "first_seen": "2026-05-31T17:07:59.291943"
-  },
-  "e4307051::3422902659": {
-    "title": "Dyon Enter 40 Pro X2 Fernseher",
-    "price": 100.0,
-    "first_seen": "2026-05-31T17:07:59.291955"
-  },
-  "e4307051::3422884960": {
-    "title": "Samsung Curved TV UE49K6379SUXZG voll funktionsfähig",
-    "price": 80.0,
-    "first_seen": "2026-05-31T17:07:59.291959"
-  },
-  "egun_softair::14431643": {
-    "title": "ProGame 1kg Softairkugeln Softair Kugeln Game Orange ca. 8333 Stück",
-    "price": 8.99,
-    "first_seen": "2026-05-31T18:16:25.339055"
-  },
-  "610a6e59::3422973566": {
-    "title": "Samsung 27 Zoll Curved Monitor S27D590CS – Full HD – HDMI",
-    "price": 80.0,
-    "first_seen": "2026-05-31T18:16:26.140682"
-  },
-  "e4307051::3422975899": {
-    "title": "Philips Fernseher inkl. Fernbedienung – voll funktionsfähig",
-    "price": 30.0,
-    "first_seen": "2026-05-31T18:16:28.616483"
-  },
-  "egun_softair::14560633": {
-    "title": "ProGame 1kg Softairkugeln Softair Kugeln Game blau ca. 8333 Stück",
-    "price": 8.99,
-    "first_seen": "2026-05-31T19:44:19.563564"
-  },
-  "egun_softair::14560642": {
-    "title": "ProGame 1kg Softairkugeln Softair Kugeln Game Weiß ca. 8333 Stück",
-    "price": 8.99,
-    "first_seen": "2026-05-31T19:44:19.563575"
-  },
-  "610a6e59::3423043455": {
-    "title": "NEU - Gawfolk 32 Zoll 2K 180hz Monitor -Gratis Versand für 24h",
-    "price": 159.0,
-    "first_seen": "2026-05-31T19:44:20.494299"
-  },
-  "610a6e59::3423039916": {
-    "title": "NEU - Gawfolk 34 Zoll 2K 120hz Monitor -Gratis Versand für 24h",
-    "price": 149.0,
-    "first_seen": "2026-05-31T19:44:20.494314"
-  },
-  "egun_softair::19278775": {
-    "title": "1kg Softairkugeln 0,25g Softair Kugeln 4000 Stück",
-    "price": 11.99,
-    "first_seen": "2026-05-31T20:43:28.276433"
-  },
-  "610a6e59::3423120503": {
-    "title": "ACER Nitro QG241Y Monitor 23,8 Zoll",
-    "price": 60.0,
-    "first_seen": "2026-05-31T20:43:29.848750"
-  },
-  "610a6e59::3423224170": {
-    "title": "ACER Monitor SB2 SB322QU, Schwarz, 31,5 Zoll, WQHD, IPS, 75 Hz,",
-    "price": 137.0,
-    "first_seen": "2026-06-01T07:20:17.848056"
-  },
-  "e4307051::3423230997": {
-    "title": "Ferienhäuschen",
-    "price": 13500.0,
-    "first_seen": "2026-06-01T07:20:20.366061"
-  },
-  "e4307051::3423226958": {
-    "title": "Fire TV Stick HD",
-    "price": 15.0,
-    "first_seen": "2026-06-01T07:20:20.366076"
-  },
-  "e4307051::3423208121": {
-    "title": "Tv Schrank",
-    "price": 10.0,
-    "first_seen": "2026-06-01T07:20:20.366080"
-  },
-  "egun_softair::19278777": {
-    "title": "ProGame 1kg Softairkugeln Softair Kugeln Game Golden ca. 8333 Stück",
-    "price": 8.99,
-    "first_seen": "2026-06-01T13:05:33.168703"
-  },
-  "610a6e59::3423566499": {
-    "title": "LG Flatron E2340T 23\" Monitor - Gebraucht",
-    "price": 35.0,
-    "first_seen": "2026-06-01T13:05:34.183225"
-  },
-  "610a6e59::3423550315": {
-    "title": "Monitor AOC CQ32G4VE + BenQ GL2780 + Dual Monitorarm",
-    "price": 250.0,
-    "first_seen": "2026-06-01T13:05:34.183254"
-  },
-  "610a6e59::3423295446": {
-    "title": "DELL-Monitor UltraSharp U2412Mb, 24 Zoll, 1920 × 1200 px",
-    "price": 35.0,
-    "first_seen": "2026-06-01T13:05:34.183259"
-  },
-  "91a62d6d::3423472361": {
-    "title": "iPad mini 7 NEUWERTIG 128GB GARANTIE WiFi",
-    "price": 510.0,
-    "first_seen": "2026-06-01T13:05:36.200088"
-  },
-  "91a62d6d::3423279248": {
-    "title": "iPad Pro (12,9 Zoll, 5. Generation)",
-    "price": 550.0,
-    "first_seen": "2026-06-01T13:05:36.200112"
-  },
-  "e4307051::3423537678": {
-    "title": "TV-Schrank/Unterschrank 140 cm breit",
-    "price": 30.0,
-    "first_seen": "2026-06-01T13:05:37.848371"
-  },
-  "e4307051::3423488301": {
-    "title": "Löwe Fernseher",
-    "price": 150.0,
-    "first_seen": "2026-06-01T13:05:37.848382"
-  },
-  "e4307051::3423448114": {
-    "title": "Samsung 40 Zoll Smart TV Full HD mit Standfuß",
-    "price": 160.0,
-    "first_seen": "2026-06-01T13:05:37.848385"
-  },
-  "e4307051::3423437788": {
-    "title": "Weißes TV-Board mit viel Stauraum",
-    "price": 35.0,
-    "first_seen": "2026-06-01T13:05:37.848389"
-  },
-  "egun_softair::20391670": {
+  "20391670": {
     "title": "Evolution G36C mit Tuning Parts 0,49J Komplettset Tasche Red Dot Magazine Akkus",
     "price": 490.0,
-    "first_seen": "2026-06-01T18:48:25.822761"
+    "is_sofortkauf": true,
+    "first_seen": "2026-06-06T18:48:23.620927"
   },
-  "egun_softair::19278781": {
-    "title": "1kg BIO-Softairkugeln 0,25g Softair Kugeln 4000 Stück",
-    "price": 13.49,
-    "first_seen": "2026-06-01T18:48:25.822794"
-  },
-  "egun_softair::19278782": {
-    "title": "ProGame 1kg Softairkugeln Softair Kugeln Game Rot ca. 8333 Stück",
-    "price": 8.99,
-    "first_seen": "2026-06-01T18:48:25.822798"
-  },
-  "egun_softair::18973489": {
-    "title": "500 Leuchtspur BB´s 0,20g Softairkugeln Softair Kugeln",
-    "price": 6.85,
-    "first_seen": "2026-06-01T18:48:25.822800"
-  },
-  "egun_softair::19267549": {
-    "title": "1kg Softairkugeln 0,20g Softair Kugeln 5000 Stück",
-    "price": 10.99,
-    "first_seen": "2026-06-01T18:48:25.822802"
-  },
-  "610a6e59::3423783130": {
-    "title": "Paar Yamaha HS 8 Monitore,incl.Stands",
-    "price": 349.0,
-    "first_seen": "2026-06-01T18:48:27.754461"
-  },
-  "610a6e59::3423577538": {
-    "title": "aoc gaming monitor",
-    "price": 40.0,
-    "first_seen": "2026-06-01T18:48:27.754477"
-  },
-  "91a62d6d::3408498445": {
-    "title": "Apple iPad Air 4th Gen. 64GB Space Grey inkl. Original Zubehör",
-    "price": 370.0,
-    "first_seen": "2026-06-01T18:48:29.072292"
-  },
-  "91a62d6d::3423736068": {
-    "title": "iPad - Space Grau 256 gb + Zubehör",
-    "price": 350.0,
-    "first_seen": "2026-06-01T18:48:29.072325"
-  },
-  "e4307051::3423873881": {
-    "title": "LG 42LD420 Fernseher 42 Zoll LCD TV schwarz – mit Standfüßen",
-    "price": 75.0,
-    "first_seen": "2026-06-01T18:48:30.208976"
-  },
-  "e4307051::3423867807": {
-    "title": "Fernseher tv",
-    "price": null,
-    "first_seen": "2026-06-01T18:48:30.208990"
-  },
-  "e4307051::3423840147": {
-    "title": "TV Bord von Ikea",
-    "price": 180.0,
-    "first_seen": "2026-06-01T18:48:30.208994"
-  },
-  "e4307051::3423664133": {
-    "title": "Dyon Enter 40 Pro X2 Fernseher (nur Abholung)",
-    "price": 100.0,
-    "first_seen": "2026-06-01T18:48:30.208997"
-  },
-  "e4307051::3423644009": {
-    "title": "Fernbedienung",
-    "price": 5.0,
-    "first_seen": "2026-06-01T18:48:30.209000"
-  },
-  "e4307051::3423592950": {
-    "title": "Fernseher mit integrierten DVD Laufwerk",
-    "price": 30.0,
-    "first_seen": "2026-06-01T18:48:30.209003"
-  },
-  "e4307051::3423585838": {
-    "title": "TV Schrank, Regal, passende Borte",
-    "price": 100.0,
-    "first_seen": "2026-06-01T18:48:30.209006"
-  },
-  "e4307051::3423578655": {
-    "title": "Schneider Fernseher / Röhrenfernseher",
-    "price": 10.0,
-    "first_seen": "2026-06-01T18:48:30.209009"
-  },
-  "e4307051::3423074760": {
-    "title": "Samsung Flachbildfernseher mit Standfuß",
-    "price": null,
-    "first_seen": "2026-06-01T18:48:30.209014"
-  },
-  "610a6e59::3424009299": {
-    "title": "PS5 Digital Edition Bundle: Wie NEU + Asus Monitor + JBL Headset",
-    "price": 400.0,
-    "first_seen": "2026-06-01T21:55:17.763718"
-  },
-  "610a6e59::3423981945": {
-    "title": "ELV Energie Monitor EM600 in OVP, neuwertig",
-    "price": 25.0,
-    "first_seen": "2026-06-01T21:55:17.763734"
-  },
-  "91a62d6d::3423933636": {
-    "title": "Logitech Combo Touch für Apple iPad A16 (11) und 10. Generation",
-    "price": 70.0,
-    "first_seen": "2026-06-01T21:55:18.959010"
-  },
-  "91a62d6d::3423928025": {
-    "title": "iPad 10. Generation in blau - 64GB",
-    "price": 230.0,
-    "first_seen": "2026-06-01T21:55:18.959048"
-  },
-  "91a62d6d::3423922587": {
-    "title": "iPad 10 in blau - Apple Pencil - Logitech Combo Touch",
-    "price": 320.0,
-    "first_seen": "2026-06-01T21:55:18.959061"
-  },
-  "91a62d6d::3423912937": {
-    "title": "iPad Pro 2022 12.9 128GB Spacegrau+Keyboard+Pencil zur Abholung",
-    "price": 699.0,
-    "first_seen": "2026-06-01T21:55:18.959070"
-  },
-  "e4307051::3423995713": {
-    "title": "Tausche Apple TV (neuste Generation) Wifi gegen LAN",
-    "price": 150.0,
-    "first_seen": "2026-06-01T21:55:20.434941"
-  },
-  "e4307051::3423993907": {
-    "title": "TV Halterung / Wandhalterung",
-    "price": 40.0,
-    "first_seen": "2026-06-01T21:55:20.434953"
-  },
-  "e4307051::3423991019": {
-    "title": "Antenne für TV",
-    "price": 30.0,
-    "first_seen": "2026-06-01T21:55:20.434957"
-  },
-  "e4307051::3423979816": {
-    "title": "Samsung 43\" Zoll LED Fernseher  4K/UHD",
-    "price": 100.0,
-    "first_seen": "2026-06-01T21:55:20.434960"
-  },
-  "e4307051::3423978275": {
-    "title": "Neu und eingepackt.  55 Zoll Fernseher UHD 4K mit Smart TV",
-    "price": 500.0,
-    "first_seen": "2026-06-01T21:55:20.434963"
-  },
-  "e4307051::3423970465": {
-    "title": "Spectral Soundbar TV-Möbel in elegantem purple",
-    "price": 499.0,
-    "first_seen": "2026-06-01T21:55:20.434966"
-  },
-  "e4307051::3423953361": {
-    "title": "TV Receiver mit Fernbedienung zu verkaufen",
-    "price": 25.0,
-    "first_seen": "2026-06-01T21:55:20.434969"
-  },
-  "e4307051::3423945713": {
-    "title": "Receiver - Opticum",
-    "price": 10.0,
-    "first_seen": "2026-06-01T21:55:20.434972"
-  },
-  "e4307051::3423942726": {
-    "title": "MEDION - TV",
-    "price": 25.0,
-    "first_seen": "2026-06-01T21:55:20.434974"
-  },
-  "e4307051::3423933433": {
-    "title": "GRUNDIG Fernsehen Zoll 50 zu verkaufen",
-    "price": 125.0,
-    "first_seen": "2026-06-01T21:55:20.434977"
-  },
-  "egun_softair::20153182": {
-    "title": "1000 HFC Alu BB´s 0,30g Softairkugeln Softair Kugeln",
-    "price": 13.5,
-    "first_seen": "2026-06-02T15:15:42.554092"
-  },
-  "egun_softair::20257291": {
-    "title": "1000 Leuchtspur BB´s 0,20g Softairkugeln Softair Kugeln",
-    "price": 13.5,
-    "first_seen": "2026-06-02T15:15:42.554101"
-  },
-  "egun_softair::20392610": {
-    "title": "Heckler & Koch HK416 A5 Sportsline inkl. Anbauteile",
-    "price": 350.0,
-    "first_seen": "2026-06-02T18:56:38.605607"
-  },
-  "egun_softair::20391446": {
-    "title": "Smith & Wesson 629 Competitor CO2 6mm",
-    "price": 130.0,
-    "first_seen": "2026-06-02T18:56:38.605620"
-  },
-  "egun_softair::7587693": {
-    "title": "1kg Softairkugeln Softair Kugeln Game Grün ca. 8333 Stück",
-    "price": 8.99,
-    "first_seen": "2026-06-02T21:49:07.205409"
-  },
-  "egun_softair::20366259": {
-    "title": "50 CO2 Kapseln Umarex / ASG (Softair, Gotcha ...)",
-    "price": 16.95,
-    "first_seen": "2026-06-02T23:24:12.329784"
-  },
-  "egun_softair::20224387": {
+  "20224387": {
     "title": "Umarex IWI TAVOR 21 T21 TAR Softair 6mm S-AEG",
     "price": 250.0,
-    "first_seen": "2026-06-03T12:06:53.632063"
+    "is_sofortkauf": true,
+    "first_seen": "2026-06-06T18:48:23.621151"
   },
-  "305166a9::3341479654": {
-    "title": "edurino Bücher, passend zu Edurino Spiel-/Lernfiguren",
-    "price": 5.0,
-    "first_seen": "2026-06-03T20:30:28.097970"
-  },
-  "305166a9::3270076501": {
-    "title": "Edurino Mika",
-    "price": 15.0,
-    "first_seen": "2026-06-03T20:30:28.098000"
-  },
-  "305166a9::3270072717": {
-    "title": "Edurino Mika",
-    "price": 15.0,
-    "first_seen": "2026-06-03T20:30:28.098014"
-  },
-  "305166a9::3391545068": {
-    "title": "Edurino Set",
-    "price": 120.0,
-    "first_seen": "2026-06-03T20:30:28.098024"
-  },
-  "305166a9::3344799720": {
-    "title": "Edurino Figur Robin Zahlen & Mengen ab 4 Jahren - Stufe 1",
-    "price": 15.0,
-    "first_seen": "2026-06-03T20:30:28.098033"
-  },
-  "305166a9::3422231188": {
-    "title": "Edurino Mappe Größe M zum Verstauen der Figuren",
-    "price": 20.0,
-    "first_seen": "2026-06-03T20:30:28.098043"
-  },
-  "305166a9::3422229277": {
-    "title": "Edurino Ergonomischer Stift für Lernspiele",
-    "price": 20.0,
-    "first_seen": "2026-06-03T20:30:28.098051"
-  },
-  "305166a9::3422227190": {
-    "title": "Edurino Lernfigur Alex \"Jahreszeiten und Kalender\"",
-    "price": 25.0,
-    "first_seen": "2026-06-03T20:30:28.098060"
-  },
-  "305166a9::3422226015": {
-    "title": "Edurino Luca Figur - Digitale Medien verstehen",
-    "price": 25.0,
-    "first_seen": "2026-06-03T20:30:28.098068"
-  },
-  "305166a9::3422224471": {
-    "title": "Edurino Luca Figur \"Logisches Denken & Coding\"",
-    "price": 20.0,
-    "first_seen": "2026-06-03T20:30:28.098076"
-  },
-  "16c3e4ee::3424089409": {
-    "title": "Samsung Galaxy Tab A 10.1 (SM-T580) | Neuwertig in OVP + Bookcase",
-    "price": 88.0,
-    "first_seen": "2026-06-03T20:30:33.270392"
-  },
-  "16c3e4ee::3420711837": {
-    "title": "Samsung Galaxy A8",
-    "price": 90.0,
-    "first_seen": "2026-06-03T20:30:33.270403"
-  },
-  "16c3e4ee::3419432574": {
-    "title": "Samsung Galaxy Tab A8",
-    "price": 110.0,
-    "first_seen": "2026-06-03T20:30:33.270406"
-  },
-  "16c3e4ee::3417057662": {
-    "title": "Samsung Galaxy Tab 9+",
-    "price": 35.0,
-    "first_seen": "2026-06-03T20:30:33.270410"
-  },
-  "16c3e4ee::3411187962": {
-    "title": "samsung Tablet",
-    "price": 15.0,
-    "first_seen": "2026-06-03T20:30:33.270413"
-  },
-  "16c3e4ee::3407527247": {
-    "title": "Tablethülle Schutzhülle Samsung Tab S7+/S8+/S7FE",
-    "price": 15.0,
-    "first_seen": "2026-06-03T20:30:33.270429"
-  },
-  "16c3e4ee::3404453114": {
-    "title": "Verpacktes  Samsung Galaxy  tab A11+5G",
-    "price": 240.0,
-    "first_seen": "2026-06-03T20:30:33.270441"
-  },
-  "16c3e4ee::3404044139": {
-    "title": "Samsung Galaxy Tab A8",
-    "price": 130.0,
-    "first_seen": "2026-06-03T20:30:33.270445"
-  },
-  "16c3e4ee::3403056877": {
-    "title": "Samsung Galaxy Tab A 8 (mit gratis Hülle)",
-    "price": 80.0,
-    "first_seen": "2026-06-03T20:30:33.270447"
-  },
-  "16c3e4ee::3402942943": {
-    "title": "Samsung Galaxy Tab S11 Book Cover Keyboard Slim",
-    "price": 75.0,
-    "first_seen": "2026-06-03T20:30:33.270450"
-  },
-  "16c3e4ee::3402403508": {
-    "title": "Galaxy Tab A9+ 5G 64GB wie neu",
-    "price": 180.0,
-    "first_seen": "2026-06-03T20:30:33.270453"
-  },
-  "16c3e4ee::3399530038": {
-    "title": "samsung  SM -T580 Tablet",
-    "price": 55.0,
-    "first_seen": "2026-06-03T20:30:33.270455"
-  },
-  "16c3e4ee::3395799257": {
-    "title": "Galaxy Tab S7 FE 5G  (Neu)",
-    "price": 250.0,
-    "first_seen": "2026-06-03T20:30:33.270464"
-  },
-  "16c3e4ee::3392504647": {
-    "title": "Samsung Galaxy Tab S8 Ultra + Samsung Book Cover und OVP",
-    "price": 749.0,
-    "first_seen": "2026-06-03T20:30:33.270467"
-  },
-  "16c3e4ee::3390789132": {
-    "title": "Samsung Galaxy Tab A (sm-t510 Tablet)",
-    "price": 140.0,
-    "first_seen": "2026-06-03T20:30:33.270470"
-  },
-  "16c3e4ee::3381164257": {
-    "title": "Samsung Tablet Galaxy Hülle Ladekabel Kopfhörer Bundle",
-    "price": 107.0,
-    "first_seen": "2026-06-03T20:30:33.270479"
-  },
-  "16c3e4ee::3379146241": {
-    "title": "Samsung Galaxy Tab S8 – 128GB / 8GB RAM – WiFi Graphite",
-    "price": 350.0,
-    "first_seen": "2026-06-03T20:30:33.270488"
-  },
-  "16c3e4ee::3371897022": {
-    "title": "Samsung Galaxy Tab A (16 GB)",
-    "price": 90.0,
-    "first_seen": "2026-06-03T20:30:33.270492"
-  },
-  "16c3e4ee::3368537249": {
-    "title": "Hülle für Tablet Samsung Galaxy Tab S9 FE+",
-    "price": 20.0,
-    "first_seen": "2026-06-03T20:30:33.270495"
-  },
-  "16c3e4ee::3368535819": {
-    "title": "Hülle für Tablet Galaxy S9 FE+",
-    "price": 15.0,
-    "first_seen": "2026-06-03T20:30:33.270503"
-  },
-  "16c3e4ee::3353131774": {
-    "title": "Samsung Galaxy Tab S8 Hülle",
-    "price": 5.0,
-    "first_seen": "2026-06-03T20:30:33.270512"
-  },
-  "16c3e4ee::3326420899": {
-    "title": "Samsung Galaxy Tab 4 in OVP + Anleitung",
-    "price": 65.0,
-    "first_seen": "2026-06-03T20:30:33.270515"
-  },
-  "16c3e4ee::3300536020": {
-    "title": "Tab Hülle Samsung",
-    "price": 12.0,
-    "first_seen": "2026-06-03T20:30:33.270518"
-  },
-  "16c3e4ee::3246840547": {
-    "title": "Samsung Tab A7 LTE mit OVP",
-    "price": 140.0,
-    "first_seen": "2026-06-03T20:30:33.270520"
-  },
-  "16c3e4ee::3211382684": {
-    "title": "Samsung Tablet A SM-T580",
-    "price": 50.0,
-    "first_seen": "2026-06-03T20:30:33.270523"
-  },
-  "egun_softair::20373021": {
-    "title": "Heckler & Koch / HK416 T4E RAM Kaliber .43 / 7,5 Joule / + viel Zubehör",
-    "price": 699.99,
-    "first_seen": "2026-06-04T09:11:21.460409"
-  },
-  "egun_softair::20226850": {
+  "20226850": {
     "title": "Cyclone Impact Granate, Gas , 6mm BB , Übungsgranate Airsoft, Softair",
     "price": 45.0,
-    "first_seen": "2026-06-04T15:58:31.807453"
+    "is_sofortkauf": true,
+    "first_seen": "2026-06-06T18:48:23.621403"
   },
-  "egun_softair::20372703": {
+  "20372703": {
     "title": "E&L Ak 74 Airsoft mit Equipment",
     "price": 350.0,
-    "first_seen": "2026-06-04T15:58:31.807462"
+    "is_sofortkauf": true,
+    "first_seen": "2026-06-06T18:48:23.621618"
   },
-  "egun_softair::20392120": {
+  "20392120": {
     "title": "Begadi Metal Shotgun springer mit Visier und Sling",
-    "price": 110.0,
-    "first_seen": "2026-06-04T15:58:31.807480"
+    "price": 80.0,
+    "is_sofortkauf": true,
+    "first_seen": "2026-06-06T18:48:23.621817"
   },
-  "egun_softair::20390025": {
+  "20390025": {
     "title": "HK USP-Match CO2 Blowback 6mm BB",
-    "price": 179.99,
-    "first_seen": "2026-06-04T15:58:31.807490"
+    "price": 119.99,
+    "is_sofortkauf": true,
+    "first_seen": "2026-06-06T18:48:23.621963"
   },
-  "16c3e4ee::3426239582": {
-    "title": "Samsung Galaxy Tab A7 LITE wie neu!!! mit Tasche",
-    "price": 65.0,
-    "first_seen": "2026-06-04T15:58:33.813646"
-  },
-  "egun_softair::20346853": {
+  "20346853": {
     "title": "HECKLER & KOCH MP5 A5 Replika mit Ausziehschaft + Magazin Kal.6mm",
-    "price": 105.0,
-    "first_seen": "2026-06-04T18:24:56.552679"
+    "price": 85.0,
+    "is_sofortkauf": true,
+    "first_seen": "2026-06-06T18:48:23.622100"
   },
-  "16c3e4ee::3426454639": {
-    "title": "Galaxy Tab S7 FE 5 G (Neu)",
-    "price": 250.0,
-    "first_seen": "2026-06-04T18:24:58.664940"
-  },
-  "egun_softair::20346836": {
+  "20346836": {
     "title": "STURMGEWEHR SET __*__ M16 A1 USA __*__ Konvolut __:__ Waffe + Gehörschutz + 2.Magazine __!__ Ab 18.J",
-    "price": 139.0,
-    "first_seen": "2026-06-04T20:32:11.828281"
+    "price": 90.0,
+    "is_sofortkauf": true,
+    "first_seen": "2026-06-06T18:48:23.622235"
   },
-  "egun_softair::20390432": {
+  "20390432": {
     "title": "APFG, Spear LT Stock (Klappschaft) FDE, wie neu",
     "price": 31.5,
-    "first_seen": "2026-06-05T16:18:13.717402"
+    "is_sofortkauf": false,
+    "first_seen": "2026-06-06T18:48:23.622429"
   },
-  "egun_softair::20390480": {
+  "20390480": {
     "title": "VFC Glock G17/18C GBB-Magazin, Long-Type, neuwertig",
-    "price": 33.5,
-    "first_seen": "2026-06-05T18:17:17.277533"
+    "price": 35.5,
+    "is_sofortkauf": false,
+    "first_seen": "2026-06-06T18:48:23.622563"
   },
-  "egun_softair::20390609": {
+  "20390609": {
     "title": "Army Armament R60 GBB \"Begadi Special Version\" mit 4 Magazinen und Reddot",
     "price": 180.0,
-    "first_seen": "2026-06-05T20:18:00.317039"
+    "is_sofortkauf": false,
+    "first_seen": "2026-06-06T18:48:23.622695"
   },
-  "egun_softair::20332564": {
+  "20332564": {
     "title": "Tokyo Marui Biohazard Samurai Edge",
     "price": 250.0,
-    "first_seen": "2026-06-06T09:34:21.988229"
+    "is_sofortkauf": false,
+    "first_seen": "2026-06-06T18:48:23.622826"
   },
-  "egun_softair::20377906": {
+  "20377906": {
     "title": "unbekannter PVC Verschluss / Freie Teile / Soft Air",
     "price": 1.0,
-    "first_seen": "2026-06-06T09:34:21.988239"
+    "is_sofortkauf": false,
+    "first_seen": "2026-06-06T18:48:23.622983"
   },
-  "egun_softair::20373368": {
+  "20373368": {
     "title": "G&G Wildhog 0,5 M4 M16",
     "price": 100.0,
-    "first_seen": "2026-06-06T09:34:21.988243"
+    "is_sofortkauf": false,
+    "first_seen": "2026-06-06T18:48:23.623115"
   },
-  "egun_softair::20392845": {
+  "20392845": {
     "title": "Ssg10 kurzer Lauf,Skope, Schalldämpfer und Zubehör",
     "price": 100.0,
-    "first_seen": "2026-06-06T09:34:21.988245"
+    "is_sofortkauf": false,
+    "first_seen": "2026-06-06T18:48:23.623246"
   },
-  "egun_softair::20368481": {
+  "20368481": {
     "title": "Sig Sauer Proforce P320 - M17 Airsoft",
     "price": 200.0,
-    "first_seen": "2026-06-06T09:34:21.988247"
+    "is_sofortkauf": false,
+    "first_seen": "2026-06-06T18:48:23.623378"
   },
-  "egun_softair::20391564": {
+  "20391564": {
     "title": "Ruger Superhawk cal. 6mm BB",
     "price": 60.0,
-    "first_seen": "2026-06-06T09:34:21.988249"
+    "is_sofortkauf": false,
+    "first_seen": "2026-06-06T18:48:23.623507"
   },
-  "egun_softair::20391637": {
+  "20391637": {
     "title": "HK G36 / SL8 Picatinny Sight Rail mit Notvisier",
     "price": 50.0,
-    "first_seen": "2026-06-06T09:34:21.988251"
+    "is_sofortkauf": false,
+    "first_seen": "2026-06-06T18:48:23.623642"
   },
-  "egun_softair::20346351": {
+  "20346351": {
     "title": "Custom Magpul CAM870 + 12 MK3 Shells",
     "price": 550.0,
-    "first_seen": "2026-06-06T09:34:21.988252"
+    "is_sofortkauf": false,
+    "first_seen": "2026-06-06T18:48:23.623779"
   },
-  "egun_softair::20304455": {
+  "20304455": {
     "title": "Aim-O E33 Style 3x Magnifier, AO 5348-BK",
     "price": 59.0,
-    "first_seen": "2026-06-06T09:34:21.988254"
+    "is_sofortkauf": true,
+    "first_seen": "2026-06-06T18:48:23.624014"
   },
-  "egun_softair::20368889": {
+  "20368889": {
     "title": "COLT M4A1 CQBR SoftAir AEG 6mmBBs",
     "price": 76.0,
-    "first_seen": "2026-06-06T09:34:21.988270"
+    "is_sofortkauf": false,
+    "first_seen": "2026-06-06T18:48:23.624196"
   },
-  "egun_softair::20215154": {
+  "20215154": {
     "title": "Softair Pistolen 6mmBBS",
-    "price": 50.0,
-    "first_seen": "2026-06-06T09:34:21.988272"
+    "price": 25.0,
+    "is_sofortkauf": false,
+    "first_seen": "2026-06-06T18:48:23.624376"
   },
-  "egun_softair::20385847": {
+  "20385847": {
     "title": "Heckler & Koch MP5 K-PDW 4,5 mm (.177)",
     "price": 56.0,
-    "first_seen": "2026-06-06T09:34:21.988280"
+    "is_sofortkauf": false,
+    "first_seen": "2026-06-06T18:48:23.624695"
   },
-  "egun_softair::20395584": {
+  "20395584": {
     "title": "Smith & Wesson 629 Competitor 6Zoll Revolver Vollmetall Airsoft 6mm BB mit Koffer",
-    "price": 120.0,
-    "first_seen": "2026-06-06T12:16:37.849865"
+    "price": 110.0,
+    "is_sofortkauf": true,
+    "first_seen": "2026-06-06T18:48:23.624960"
   },
-  "egun_softair::20395604": {
+  "20395604": {
     "title": "KONVOLUT CM 702 M24",
     "price": 1.0,
-    "first_seen": "2026-06-06T14:12:30.418401"
+    "is_sofortkauf": false,
+    "first_seen": "2026-06-06T18:48:23.625133"
   },
-  "egun_softair::20359796": {
+  "20359796": {
     "title": "BGS CM023 AEG __*__ MP GEWEHR __*__ NEU __*__ SONDERPREIS",
     "price": 99.0,
-    "first_seen": "2026-06-06T19:44:54.320618"
+    "is_sofortkauf": true,
+    "first_seen": "2026-06-06T20:18:30.544105"
   },
-  "egun_softair::20386232": {
+  "20386232": {
     "title": "B&T Unigrip QD Handgriff mit integriertem Bipod",
     "price": 4.0,
-    "first_seen": "2026-06-06T19:44:54.320646"
+    "is_sofortkauf": false,
+    "first_seen": "2026-06-06T20:18:30.544316"
   }
 }

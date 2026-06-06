@@ -163,6 +163,17 @@ def parse_ebay_auctions(soup: BeautifulSoup) -> list[dict]:
             bids = 0
 
         seen_ids.add(item_id)
+
+        # Bild-URL aus der Card
+        image_url = None
+        img = card.find("img")
+        if img:
+            src = img.get("src") or img.get("data-src")
+            if src:
+                if src.startswith("//"):
+                    src = "https:" + src
+                image_url = src
+
         item_url = href.split("?")[0]
         listings.append({
             "id": item_id,
@@ -173,6 +184,7 @@ def parse_ebay_auctions(soup: BeautifulSoup) -> list[dict]:
             "bids": bids,
             "time_left_min": time_left_min,
             "is_sofortkauf": False,
+            "image_url": image_url,
             "url": item_url,
         })
 
@@ -259,6 +271,18 @@ def parse_egun(soup: BeautifulSoup) -> list[dict]:
                 sofortkauf_price = all_prices[0] if all_prices else None
                 is_sofortkauf = True
 
+        # Bild-URL aus der Zeile holen
+        image_url = None
+        if row:
+            img = row.find("img")
+            if img and img.get("src"):
+                src = img["src"]
+                if src.startswith("//"):
+                    src = "https:" + src
+                elif src.startswith("/"):
+                    src = "https://egun.de" + src
+                image_url = src
+
         listings.append({
             "id": item_id,
             "title": title,
@@ -268,6 +292,7 @@ def parse_egun(soup: BeautifulSoup) -> list[dict]:
             "is_sofortkauf": is_sofortkauf,
             "bids": bids,
             "time_left_min": time_left_min,
+            "image_url": image_url,
             "url": f"https://egun.de/market/item.php?id={item_id}",
         })
     return listings
@@ -299,6 +324,16 @@ def parse_kleinanzeigen(soup: BeautifulSoup, base_url: str = "https://www.kleina
         link_tag = article.find("a", href=re.compile(r"/s-anzeige/"))
         item_url = (base_url + link_tag["href"]) if link_tag else ""
 
+        # Bild-URL
+        image_url = None
+        img = article.find("img")
+        if img:
+            src = img.get("src") or img.get("data-src")
+            if src:
+                if src.startswith("//"):
+                    src = "https:" + src
+                image_url = src
+
         listings.append({
             "id": item_id,
             "title": title,
@@ -306,6 +341,7 @@ def parse_kleinanzeigen(soup: BeautifulSoup, base_url: str = "https://www.kleina
             "auction_price": None,
             "sofortkauf_price": price,   # Kleinanzeigen = immer Festpreis
             "is_sofortkauf": True,
+            "image_url": image_url,
             "url": item_url,
         })
     return listings

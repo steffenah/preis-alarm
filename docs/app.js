@@ -19,6 +19,31 @@ function $(sel) { return document.querySelector(sel); }
 function $$(sel) { return Array.from(document.querySelectorAll(sel)); }
 function uuid() { return Math.random().toString(36).slice(2, 10); }
 function esc(s) { return String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]); }
+
+// ── Tippfehler-Generator: erzeugt typische Schreibfehler-Varianten ──────────
+function typoVariants(input) {
+  const out = new Set();
+  const w = input.trim().toLowerCase();
+  if (w.length < 4) return [];
+
+  // 1) Buchstaben weglassen
+  for (let i = 1; i < w.length - 1; i++) {
+    out.add(w.slice(0, i) + w.slice(i + 1));
+  }
+  // 2) Benachbarte Buchstaben tauschen
+  for (let i = 0; i < w.length - 1; i++) {
+    out.add(w.slice(0, i) + w[i + 1] + w[i] + w.slice(i + 2));
+  }
+  // 3) Häufige Substitutionen (deutsch + Tastatur-Nachbarn)
+  const subs = [["y","z"],["z","y"],["ie","i"],["i","ie"],["k","c"],["c","k"],["f","ph"],["ph","f"]];
+  subs.forEach(([a, b]) => {
+    if (w.includes(a)) out.add(w.replaceAll(a, b));
+  });
+
+  // Original + sehr lange/sehr kurze raus
+  out.delete(w);
+  return [...out].filter(v => v.length >= 3 && v.length <= w.length + 2).slice(0, 6);
+}
 function detectSite(url) {
   if (/egun\.de/.test(url))         return "egun";
   if (/kleinanzeigen\.de/.test(url)) return "kleinanzeigen";
@@ -171,6 +196,9 @@ function renderMonitors() {
           <label class="full">Suchbegriffe (kommagetrennt, leer = alles)
             <input data-field="keywords" value="${esc((m.keywords || []).join(", "))}">
           </label>
+          <label class="full">🚫 Ausschluss-Wörter (kommagetrennt, optional)
+            <input data-field="exclude_keywords" value="${esc((m.exclude_keywords || []).join(", "))}" placeholder="z.B. defekt, bastler, ersatzteil">
+          </label>
           <label>Mindestpreis € (0 = kein Limit)
             <input type="number" data-field="min_price" value="${m.min_price || 0}" min="0" step="5">
           </label>
@@ -232,10 +260,14 @@ function renderSniper() {
             Schlagwort-Filter (optional, kommagetrennt – leer = ALLE 0-Gebot-Auktionen)
             <input data-field="keywords" value="${esc((w.keywords || []).join(", "))}" placeholder="z.B. mp5, glock, ak47">
           </label>
+          <label class="full">🚫 Ausschluss-Wörter (kommagetrennt, optional)
+            <input data-field="exclude_keywords" value="${esc((w.exclude_keywords || []).join(", "))}" placeholder="z.B. defekt, bastler, ersatzteil">
+          </label>
           <label class="checkbox"><input type="checkbox" data-field="enabled" ${enabled ? "checked" : ""}> Aktiv</label>
         </div>
-        <div style="display:flex;gap:0.5rem;margin-top:0.5rem">
+        <div style="display:flex;gap:0.5rem;margin-top:0.5rem;flex-wrap:wrap">
           <button class="btn-icon" data-action="sn-save" data-i="${i}">💾 Speichern</button>
+          ${plat === "ebay" ? `<button class="btn-icon" data-action="sn-typos" data-i="${i}">🎯 Tippfehler-Varianten anlegen</button>` : ""}
           <button class="btn-icon btn-danger" data-action="sn-delete" data-i="${i}">🗑 Löschen</button>
         </div>
       </div>
@@ -267,6 +299,7 @@ document.addEventListener("click", async (e) => {
         else fields[k] = el.value;
       });
       fields.keywords = (fields.keywords || "").split(",").map(s => s.trim()).filter(Boolean);
+      fields.exclude_keywords = (fields.exclude_keywords || "").split(",").map(s => s.trim()).filter(Boolean);
       fields.site_type = detectSite(fields.url || "");
       monitors[i] = { ...monitors[i], ...fields };
       if (await saveMonitors()) { toast("Gespeichert"); renderMonitors(); }
@@ -295,6 +328,9 @@ document.addEventListener("click", async (e) => {
       if (typeof fields.keywords === "string") {
         fields.keywords = fields.keywords.split(",").map(s => s.trim()).filter(Boolean);
       }
+      if (typeof fields.exclude_keywords === "string") {
+        fields.exclude_keywords = fields.exclude_keywords.split(",").map(s => s.trim()).filter(Boolean);
+      }
       sniperWatches[i] = { ...sniperWatches[i], ...fields };
       if (await saveSniper()) { toast("Gespeichert"); renderSniper(); }
     }
@@ -302,6 +338,21 @@ document.addEventListener("click", async (e) => {
       if (!confirm(`»${sniperWatches[i].name}« wirklich löschen?`)) return;
       sniperWatches.splice(i, 1);
       if (await saveSniper()) { toast("Gelöscht"); renderSniper(); }
+    }
+    if (a === "sn-typos") {
+      const orig = sniperWatches[i];
+      const variants = typoVariants(orig.keyword || "");
+      if (!variants.length) { toast("Keine Varianten möglich", "error"); return; }
+      if (!confirm(`Folgende ${variants.length} Tippfehler-Suchen anlegen?\n\n${variants.join(", ")}\n\nDas erzeugt ${variants.length} neue Sniper-Watches.`)) return;
+      variants.forEach(v => {
+        sniperWatches.push({
+          ...orig,
+          id: uuid(),
+          name: `${orig.name} 🎯 ${v}`,
+          keyword: v,
+        });
+      });
+      if (await saveSniper()) { toast(`${variants.length} Varianten angelegt`); renderSniper(); }
     }
     return;
   }
@@ -327,13 +378,15 @@ $("#btn-add-monitor").addEventListener("click", async () => {
   const name = $("#new-mon-name").value.trim();
   const url  = $("#new-mon-url").value.trim();
   if (!name || !url) { toast("Name & URL nötig", "error"); return; }
-  const kws = $("#new-mon-kw").value.split(",").map(s => s.trim()).filter(Boolean);
+  const kws  = $("#new-mon-kw").value.split(",").map(s => s.trim()).filter(Boolean);
+  const excl = $("#new-mon-excl").value.split(",").map(s => s.trim()).filter(Boolean);
   monitors.push({
     id: uuid(),
     name,
     url,
     site_type: detectSite(url),
     keywords: kws,
+    exclude_keywords: excl,
     min_price: parseFloat($("#new-mon-min").value) || 0,
     max_price: parseFloat($("#new-mon-max").value) || 0,
     sofortkauf_only: $("#new-mon-sofort").checked,
@@ -342,7 +395,7 @@ $("#btn-add-monitor").addEventListener("click", async () => {
   if (await saveMonitors()) {
     toast(`»${name}« angelegt`);
     renderMonitors();
-    ["new-mon-name", "new-mon-url", "new-mon-kw"].forEach(id => $(`#${id}`).value = "");
+    ["new-mon-name", "new-mon-url", "new-mon-kw", "new-mon-excl"].forEach(id => $(`#${id}`).value = "");
   }
 });
 
@@ -363,6 +416,7 @@ $("#btn-add-sniper").addEventListener("click", async () => {
   if (!name) { toast("Name fehlt", "error"); return; }
   if (platform === "ebay" && !keyword) { toast("Suchbegriff fehlt", "error"); return; }
   if (platform === "egun" && !url)     { toast("URL fehlt", "error"); return; }
+  const excl = $("#new-snip-excl").value.split(",").map(s => s.trim()).filter(Boolean);
   sniperWatches.push({
     id: uuid(),
     name,
@@ -370,13 +424,14 @@ $("#btn-add-sniper").addEventListener("click", async () => {
     keyword,
     url,
     keywords: filter.split(",").map(s => s.trim()).filter(Boolean),
+    exclude_keywords: excl,
     max_price: parseFloat($("#new-snip-max").value) || 0,
     enabled: $("#new-snip-active").checked,
   });
   if (await saveSniper()) {
     toast(`»${name}« angelegt`);
     renderSniper();
-    ["new-snip-name", "new-snip-keyword", "new-snip-url", "new-snip-filter"].forEach(id => $(`#${id}`).value = "");
+    ["new-snip-name", "new-snip-keyword", "new-snip-url", "new-snip-filter", "new-snip-excl"].forEach(id => $(`#${id}`).value = "");
   }
 });
 

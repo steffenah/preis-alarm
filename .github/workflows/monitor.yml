@@ -2,7 +2,7 @@ name: eGun Monitor
 
 on:
   schedule:
-    - cron: "*/10 * * * *"   # alle 10 Minuten
+    - cron: "*/5 * * * *"    # alle 5 Minuten (GitHub Cron ist "best effort", real ~5-15 Min)
   workflow_dispatch:           # manueller Start jederzeit möglich
 
 permissions:
@@ -36,6 +36,6 @@ jobs:
         run: |
           git config user.name  "eGun Monitor Bot"
           git config user.email "actions@github.com"
-          git add seen_items.json
-          git diff --cached --quiet || git commit -m "chore: seen_items aktualisiert [skip ci]"
+          git add seen_items.json sniper_notified.json price_history.json 2>/dev/null || true
+          git diff --cached --quiet || git commit -m "chore: state aktualisiert [skip ci]"
           git push
