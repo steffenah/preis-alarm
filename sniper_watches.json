@@ -8,6 +8,15 @@
       "url": "",
       "max_price": 0,
       "enabled": true
+    },
+    {
+      "id": "tz44ofo8",
+      "name": "Edurino",
+      "platform": "ebay",
+      "keyword": "Edurino",
+      "url": "",
+      "max_price": 0,
+      "enabled": true
     }
   ]
 }
