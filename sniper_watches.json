@@ -52,7 +52,15 @@
       "keyword": "Playstation 5",
       "url": "",
       "max_price": 0,
-      "enabled": true
+      "enabled": true,
+      "typo_variants": [
+        "paystation 5",
+        "plystation 5",
+        "plastation 5",
+        "playtation 5",
+        "playsation 5",
+        "playsttion 5"
+      ]
     }
   ]
 }
