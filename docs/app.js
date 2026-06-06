@@ -94,19 +94,55 @@ function decodeContent(b64) {
   return decodeURIComponent(escape(atob(b64.replace(/\s/g, ""))));
 }
 
-// ── Token-Verwaltung ────────────────────────────────────────────────────
-async function ensureToken() {
-  if (token) return true;
-  const t = prompt(
-    "GitHub Personal Access Token eingeben:\n\n" +
-    "1) https://github.com/settings/tokens?type=beta\n" +
-    "2) Fine-grained Token mit 'Contents: read & write' für steffenah/preis-alarm\n" +
-    "3) Token hier einfügen"
-  );
-  if (!t) return false;
-  token = t.trim();
-  localStorage.setItem("ghToken", token);
-  return true;
+// ── Token-Verwaltung (schönes Modal statt browser prompt) ───────────────
+function ensureToken() {
+  if (token) return Promise.resolve(true);
+  return new Promise((resolve) => {
+    const overlay = document.createElement("div");
+    overlay.className = "modal-overlay";
+    overlay.innerHTML = `
+      <div class="modal">
+        <h2>🔑 GitHub-Token nötig</h2>
+        <p>Damit die App deine Einstellungen speichern kann, brauchst du <b>einmalig</b> einen GitHub Personal Access Token.
+        Er wird nur im Browser gespeichert (localStorage) und nicht weitergegeben.</p>
+
+        <h3>So holst du den Token:</h3>
+        <ol>
+          <li>Öffne: <a href="https://github.com/settings/personal-access-tokens/new" target="_blank">github.com/settings/personal-access-tokens/new</a></li>
+          <li><b>Repository access</b> → „Only select repositories" → <code>steffenah/preis-alarm</code></li>
+          <li><b>Permissions</b> → „+ Add permissions" → <b>Contents</b>: Read and write</li>
+          <li><b>Generate token</b> klicken → Token kopieren (beginnt mit <code>github_pat_…</code>)</li>
+        </ol>
+
+        <input type="password" id="token-input" placeholder="github_pat_..." autocomplete="off" autofocus>
+        <p class="error" id="token-error"></p>
+
+        <div style="display:flex;gap:0.5rem;margin-top:1rem">
+          <button class="btn-primary" id="token-save">💾 Token speichern</button>
+          <button class="btn-ghost" id="token-cancel">Abbrechen</button>
+        </div>
+      </div>`;
+    document.body.appendChild(overlay);
+
+    const input = overlay.querySelector("#token-input");
+    const err   = overlay.querySelector("#token-error");
+    const close = (ok) => { overlay.remove(); resolve(ok); };
+
+    overlay.querySelector("#token-save").onclick = () => {
+      const t = input.value.trim();
+      if (!t || !t.startsWith("github_pat_")) {
+        err.textContent = "Bitte einen gültigen Fine-grained Token einfügen (beginnt mit github_pat_).";
+        return;
+      }
+      token = t;
+      localStorage.setItem("ghToken", token);
+      close(true);
+    };
+    overlay.querySelector("#token-cancel").onclick = () => close(false);
+    input.addEventListener("keyup", (e) => {
+      if (e.key === "Enter") overlay.querySelector("#token-save").click();
+    });
+  });
 }
 
 // ── Daten laden ─────────────────────────────────────────────────────────
@@ -473,10 +509,12 @@ $("#btn-logout").addEventListener("click", () => {
   sessionStorage.removeItem("auth");
   showLogin();
 });
-$("#btn-reset-token").addEventListener("click", () => {
+$("#btn-reset-token").addEventListener("click", async () => {
   localStorage.removeItem("ghToken");
   token = "";
-  toast("Token gelöscht. Beim nächsten Speichern fragt die App neu.");
+  if (await ensureToken()) {
+    toast("Neuer Token gespeichert");
+  }
 });
 
 // ── PWA-Installation ────────────────────────────────────────────────────
