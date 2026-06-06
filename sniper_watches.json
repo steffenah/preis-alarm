@@ -59,6 +59,11 @@
         "otnie",
         "tnoie",
         "toine"
+      ],
+      "keywords": [],
+      "exclude_keywords": [
+        "Defekt",
+        "Bastler"
       ]
     },
     {
