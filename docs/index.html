@@ -66,8 +66,10 @@
   <!-- TAB: Sniper -->
   <section id="tab-sniper" class="tab-content">
     <p class="info">
-      Findet <b>eBay</b>- oder <b>eGun</b>-Auktionen, die kurz vor dem Ende stehen und noch
-      <b>keine Gebote</b> haben – perfekt für Schnäppchen. Du bekommst eine E-Mail mit hoher Priorität.
+      Findet <b>eBay</b>- oder <b>eGun</b>-Auktionen, die in <b>5–15 Minuten</b> enden und noch
+      <b>0 Gebote</b> haben – perfekt für Schnäppchen. Du bekommst sofort eine E-Mail + Telegram-Push.
+      <br>
+      💡 Tipp: Beim eBay-Sniper gibt es einen <b>„Tippfehler-Varianten anlegen"</b>-Button, der automatisch Schreibfehler-Suchen anlegt (klassischer Schnäppchen-Trick).
     </p>
     <div class="loading" id="sniper-loading">Lade…</div>
     <div id="sniper-list"></div>
@@ -99,9 +101,12 @@
     <div class="info-box">
       <b>So funktioniert's:</b>
       <ul>
-        <li>Alle 10 Min durchsuchen wir die gewählte Plattform</li>
-        <li>Endet eine Auktion in <b>5–15 Minuten</b> UND hat <b>0 Gebote</b> → 📧 sofort E-Mail</li>
+        <li>Alle <b>5 Minuten</b> durchsuchen wir die gewählte Plattform</li>
+        <li>Endet eine Auktion in <b>5–15 Min</b> UND hat <b>0 Gebote</b> → 📧 + 📲 sofort Alarm</li>
         <li>Maximalpreis filtert zu teure Auktionen</li>
+        <li>🚫 Ausschluss-Wörter filtern Schrott (defekt, bastler, …)</li>
+        <li>🎯 <b>„Tippfehler-Varianten anlegen"</b>-Button im eBay-Sniper: legt mit einem Klick 4-6 typische Schreibfehler-Suchen an (Konkurrenz-Trick)</li>
+        <li>🔨 Bei eBay: Direkt-Link zu <a href="https://www.gixen.com" target="_blank">Gixen.com</a> für echtes Last-Second-Snipen</li>
         <li>Jede Auktion wird nur einmal gemeldet</li>
       </ul>
     </div>
@@ -136,6 +141,45 @@
 
   <!-- TAB: Hilfe -->
   <section id="tab-help" class="tab-content">
+
+    <h2>🔔 Was du bekommst</h2>
+    <div class="info-box">
+      Alle <b>5 Minuten</b> prüft die App im Hintergrund alle aktiven Monitore und Sniper-Suchen.
+      Bei einem Treffer bekommst du:
+      <ul>
+        <li>📧 <b>E-Mail</b> von <code>preisalarmahlers@gmail.com</code></li>
+        <li>📲 <b>Telegram-Push</b> mit Bild, Preis und Link</li>
+        <li>🔥 Bei Schnäppchen (≥ 30 % unter Markt-Median) zusätzlich mit Push-Sound</li>
+      </ul>
+    </div>
+
+    <h2>📊 Markt-Median &amp; Schnäppchen-Score</h2>
+    <p>Die App lernt aus allen gesehenen Inseraten den typischen Marktwert.</p>
+    <ul>
+      <li>Pro <b>Suchbegriff</b> wird ein eigener Median berechnet (statt 1 Median für alles)</li>
+      <li>Ab <b>5 Datenpunkten</b> wird der Score aktiv</li>
+      <li>Score = <code>(1 − Preis / Median) × 100</code></li>
+      <li><b>🔥 SCHNÄPPCHEN</b> wenn Score ≥ 30 %</li>
+      <li>Je spezifischer dein Suchbegriff (z.B. „edurino mika" statt nur „edurino"), desto präziser der Median</li>
+    </ul>
+
+    <h2>🚫 Ausschluss-Wörter</h2>
+    <p>Bei jedem Monitor + Sniper gibt's ein Feld <b>Ausschluss-Wörter</b>. Inserate mit diesen Wörtern im Titel werden ignoriert.</p>
+    <pre>defekt, bastler, ersatzteil, geknackt, nur abholung berlin</pre>
+
+    <h2>🎯 Tippfehler-Trick (nur eBay-Sniper)</h2>
+    <p>Bei einer eBay-Sniper-Suche → Karte aufklappen → Button <b>„Tippfehler-Varianten anlegen"</b>.
+    Die App generiert automatisch typische Schreibfehler des Suchbegriffs (z.B. <code>playstation</code> → <code>plystation</code>, <code>playsation</code>, …) und legt sie als eigene Watches an.</p>
+    <p class="muted">Warum? Verkäufer mit Tippfehlern bekommen weniger Konkurrenz → die Auktionen enden oft günstiger.</p>
+
+    <h2>🔨 Sniper-Modi (eGun)</h2>
+    <p>Beim eGun-Sniper kannst du <b>3 Modi</b> kombinieren:</p>
+    <ol>
+      <li><b>Alle Auktionen ohne Bieter:</b> URL angeben, Filter leer lassen</li>
+      <li><b>Bestimmte Schlagworte:</b> URL + Schlagwort-Filter (kommagetrennt)</li>
+      <li><b>Bestimmte Kategorien:</b> für jede Kategorie eine eigene Sniper-Suche</li>
+    </ol>
+
     <h2>💡 URL-Tipps</h2>
     <h3>Kleinanzeigen</h3>
     <pre>https://www.kleinanzeigen.de/s-oldenburg/airsoft/k0
@@ -143,20 +187,26 @@ https://www.kleinanzeigen.de/s-oldenburg/iphone-15/k0</pre>
 
     <h3>eGun (Kategorien)</h3>
     <pre>https://egun.de/market/list_items.php?cat=492   Softair
-https://egun.de/market/list_items.php?cat=14    Pistolen</pre>
+https://egun.de/market/list_items.php?cat=14    Pistolen
+https://egun.de/market/list_items.php?cat=22    Munition</pre>
 
     <h3>eBay (Sniper-Suchen)</h3>
-    <p>Im Sniper-Tab einfach den Suchbegriff eintragen (z.B. „playstation 5").</p>
+    <p>Im Sniper-Tab einfach den Suchbegriff eintragen (z.B. „playstation 5"). Die App durchsucht automatisch nur Auktionen mit baldigem Ende.</p>
 
     <h2>⚙️ Technik</h2>
     <ul>
-      <li>Alle 10 Min läuft <a href="https://github.com/steffenah/preis-alarm/actions" target="_blank">GitHub Actions</a></li>
+      <li>Alle <b>5 Minuten</b> läuft <a href="https://github.com/steffenah/preis-alarm/actions" target="_blank">GitHub Actions</a></li>
       <li>Änderungen werden direkt zu GitHub gepusht (siehe Commit-Historie)</li>
       <li>Diese App ist eine statische Single-Page-App auf GitHub Pages – kein Server, kein Schlafen</li>
+      <li>Preishistorie wird in <code>price_history.json</code> gespeichert (200 Samples pro Bucket)</li>
     </ul>
 
+    <h2>📲 Telegram-Bot</h2>
+    <p>Der Bot <b>@preisalarm_steffenbot</b> verschickt Push-Nachrichten mit Bild, Preis und Score.
+    Bei Auktions-Sniper-Treffern mit Push-Sound, bei normalen Treffern still.</p>
+
     <h2>🔑 GitHub-Token</h2>
-    <p>Die App benötigt einen GitHub Personal Access Token mit <code>repo</code> Berechtigung um Monitore zu speichern.</p>
+    <p>Die App benötigt einen GitHub Personal Access Token (Fine-grained, <code>Contents: read &amp; write</code>) um Monitore zu speichern.</p>
     <button class="btn-ghost" id="btn-reset-token">Token neu eingeben</button>
   </section>
 
