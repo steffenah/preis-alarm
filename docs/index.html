@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Preis-Alarm</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#22a04a">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Preis-Alarm">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <link rel="icon" href="icon-192.png">
+</head>
+<body>
+
+<!-- ── LOGIN ───────────────────────────────────────────────────────────── -->
+<div id="login-screen" class="screen">
+  <div class="login-card">
+    <div class="logo">🛒</div>
+    <h1>Preis-Alarm</h1>
+    <p class="muted">Anmeldung erforderlich</p>
+    <input type="password" id="login-password" placeholder="Passwort" autocomplete="current-password">
+    <button id="btn-login" class="btn-primary">Anmelden</button>
+    <p class="error" id="login-error"></p>
+  </div>
+</div>
+
+<!-- ── HAUPT-APP ───────────────────────────────────────────────────────── -->
+<div id="app" class="screen hidden">
+
+  <header>
+    <div class="brand">🛒 <span>Preis-Alarm</span></div>
+    <button id="btn-logout" class="btn-ghost">Abmelden</button>
+  </header>
+
+  <nav class="tabs">
+    <button class="tab active" data-tab="monitors">📋 Monitore</button>
+    <button class="tab" data-tab="sniper">🔨 Sniper</button>
+    <button class="tab" data-tab="install">📱 Installieren</button>
+    <button class="tab" data-tab="help">ℹ️ Hilfe</button>
+  </nav>
+
+  <!-- TAB: Monitore -->
+  <section id="tab-monitors" class="tab-content active">
+    <div class="loading" id="monitors-loading">Lade…</div>
+    <div id="monitors-list"></div>
+
+    <details class="add-card">
+      <summary>➕ Neuer Monitor</summary>
+      <div class="form-grid">
+        <label>Name <input id="new-mon-name" placeholder="z.B. Kleinanzeigen Airsoft"></label>
+        <label>URL <input id="new-mon-url" placeholder="https://www.kleinanzeigen.de/s-…"></label>
+        <label>Suchbegriffe (kommagetrennt) <input id="new-mon-kw" placeholder="airsoft, sniper"></label>
+        <label>Mindestpreis € <input type="number" id="new-mon-min" value="0" min="0" step="5"></label>
+        <label>Maximalpreis € <input type="number" id="new-mon-max" value="0" min="0" step="5"></label>
+        <label class="checkbox"><input type="checkbox" id="new-mon-sofort"> Nur Sofortkauf / Festpreis</label>
+        <label class="checkbox"><input type="checkbox" id="new-mon-active" checked> Sofort aktivieren</label>
+      </div>
+      <button class="btn-primary" id="btn-add-monitor">Hinzufügen</button>
+    </details>
+  </section>
+
+  <!-- TAB: Sniper -->
+  <section id="tab-sniper" class="tab-content">
+    <p class="info">
+      Findet <b>eBay</b>- oder <b>eGun</b>-Auktionen, die kurz vor dem Ende stehen und noch
+      <b>keine Gebote</b> haben – perfekt für Schnäppchen. Du bekommst eine E-Mail mit hoher Priorität.
+    </p>
+    <div class="loading" id="sniper-loading">Lade…</div>
+    <div id="sniper-list"></div>
+
+    <details class="add-card">
+      <summary>➕ Neue Sniper-Suche</summary>
+      <div class="form-grid">
+        <label>Name <input id="new-snip-name" placeholder="z.B. PS5 Schnäppchen"></label>
+        <label>Plattform
+          <select id="new-snip-platform">
+            <option value="ebay">eBay</option>
+            <option value="egun">eGun</option>
+          </select>
+        </label>
+        <label id="new-snip-keyword-label">Suchbegriff <input id="new-snip-keyword" placeholder="playstation 5"></label>
+        <label id="new-snip-url-label" class="hidden">eGun Kategorie-URL <input id="new-snip-url" placeholder="https://egun.de/market/list_items.php?cat=492"></label>
+        <label>Maximalpreis € (0 = egal) <input type="number" id="new-snip-max" value="0" min="0" step="5"></label>
+        <label class="checkbox"><input type="checkbox" id="new-snip-active" checked> Sofort aktivieren</label>
+      </div>
+      <button class="btn-primary" id="btn-add-sniper">Hinzufügen</button>
+    </details>
+
+    <div class="info-box">
+      <b>So funktioniert's:</b>
+      <ul>
+        <li>Alle 10 Min durchsuchen wir die gewählte Plattform</li>
+        <li>Endet eine Auktion in <b>5–15 Minuten</b> UND hat <b>0 Gebote</b> → 📧 sofort E-Mail</li>
+        <li>Maximalpreis filtert zu teure Auktionen</li>
+        <li>Jede Auktion wird nur einmal gemeldet</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- TAB: Installieren -->
+  <section id="tab-install" class="tab-content">
+    <h2>📱 Als App installieren</h2>
+    <p>Die Seite kann wie eine echte App aufs Handy oder den PC – mit eigenem Icon im Vollbild.</p>
+
+    <h3>📱 Android (Chrome / Edge)</h3>
+    <ol>
+      <li>Tippe oben rechts auf das <b>⋮ Menü</b></li>
+      <li>Wähle <b>„App installieren"</b></li>
+      <li>Bestätigen → 🛒 Icon auf dem Startbildschirm</li>
+    </ol>
+
+    <h3>🍎 iPhone (Safari)</h3>
+    <ol>
+      <li>Tippe unten auf das <b>Teilen-Symbol</b></li>
+      <li>Wähle <b>„Zum Home-Bildschirm hinzufügen"</b></li>
+    </ol>
+
+    <h3>💻 Desktop (Chrome / Edge)</h3>
+    <ol>
+      <li>In der Adressleiste rechts: <b>Install-Icon</b> klicken</li>
+      <li>App wird wie normales Programm installiert</li>
+    </ol>
+
+    <button class="btn-primary" id="btn-install" style="display:none">Jetzt installieren</button>
+  </section>
+
+  <!-- TAB: Hilfe -->
+  <section id="tab-help" class="tab-content">
+    <h2>💡 URL-Tipps</h2>
+    <h3>Kleinanzeigen</h3>
+    <pre>https://www.kleinanzeigen.de/s-oldenburg/airsoft/k0
+https://www.kleinanzeigen.de/s-oldenburg/iphone-15/k0</pre>
+
+    <h3>eGun (Kategorien)</h3>
+    <pre>https://egun.de/market/list_items.php?cat=492   Softair
+https://egun.de/market/list_items.php?cat=14    Pistolen</pre>
+
+    <h3>eBay (Sniper-Suchen)</h3>
+    <p>Im Sniper-Tab einfach den Suchbegriff eintragen (z.B. „playstation 5").</p>
+
+    <h2>⚙️ Technik</h2>
+    <ul>
+      <li>Alle 10 Min läuft <a href="https://github.com/steffenah/preis-alarm/actions" target="_blank">GitHub Actions</a></li>
+      <li>Änderungen werden direkt zu GitHub gepusht (siehe Commit-Historie)</li>
+      <li>Diese App ist eine statische Single-Page-App auf GitHub Pages – kein Server, kein Schlafen</li>
+    </ul>
+
+    <h2>🔑 GitHub-Token</h2>
+    <p>Die App benötigt einen GitHub Personal Access Token mit <code>repo</code> Berechtigung um Monitore zu speichern.</p>
+    <button class="btn-ghost" id="btn-reset-token">Token neu eingeben</button>
+  </section>
+
+  <!-- ── TOAST ─────────────────────────────────────────────────────── -->
+  <div id="toast" class="toast"></div>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
