@@ -217,7 +217,11 @@ def run_sniper():
             log(f"[{name}] FEHLER: {e}")
             continue
 
-        log(f"[{name}] {len(auctions)} Auktionen gefunden.")
+        # Optionale Schlagwort-Filter (leer = alle Auktionen)
+        keywords = [k.strip().lower() for k in w.get("keywords", []) if k.strip()]
+
+        log(f"[{name}] {len(auctions)} Auktionen gefunden"
+            + (f" (Filter: {keywords})" if keywords else "") + ".")
         alerts = []
         for a in auctions:
             tl = a.get("time_left_min")
@@ -231,6 +235,11 @@ def run_sniper():
             chk_price = a.get("auction_price") or a.get("price")
             if max_price and chk_price and chk_price > max_price:
                 continue
+            # Schlagwort-Filter (nur wenn welche definiert)
+            if keywords:
+                title_lower = a["title"].lower()
+                if not any(kw in title_lower for kw in keywords):
+                    continue
             # Schon benachrichtigt?
             key = f"{w.get('id', name)}::{a['id']}"
             if key in notified:

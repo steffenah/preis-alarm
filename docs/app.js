@@ -228,6 +228,10 @@ function renderSniper() {
           <label class="full sniper-url" ${plat === "ebay" ? 'style="display:none"' : ""}>
             eGun Kategorie-URL <input data-field="url" value="${esc(w.url || "")}">
           </label>
+          <label class="full sniper-filter" ${plat === "ebay" ? 'style="display:none"' : ""}>
+            Schlagwort-Filter (optional, kommagetrennt – leer = ALLE 0-Gebot-Auktionen)
+            <input data-field="keywords" value="${esc((w.keywords || []).join(", "))}" placeholder="z.B. mp5, glock, ak47">
+          </label>
           <label class="checkbox"><input type="checkbox" data-field="enabled" ${enabled ? "checked" : ""}> Aktiv</label>
         </div>
         <div style="display:flex;gap:0.5rem;margin-top:0.5rem">
@@ -287,6 +291,10 @@ document.addEventListener("click", async (e) => {
         else if (el.type === "number") fields[k] = parseFloat(el.value) || 0;
         else fields[k] = el.value;
       });
+      // keywords als Array (kommagetrennt)
+      if (typeof fields.keywords === "string") {
+        fields.keywords = fields.keywords.split(",").map(s => s.trim()).filter(Boolean);
+      }
       sniperWatches[i] = { ...sniperWatches[i], ...fields };
       if (await saveSniper()) { toast("Gespeichert"); renderSniper(); }
     }
@@ -310,6 +318,7 @@ document.addEventListener("change", (e) => {
     const card = sel.closest(".card");
     card.querySelector(".sniper-keyword").style.display = sel.value === "ebay" ? "" : "none";
     card.querySelector(".sniper-url").style.display     = sel.value === "egun" ? "" : "none";
+    card.querySelector(".sniper-filter").style.display  = sel.value === "egun" ? "" : "none";
   }
 });
 
@@ -342,6 +351,7 @@ $("#new-snip-platform").addEventListener("change", (e) => {
   const ebay = e.target.value === "ebay";
   $("#new-snip-keyword-label").classList.toggle("hidden", !ebay);
   $("#new-snip-url-label").classList.toggle("hidden",  ebay);
+  $("#new-snip-filter-label").classList.toggle("hidden", ebay);
 });
 
 $("#btn-add-sniper").addEventListener("click", async () => {
@@ -349,6 +359,7 @@ $("#btn-add-sniper").addEventListener("click", async () => {
   const platform = $("#new-snip-platform").value;
   const keyword = $("#new-snip-keyword").value.trim();
   const url     = $("#new-snip-url").value.trim();
+  const filter  = $("#new-snip-filter").value.trim();
   if (!name) { toast("Name fehlt", "error"); return; }
   if (platform === "ebay" && !keyword) { toast("Suchbegriff fehlt", "error"); return; }
   if (platform === "egun" && !url)     { toast("URL fehlt", "error"); return; }
@@ -358,13 +369,14 @@ $("#btn-add-sniper").addEventListener("click", async () => {
     platform,
     keyword,
     url,
+    keywords: filter.split(",").map(s => s.trim()).filter(Boolean),
     max_price: parseFloat($("#new-snip-max").value) || 0,
     enabled: $("#new-snip-active").checked,
   });
   if (await saveSniper()) {
     toast(`»${name}« angelegt`);
     renderSniper();
-    ["new-snip-name", "new-snip-keyword", "new-snip-url"].forEach(id => $(`#${id}`).value = "");
+    ["new-snip-name", "new-snip-keyword", "new-snip-url", "new-snip-filter"].forEach(id => $(`#${id}`).value = "");
   }
 });
 
