@@ -1,4 +1,4 @@
-const CACHE = "preis-alarm-v1";
+const CACHE = "preis-alarm-v3";
 const ASSETS = [
   "./",
   "./index.html",
