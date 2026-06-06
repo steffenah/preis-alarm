@@ -249,10 +249,10 @@ def show_app():
 
     # ── Tab: Auktions-Sniper ───────────────────────────────────────────────────
     with tab_sniper:
-        st.subheader("🔨 eBay Auktions-Sniper")
+        st.subheader("🔨 Auktions-Sniper")
         st.markdown(
-            "Findet Auktionen, die **kurz vor dem Ende** stehen und noch **keine Gebote** haben – "
-            "perfekt für Schnäppchen-Jäger. Du bekommst eine E-Mail mit hoher Priorität."
+            "Findet **eBay**- oder **eGun**-Auktionen, die kurz vor dem Ende stehen und noch "
+            "**keine Gebote** haben – perfekt für Schnäppchen-Jäger. Du bekommst eine E-Mail mit hoher Priorität."
         )
 
         watches = load_sniper_watches()
@@ -261,10 +261,13 @@ def show_app():
         for i, w in enumerate(watches):
             is_enabled = w.get("enabled", True)
             status = "🟢" if is_enabled else "⏸️"
+            plat = w.get("platform", "ebay")
+            plat_icon = "🛒" if plat == "egun" else "🅴"
+            sub = w.get("keyword") if plat == "ebay" else w.get("url", "")[:50]
 
             hcol1, hcol2 = st.columns([5, 1])
             with hcol1:
-                exp = st.expander(f"{status} {w.get('name', 'Ohne Namen')}  ·  »{w.get('keyword', '')}«", expanded=False)
+                exp = st.expander(f"{status} {plat_icon} {w.get('name', 'Ohne Namen')}  ·  »{sub}«", expanded=False)
             with hcol2:
                 pause_label = "▶️ An" if not is_enabled else "⏸️ Aus"
                 if st.button(pause_label, key=f"snipause_{i}", use_container_width=True):
@@ -276,8 +279,20 @@ def show_app():
                 col1, col2 = st.columns(2)
                 with col1:
                     s_name = st.text_input("Name", value=w.get("name", ""), key=f"sn_name_{i}")
-                    s_kw   = st.text_input("Suchbegriff", value=w.get("keyword", ""), key=f"sn_kw_{i}",
-                                           help="z.B.  playstation 5  oder  iphone 15")
+                    s_plat = st.selectbox(
+                        "Plattform",
+                        ["ebay", "egun"],
+                        index=0 if plat == "ebay" else 1,
+                        key=f"sn_plat_{i}",
+                    )
+                    if s_plat == "ebay":
+                        s_kw  = st.text_input("Suchbegriff", value=w.get("keyword", ""), key=f"sn_kw_{i}",
+                                              help="z.B.  playstation 5  oder  iphone 15")
+                        s_url = ""
+                    else:
+                        s_url = st.text_input("eGun Kategorie-URL", value=w.get("url", ""), key=f"sn_url_{i}",
+                                              help="z.B. https://egun.de/market/list_items.php?cat=492")
+                        s_kw  = ""
                 with col2:
                     s_max  = st.number_input("Maximalpreis (€)  (0 = egal)", value=float(w.get("max_price", 0)), min_value=0.0, step=5.0, key=f"sn_max_{i}")
                     s_active = st.checkbox("Aktiv", value=w.get("enabled", True), key=f"sn_active_{i}")
@@ -288,7 +303,9 @@ def show_app():
                         watches[i] = {
                             **w,
                             "name": s_name,
+                            "platform": s_plat,
                             "keyword": s_kw,
+                            "url": s_url,
                             "max_price": s_max,
                             "enabled": s_active,
                         }
@@ -307,19 +324,28 @@ def show_app():
             col1, col2 = st.columns(2)
             with col1:
                 sn_name = st.text_input("Name *", placeholder="z.B. PS5 Schnäppchen")
-                sn_kw   = st.text_input("Suchbegriff *", placeholder="playstation 5")
+                sn_plat = st.selectbox("Plattform *", ["ebay", "egun"])
+                if sn_plat == "ebay":
+                    sn_kw  = st.text_input("eBay-Suchbegriff *", placeholder="playstation 5")
+                    sn_url = ""
+                else:
+                    sn_url = st.text_input("eGun Kategorie-URL *",
+                                           placeholder="https://egun.de/market/list_items.php?cat=492")
+                    sn_kw  = ""
             with col2:
                 sn_max  = st.number_input("Maximalpreis (€)  (0 = egal)", min_value=0.0, step=5.0)
                 sn_active = st.checkbox("Sofort aktivieren", value=True)
 
             if st.form_submit_button("➕ Hinzufügen", use_container_width=True, type="primary"):
-                if not sn_name or not sn_kw:
-                    st.error("Name und Suchbegriff sind Pflichtfelder.")
+                if not sn_name or (sn_plat == "ebay" and not sn_kw) or (sn_plat == "egun" and not sn_url):
+                    st.error("Name + Suchbegriff/URL sind Pflichtfelder.")
                 else:
                     watches.append({
                         "id": str(uuid.uuid4())[:8],
                         "name": sn_name,
+                        "platform": sn_plat,
                         "keyword": sn_kw,
+                        "url": sn_url,
                         "max_price": sn_max,
                         "enabled": sn_active,
                     })
@@ -330,9 +356,11 @@ def show_app():
         st.markdown("---")
         st.info(
             "**So funktioniert's:**\n"
-            "- Alle 10 Min durchsuchen wir eBay-Auktionen nach deinem Suchbegriff\n"
+            "- Alle 10 Min durchsuchen wir die gewählte Plattform\n"
             "- Endet eine Auktion in **5–15 Minuten** UND hat **0 Gebote** → 📧 sofort E-Mail\n"
-            "- Maximalpreis filtert Auktionen, die schon zu teuer sind\n"
+            "- Bei eBay: Suchbegriff (z.B. „playstation 5")\n"
+            "- Bei eGun: Kategorie-URL (z.B. Softair, Pistolen, …)\n"
+            "- Maximalpreis filtert zu teure Auktionen\n"
             "- Jede Auktion wird nur **einmal** gemeldet"
         )
 

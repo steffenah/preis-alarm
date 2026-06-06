@@ -148,13 +148,15 @@ def save_sniper_notified(notified: dict):
         json.dump(pruned, f, ensure_ascii=False, indent=2)
 
 
-def send_sniper_email(watch_name: str, alerts: list[dict]):
+def send_sniper_email(watch_name: str, alerts: list[dict], platform: str = "ebay"):
     count = len(alerts)
-    subject = f"🔨 AUKTION ENDET BALD · {watch_name} ({count})"
-    lines = [f"Diese Auktionen für »{watch_name}« enden bald OHNE Gebote:\n"]
+    plat_label = "eGun" if platform == "egun" else "eBay"
+    subject = f"🔨 {plat_label} AUKTION ENDET BALD · {watch_name} ({count})"
+    lines = [f"Diese {plat_label}-Auktionen für »{watch_name}« enden bald OHNE Gebote:\n"]
     for a in alerts:
         lines.append(f"• {a['title']}")
-        lines.append(f"  Aktueller Preis: {a['price']:.2f} €" if a.get('price') else "  Preis unbekannt")
+        p = a.get("auction_price") or a.get("price")
+        lines.append(f"  Aktueller Preis: {p:.2f} €" if p else "  Preis unbekannt")
         lines.append(f"  Endet in:        ~{a['time_left_min']} Min")
         lines.append(f"  Gebote:          {a.get('bids', 0)}")
         lines.append(f"  Link:            {a['url']}")
@@ -176,28 +178,41 @@ def send_sniper_email(watch_name: str, alerts: list[dict]):
 
 
 def run_sniper():
-    from parsers import fetch, parse_ebay_auctions
+    from parsers import fetch, parse_ebay_auctions, parse_egun
     watches = load_sniper_watches()
     if not watches:
         return
     notified = load_sniper_notified()
-    log(f"=== eBay-Sniper: {len(watches)} Suche(n) ===")
+    log(f"=== Sniper: {len(watches)} Suche(n) ===")
 
     for w in watches:
         if not w.get("enabled", True):
             continue
         name = w.get("name", "Sniper")
-        keyword = w.get("keyword", "").strip()
-        if not keyword:
-            continue
+        platform = w.get("platform", "ebay")
         max_price = w.get("max_price", 0)
 
-        # eBay-Such-URL: nur Auktionen, nach Endzeit sortiert
-        url = f"https://www.ebay.de/sch/i.html?_nkw={keyword.replace(' ', '+')}&LH_Auction=1&_sop=1"
-        log(f"[{name}] suche: {keyword}")
+        # URL + Parser je nach Plattform
         try:
-            soup = fetch(url)
-            auctions = parse_ebay_auctions(soup)
+            if platform == "egun":
+                url = w.get("url", "").strip()
+                if not url:
+                    log(f"[{name}] keine URL – übersprungen.")
+                    continue
+                log(f"[{name}] (eGun) prüfe {url}")
+                soup = fetch(url)
+                items = parse_egun(soup)
+                # Nur Auktionen (mit Gebotsstand) behalten
+                auctions = [i for i in items if i.get("bids") is not None]
+            else:
+                keyword = w.get("keyword", "").strip()
+                if not keyword:
+                    log(f"[{name}] kein Suchbegriff – übersprungen.")
+                    continue
+                url = f"https://www.ebay.de/sch/i.html?_nkw={keyword.replace(' ', '+')}&LH_Auction=1&_sop=1"
+                log(f"[{name}] (eBay) suche: {keyword}")
+                soup = fetch(url)
+                auctions = parse_ebay_auctions(soup)
         except Exception as e:
             log(f"[{name}] FEHLER: {e}")
             continue
@@ -212,7 +227,9 @@ def run_sniper():
                 continue
             if a.get("bids", 0) > 0:
                 continue
-            if max_price and a.get("price") and a["price"] > max_price:
+            # Preis-Check: eGun = auction_price, eBay = price
+            chk_price = a.get("auction_price") or a.get("price")
+            if max_price and chk_price and chk_price > max_price:
                 continue
             # Schon benachrichtigt?
             key = f"{w.get('id', name)}::{a['id']}"
@@ -223,7 +240,7 @@ def run_sniper():
 
         if alerts:
             try:
-                send_sniper_email(name, alerts)
+                send_sniper_email(name, alerts, platform)
             except Exception as e:
                 log(f"[{name}] Mail-Fehler: {e}")
         else:

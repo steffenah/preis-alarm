@@ -191,6 +191,22 @@ def _parse_price(text: str):
     return None
 
 
+def _parse_egun_time(text: str):
+    """
+    eGun-Restzeit: "5 Tage | 00:15" oder "13:27" oder "1 Tage | 23:18".
+    Liefert Minuten als int, None falls keine Restzeit erkennbar.
+    """
+    # Variante A: "X Tage HH:MM"
+    m = re.search(r"(\d+)\s*Tage?\D{0,4}(\d{1,2}):(\d{2})", text)
+    if m:
+        return int(m.group(1)) * 24 * 60 + int(m.group(2)) * 60 + int(m.group(3))
+    # Variante B: nur "HH:MM" (selbe Tag-Restzeit)
+    m = re.search(r"(?<![\d:])(\d{1,2}):(\d{2})(?!\d)", text)
+    if m:
+        return int(m.group(1)) * 60 + int(m.group(2))
+    return None
+
+
 def parse_egun(soup: BeautifulSoup) -> list[dict]:
     listings = []
     seen_ids: set[str] = set()
@@ -209,6 +225,8 @@ def parse_egun(soup: BeautifulSoup) -> list[dict]:
         auction_price = None
         sofortkauf_price = None
         is_sofortkauf = False
+        bids = None
+        time_left_min = None
         row = link.find_parent("tr")
         if row:
             row_text = row.get_text(" ", strip=True)
@@ -230,6 +248,12 @@ def parse_egun(soup: BeautifulSoup) -> list[dict]:
                 if len(all_prices) >= 2:
                     sofortkauf_price = all_prices[1]
                     is_sofortkauf = True
+                # Gebote zählen: "X Gebote" oder "X Gebot"
+                bm = re.search(r"(\d+)\s*Gebot", row_text, re.IGNORECASE)
+                bids = int(bm.group(1)) if bm else 0
+                # Restzeit aus dem Text nach "Gebote" extrahieren
+                after_bids = row_text.split("Gebot", 1)[-1]
+                time_left_min = _parse_egun_time(after_bids)
             else:
                 # Nur Sofortkauf
                 sofortkauf_price = all_prices[0] if all_prices else None
@@ -242,6 +266,8 @@ def parse_egun(soup: BeautifulSoup) -> list[dict]:
             "auction_price": auction_price,
             "sofortkauf_price": sofortkauf_price,
             "is_sofortkauf": is_sofortkauf,
+            "bids": bids,
+            "time_left_min": time_left_min,
             "url": f"https://egun.de/market/item.php?id={item_id}",
         })
     return listings
