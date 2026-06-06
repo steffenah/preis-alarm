@@ -30,6 +30,10 @@ SENDER_EMAIL    = os.environ["SENDER_EMAIL"]
 SENDER_PASSWORD = os.environ["SENDER_PASSWORD"]
 RECIPIENT_EMAIL = os.environ["RECIPIENT_EMAIL"]
 
+# Telegram (optional - leer wenn nicht gesetzt)
+TELEGRAM_BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "")
+TELEGRAM_CHAT_ID   = os.environ.get("TELEGRAM_CHAT_ID", "")
+
 
 def log(msg):
     print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] {msg}")
@@ -50,6 +54,33 @@ def load_seen() -> dict:
 def save_seen(seen: dict):
     with open(SEEN_FILE, "w", encoding="utf-8") as f:
         json.dump(seen, f, ensure_ascii=False, indent=2)
+
+
+def send_telegram(text: str, urgent: bool = False) -> bool:
+    """Sendet eine Nachricht via Telegram. Ignoriert Fehler.
+    Bei urgent=True ohne 'silent' Modus (Push macht Geräusch)."""
+    if not TELEGRAM_BOT_TOKEN or not TELEGRAM_CHAT_ID:
+        return False
+    try:
+        import urllib.request, urllib.parse
+        url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
+        data = urllib.parse.urlencode({
+            "chat_id": TELEGRAM_CHAT_ID,
+            "text": text,
+            "parse_mode": "HTML",
+            "disable_web_page_preview": "true",
+            "disable_notification": "false" if urgent else "false",
+        }).encode("utf-8")
+        req = urllib.request.Request(url, data=data)
+        with urllib.request.urlopen(req, timeout=10) as resp:
+            import json as _j
+            ok = _j.loads(resp.read()).get("ok", False)
+        if ok:
+            log(f"  → Telegram gesendet")
+        return ok
+    except Exception as e:
+        log(f"  Telegram-Fehler: {e}")
+        return False
 
 
 def send_email(monitor_name: str, new_items: list[dict], min_price: float, max_price: float = 0):
@@ -89,6 +120,21 @@ def send_email(monitor_name: str, new_items: list[dict], min_price: float, max_p
         s.sendmail(SENDER_EMAIL, RECIPIENT_EMAIL, msg.as_string())
 
     log(f"  → E-Mail gesendet: {subject}")
+
+    # Telegram-Push (parallel zur Mail)
+    tg_lines = [f"🔔 <b>{monitor_name}</b> · {count} neues Inserat{'e' if count > 1 else ''}{price_hint}"]
+    for item in new_items[:10]:   # Telegram max 4096 Zeichen → erste 10 Treffer
+        tg_lines.append(f"\n<b>{item['title'][:80]}</b>")
+        if item.get("auction_price"):
+            tg_lines.append(f"  Gebot: {item['auction_price']:.2f} €")
+        if item.get("sofortkauf_price"):
+            tg_lines.append(f"  Sofortkauf: {item['sofortkauf_price']:.2f} €")
+        elif item.get("price") and not item.get("auction_price"):
+            tg_lines.append(f"  Preis: {item['price']:.2f} €")
+        tg_lines.append(f"  <a href=\"{item['url']}\">Anzeigen</a>")
+    if len(new_items) > 10:
+        tg_lines.append(f"\n…und {len(new_items)-10} weitere.")
+    send_telegram("\n".join(tg_lines), urgent=False)
 
 
 def get_listings(monitor: dict) -> list[dict]:
@@ -175,6 +221,17 @@ def send_sniper_email(watch_name: str, alerts: list[dict], platform: str = "ebay
         s.login(SENDER_EMAIL, SENDER_PASSWORD)
         s.sendmail(SENDER_EMAIL, RECIPIENT_EMAIL, msg.as_string())
     log(f"  → Sniper-Mail gesendet: {subject}")
+
+    # Telegram-Push (urgent = mit Push-Sound, weil zeitkritisch!)
+    tg_lines = [f"🔨 <b>{plat_label} AUKTION ENDET BALD</b> · {watch_name}"]
+    for a in alerts[:10]:
+        p = a.get("auction_price") or a.get("price")
+        tg_lines.append(f"\n<b>{a['title'][:80]}</b>")
+        if p:
+            tg_lines.append(f"  Aktuell: {p:.2f} €  ·  {a.get('bids',0)} Gebote")
+        tg_lines.append(f"  ⏱ endet in ~{a['time_left_min']} Min")
+        tg_lines.append(f"  <a href=\"{a['url']}\">JETZT BIETEN</a>")
+    send_telegram("\n".join(tg_lines), urgent=True)
 
 
 def run_sniper():
