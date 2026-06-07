@@ -30,10 +30,11 @@ DEAL_MIN_SAMPLES   = 5    # mindestens 5 Daten brauchen wir, um einen Median zu 
 SNIPER_WINDOW_MIN_LO = 5
 SNIPER_WINDOW_MIN_HI = 15
 
-# Zugangsdaten aus GitHub Secrets
-SENDER_EMAIL    = os.environ["SENDER_EMAIL"]
-SENDER_PASSWORD = os.environ["SENDER_PASSWORD"]
-RECIPIENT_EMAIL = os.environ["RECIPIENT_EMAIL"]
+# E-Mail-Versand (per env-Var EMAIL_ENABLED=1 wieder aktivierbar)
+EMAIL_ENABLED   = os.environ.get("EMAIL_ENABLED", "0") == "1"
+SENDER_EMAIL    = os.environ.get("SENDER_EMAIL", "")
+SENDER_PASSWORD = os.environ.get("SENDER_PASSWORD", "")
+RECIPIENT_EMAIL = os.environ.get("RECIPIENT_EMAIL", "")
 
 # Telegram (optional - leer wenn nicht gesetzt)
 TELEGRAM_BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "")
@@ -148,11 +149,11 @@ def send_email(monitor_name: str, new_items: list[dict], min_price: float, max_p
     msg["To"]      = RECIPIENT_EMAIL
     msg.attach(MIMEText("\n".join(lines), "plain", "utf-8"))
 
-    with smtplib.SMTP_SSL("smtp.gmail.com", 465) as s:
-        s.login(SENDER_EMAIL, SENDER_PASSWORD)
-        s.sendmail(SENDER_EMAIL, RECIPIENT_EMAIL, msg.as_string())
-
-    log(f"  → E-Mail gesendet: {subject}")
+    if EMAIL_ENABLED and SENDER_EMAIL and SENDER_PASSWORD and RECIPIENT_EMAIL:
+        with smtplib.SMTP_SSL("smtp.gmail.com", 465) as s:
+            s.login(SENDER_EMAIL, SENDER_PASSWORD)
+            s.sendmail(SENDER_EMAIL, RECIPIENT_EMAIL, msg.as_string())
+        log(f"  → E-Mail gesendet: {subject}")
 
     # Telegram-Push: pro Item ein Bild-Push (max 5 um nicht zu spammen)
     header_sent = False
@@ -356,10 +357,11 @@ def send_sniper_email(watch_name: str, alerts: list[dict], platform: str = "ebay
     msg["Importance"] = "high"
     msg.attach(MIMEText("\n".join(lines), "plain", "utf-8"))
 
-    with smtplib.SMTP_SSL("smtp.gmail.com", 465) as s:
-        s.login(SENDER_EMAIL, SENDER_PASSWORD)
-        s.sendmail(SENDER_EMAIL, RECIPIENT_EMAIL, msg.as_string())
-    log(f"  → Sniper-Mail gesendet: {subject}")
+    if EMAIL_ENABLED and SENDER_EMAIL and SENDER_PASSWORD and RECIPIENT_EMAIL:
+        with smtplib.SMTP_SSL("smtp.gmail.com", 465) as s:
+            s.login(SENDER_EMAIL, SENDER_PASSWORD)
+            s.sendmail(SENDER_EMAIL, RECIPIENT_EMAIL, msg.as_string())
+        log(f"  → Sniper-Mail gesendet: {subject}")
 
     # Telegram-Push: pro Auktion 1 Bild-Push (zeitkritisch!)
     for a in alerts[:5]:    # max 5 Bilder pro Lauf um nicht zu spammen
