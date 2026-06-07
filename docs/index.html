@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Preis-Alarm</title>
-  <link rel="stylesheet" href="style.css?v=3">
+  <link rel="stylesheet" href="style.css?v=4">
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#22a04a">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -32,7 +32,10 @@
 
   <header>
     <div class="brand">🛒 <span>Preis-Alarm</span></div>
-    <button id="btn-logout" class="btn-ghost">Abmelden</button>
+    <div style="display:flex;gap:0.5rem;align-items:center">
+      <button id="btn-run-now" class="btn-ghost" title="Alle Monitore + Sniper jetzt sofort prüfen">⚡ Jetzt prüfen</button>
+      <button id="btn-logout" class="btn-ghost">Abmelden</button>
+    </div>
   </header>
 
   <nav class="tabs">
@@ -203,7 +206,26 @@ https://egun.de/market/list_items.php?cat=22    Munition</pre>
 
     <h2>📲 Telegram-Bot</h2>
     <p>Der Bot <b>@preisalarm_steffenbot</b> verschickt Push-Nachrichten mit Bild, Preis und Score.
-    Bei Auktions-Sniper-Treffern mit Push-Sound, bei normalen Treffern still.</p>
+    Sniper-Alarms sind laut, normale Treffer still. Zwischen <b>23–7 Uhr</b> sind auch normale Pushes lautlos (Nachtruhe).</p>
+
+    <h3>Befehle (im Telegram-Chat eingeben)</h3>
+    <ul>
+      <li><code>/list</code> – alle Monitore + Sniper anzeigen</li>
+      <li><code>/stats</code> – kurze Statistik</li>
+      <li><code>/pause &lt;name&gt;</code> – Watch pausieren (z.B. <code>/pause edurino</code>)</li>
+      <li><code>/resume &lt;name&gt;</code> – Watch reaktivieren</li>
+      <li><code>/typoadd &lt;name&gt; &lt;variante&gt;</code> – Tippfehler hinzufügen</li>
+      <li><code>/help</code> – Hilfe</li>
+    </ul>
+    <p class="muted">Befehle werden beim nächsten Cron-Lauf (alle 5 Min) verarbeitet – Antwort kommt dann.</p>
+
+    <h2>🔍 Erweiterte Such-Syntax</h2>
+    <ul>
+      <li><code>iphone, samsung</code> → ODER (mind. 1 Wort matched)</li>
+      <li><code>iphone & 256gb</code> → UND (beide Wörter nötig)</li>
+      <li><code>"iphone 15 pro"</code> → exakte Phrase</li>
+      <li>Kombi: <code>"iphone 15 pro" & 256gb, "samsung s24"</code></li>
+    </ul>
 
     <h2>🔑 GitHub-Token</h2>
     <p>Die App benötigt einen GitHub Personal Access Token (Fine-grained, <code>Contents: read &amp; write</code>) um Monitore zu speichern.</p>
@@ -215,6 +237,6 @@ https://egun.de/market/list_items.php?cat=22    Munition</pre>
 
 </div>
 
-<script src="app.js?v=3"></script>
+<script src="app.js?v=4"></script>
 </body>
 </html>

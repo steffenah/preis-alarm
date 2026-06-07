@@ -101,6 +101,49 @@ def _parse_ebay_time(text: str):
     return total_min if found else None
 
 
+def parse_ebay_sold(soup: BeautifulSoup) -> list[dict]:
+    """
+    Parst verkaufte eBay-Listings (LH_Sold=1).
+    Liefert nur: title, price.
+    """
+    sold = []
+    seen_ids: set[str] = set()
+    cards = soup.find_all(class_=re.compile(r"^s-card$"))
+    for card in cards:
+        link = card.find("a", class_=re.compile(r"s-card__link"))
+        if not link:
+            continue
+        href = link.get("href", "")
+        m_id = re.search(r"/itm/(\d+)", href)
+        if not m_id:
+            continue
+        item_id = m_id.group(1)
+        if item_id in seen_ids:
+            continue
+        seen_ids.add(item_id)
+
+        title_tag = card.find(class_=re.compile(r"s-card__title"))
+        title = title_tag.get_text(" ", strip=True) if title_tag else ""
+        if not title or title.lower().startswith("shop on ebay"):
+            continue
+
+        price = None
+        price_tag = card.find(class_=re.compile(r"s-card__price"))
+        if price_tag:
+            raw = price_tag.get_text(" ", strip=True)
+            pm = re.search(r"([\d.]+,\d{1,2}|\d+)", raw.replace(".", ""))
+            if pm:
+                try:
+                    price = float(pm.group(1).replace(",", "."))
+                except ValueError:
+                    pass
+
+        if price and price > 0:
+            sold.append({"id": item_id, "title": title, "price": price})
+
+    return sold
+
+
 def parse_ebay_auctions(soup: BeautifulSoup) -> list[dict]:
     """
     Parst eBay-Suchergebnisse für Auktionen (neue s-card Struktur, 2026).
@@ -174,6 +217,16 @@ def parse_ebay_auctions(soup: BeautifulSoup) -> list[dict]:
                     src = "https:" + src
                 image_url = src
 
+        # Verkäufer aus Subtitle ("Gebraucht | | Privat" oder Seller-Name)
+        seller = None
+        for attr in card.find_all(class_=re.compile(r"s-card__attribute|s-card__subtitle")):
+            atxt = attr.get_text(" ", strip=True)
+            # Verkäufer-Format häufig: "name 99% positiv (123)"
+            sm = re.match(r"^([a-zA-Z0-9_.\-]{3,30})\s+\d+%\s+positiv", atxt)
+            if sm:
+                seller = sm.group(1)
+                break
+
         item_url = href.split("?")[0]
         listings.append({
             "id": item_id,
@@ -185,6 +238,7 @@ def parse_ebay_auctions(soup: BeautifulSoup) -> list[dict]:
             "time_left_min": time_left_min,
             "is_sofortkauf": False,
             "image_url": image_url,
+            "seller": seller,
             "url": item_url,
         })
 
@@ -336,6 +390,12 @@ def parse_kleinanzeigen(soup: BeautifulSoup, base_url: str = "https://www.kleina
                     src = "https:" + src
                 image_url = src
 
+        # Verkäufer (Kleinanzeigen-User-Name aus article)
+        seller = None
+        user_tag = article.find(class_=re.compile(r"user-name|userprofile|aditem.*user", re.I))
+        if user_tag:
+            seller = user_tag.get_text(" ", strip=True)[:50]
+
         listings.append({
             "id": item_id,
             "title": title,
@@ -344,6 +404,7 @@ def parse_kleinanzeigen(soup: BeautifulSoup, base_url: str = "https://www.kleina
             "sofortkauf_price": price,   # Kleinanzeigen = immer Festpreis
             "is_sofortkauf": True,
             "image_url": image_url,
+            "seller": seller,
             "url": item_url,
         })
     return listings

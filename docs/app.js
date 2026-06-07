@@ -59,6 +59,24 @@ function toast(msg, type = "success") {
   toast._t = setTimeout(() => t.className = "toast", 2500);
 }
 
+// ── GitHub API: Workflow manuell triggern ───────────────────────────────
+async function triggerWorkflow() {
+  if (!await ensureToken()) return false;
+  const url = `https://api.github.com/repos/${REPO}/actions/workflows/monitor.yml/dispatches`;
+  const res = await fetch(url, {
+    method: "POST",
+    headers: {
+      Authorization: `token ${token}`,
+      "Content-Type": "application/json",
+      "Accept": "application/vnd.github+json",
+    },
+    body: JSON.stringify({ ref: "main" }),
+  });
+  if (res.ok) return true;
+  const err = await res.json().catch(() => ({}));
+  throw new Error(`Workflow-Start fehlgeschlagen: ${err.message || res.statusText}`);
+}
+
 // ── GitHub API ──────────────────────────────────────────────────────────
 async function ghGet(path) {
   const res = await fetch(`${API_BASE}/${path}?ref=main`, {
@@ -235,6 +253,9 @@ function renderMonitors() {
           <label class="full">🚫 Ausschluss-Wörter (kommagetrennt, optional)
             <input data-field="exclude_keywords" value="${esc((m.exclude_keywords || []).join(", "))}" placeholder="z.B. defekt, bastler, ersatzteil">
           </label>
+          <label class="full">🙈 Ausschluss-Verkäufer (kommagetrennt, optional)
+            <input data-field="exclude_sellers" value="${esc((m.exclude_sellers || []).join(", "))}" placeholder="z.B. nervhandler, profi123">
+          </label>
           <label>Mindestpreis € (0 = kein Limit)
             <input type="number" data-field="min_price" value="${m.min_price || 0}" min="0" step="5">
           </label>
@@ -305,6 +326,9 @@ function renderSniper() {
           <label class="full">🚫 Ausschluss-Wörter (kommagetrennt, optional)
             <input data-field="exclude_keywords" value="${esc((w.exclude_keywords || []).join(", "))}" placeholder="z.B. defekt, bastler, ersatzteil">
           </label>
+          <label class="full">🙈 Ausschluss-Verkäufer (kommagetrennt, optional)
+            <input data-field="exclude_sellers" value="${esc((w.exclude_sellers || []).join(", "))}" placeholder="z.B. nervhandler, profi123">
+          </label>
           <label class="checkbox"><input type="checkbox" data-field="enabled" ${enabled ? "checked" : ""}> Aktiv</label>
         </div>
         <div style="display:flex;gap:0.5rem;margin-top:0.5rem;flex-wrap:wrap">
@@ -342,6 +366,7 @@ document.addEventListener("click", async (e) => {
       });
       fields.keywords = (fields.keywords || "").split(",").map(s => s.trim()).filter(Boolean);
       fields.exclude_keywords = (fields.exclude_keywords || "").split(",").map(s => s.trim()).filter(Boolean);
+      fields.exclude_sellers  = (fields.exclude_sellers  || "").split(",").map(s => s.trim()).filter(Boolean);
       fields.site_type = detectSite(fields.url || "");
       monitors[i] = { ...monitors[i], ...fields };
       if (await saveMonitors()) { toast("Gespeichert"); renderMonitors(); }
@@ -375,6 +400,9 @@ document.addEventListener("click", async (e) => {
       }
       if (typeof fields.typo_variants === "string") {
         fields.typo_variants = fields.typo_variants.split(",").map(s => s.trim()).filter(Boolean);
+      }
+      if (typeof fields.exclude_sellers === "string") {
+        fields.exclude_sellers = fields.exclude_sellers.split(",").map(s => s.trim()).filter(Boolean);
       }
       sniperWatches[i] = { ...sniperWatches[i], ...fields };
       if (await saveSniper()) { toast("Gespeichert"); renderSniper(); }
@@ -517,6 +545,26 @@ $("#login-password").addEventListener("keyup", (e) => {
 $("#btn-logout").addEventListener("click", () => {
   sessionStorage.removeItem("auth");
   showLogin();
+});
+
+$("#btn-run-now")?.addEventListener("click", async () => {
+  const btn = $("#btn-run-now");
+  btn.disabled = true;
+  btn.textContent = "⏳ Wird gestartet…";
+  try {
+    if (await triggerWorkflow()) {
+      toast("✅ Lauf gestartet – Telegram in ~1 Min", "success");
+      btn.textContent = "✅ Läuft (~1 Min)";
+      setTimeout(() => { btn.textContent = "⚡ Jetzt prüfen"; btn.disabled = false; }, 60000);
+    } else {
+      btn.textContent = "⚡ Jetzt prüfen";
+      btn.disabled = false;
+    }
+  } catch (e) {
+    toast(e.message, "error");
+    btn.textContent = "⚡ Jetzt prüfen";
+    btn.disabled = false;
+  }
 });
 $("#btn-reset-token").addEventListener("click", async () => {
   localStorage.removeItem("ghToken");

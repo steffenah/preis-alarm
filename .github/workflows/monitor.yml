@@ -36,6 +36,6 @@ jobs:
         run: |
           git config user.name  "eGun Monitor Bot"
           git config user.email "actions@github.com"
-          git add seen_items.json sniper_notified.json price_history.json 2>/dev/null || true
+          git add seen_items.json sniper_notified.json price_history.json telegram_state.json monitors.json sniper_watches.json 2>/dev/null || true
           git diff --cached --quiet || git commit -m "chore: state aktualisiert [skip ci]"
           git push
