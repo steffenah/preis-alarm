@@ -1184,5 +1184,15 @@
     "title": "Softair Mini Uzi",
     "price": 140.0,
     "first_seen": "2026-06-07T12:54:30.713557"
+  },
+  "egun_softair::20396343": {
+    "title": "Airsoft Konvolut",
+    "price": 60.0,
+    "first_seen": "2026-06-07T16:01:58.784108"
+  },
+  "egun_softair::20393201": {
+    "title": "Heckler & Koch G36C",
+    "price": 30.5,
+    "first_seen": "2026-06-07T16:01:58.784138"
   }
 }
