@@ -1194,5 +1194,20 @@
     "title": "Heckler & Koch G36C",
     "price": 30.5,
     "first_seen": "2026-06-07T16:01:58.784138"
+  },
+  "egun_softair::20370962": {
+    "title": "Heckler & Koch G36 Wei-Etech G39 Handschutz / Handguard",
+    "price": 18.0,
+    "first_seen": "2026-06-07T17:26:46.635661"
+  },
+  "egun_softair::20310417": {
+    "title": "ICS-20 A1 Retractable S-AEG",
+    "price": 170.0,
+    "first_seen": "2026-06-07T17:26:46.635670"
+  },
+  "egun_softair::20310439": {
+    "title": "Heckler & Koch G 36 CV S-AEG",
+    "price": 200.0,
+    "first_seen": "2026-06-07T17:26:46.635688"
   }
 }
