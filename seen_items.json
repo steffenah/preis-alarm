@@ -1209,5 +1209,10 @@
     "title": "Heckler & Koch G 36 CV S-AEG",
     "price": 200.0,
     "first_seen": "2026-06-07T17:26:46.635688"
+  },
+  "egun_softair::20310463": {
+    "title": "Heckler & Koch MP5 K",
+    "price": 150.0,
+    "first_seen": "2026-06-07T18:08:24.092648"
   }
 }
