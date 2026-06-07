@@ -24,7 +24,8 @@
       "keyword": "Gameboy Advance SP",
       "url": "",
       "max_price": 0,
-      "enabled": true
+      "enabled": true,
+      "_last_typo_learn": "2026-06-07T18:35:18.395773"
     },
     {
       "id": "ktckju4x",
@@ -42,7 +43,8 @@
       "keyword": "Game Boy Advance Sp",
       "url": "",
       "max_price": 0,
-      "enabled": true
+      "enabled": true,
+      "_last_typo_learn": "2026-06-07T18:35:22.791364"
     },
     {
       "id": "32j3admx",
@@ -64,7 +66,8 @@
       "exclude_keywords": [
         "Defekt",
         "Bastler"
-      ]
+      ],
+      "_last_typo_learn": "2026-06-07T18:35:39.974152"
     },
     {
       "id": "0cmzskpc",
@@ -86,7 +89,8 @@
       "exclude_keywords": [
         "Defekt",
         "Bastler"
-      ]
+      ],
+      "_last_typo_learn": "2026-06-07T18:35:57.217378"
     }
   ]
 }

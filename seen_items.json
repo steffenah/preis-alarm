@@ -1214,5 +1214,10 @@
     "title": "Heckler & Koch MP5 K",
     "price": 150.0,
     "first_seen": "2026-06-07T18:08:24.092648"
+  },
+  "egun_softair::20371846": {
+    "title": "Airsoft GSG 6mm Gewehr mit Zielfernrohr",
+    "price": 95.0,
+    "first_seen": "2026-06-07T18:34:59.794868"
   }
 }
