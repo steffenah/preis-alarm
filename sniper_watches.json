@@ -7,7 +7,7 @@
       "keyword": "Edurino",
       "url": "",
       "max_price": 0,
-      "enabled": true,
+      "enabled": false,
       "typo_variants": [
         "eurino",
         "edrino",
