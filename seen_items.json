@@ -1229,5 +1229,10 @@
     "title": "Walther P99 Softair Federdruck - ab 14, <0,5 Joule Pistole BB Walther P99 Softair",
     "price": 19.5,
     "first_seen": "2026-06-08T06:48:50.084631"
+  },
+  "egun_softair::20392290": {
+    "title": "SSR4 Novritsch Airsoft",
+    "price": 200.0,
+    "first_seen": "2026-06-08T11:32:00.671297"
   }
 }
