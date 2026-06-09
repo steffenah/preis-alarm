@@ -6,23 +6,10 @@
       "url": "https://egun.de/market/list_items.php?cat=492",
       "site_type": "egun",
       "keywords": [],
-      "min_price": 50.0,
+      "min_price": 50,
       "sofortkauf_only": true,
       "enabled": true,
-      "max_price": 0.0
-    },
-    {
-      "name": "Monitor",
-      "url": "https://www.kleinanzeigen.de/s-oldenburg/monitor/k0l3108r10",
-      "keywords": [
-        "Monitor"
-      ],
-      "min_price": 10.0,
-      "sofortkauf_only": false,
-      "enabled": false,
-      "id": "610a6e59",
-      "site_type": "kleinanzeigen",
-      "max_price": 150.0
+      "max_price": 0
     },
     {
       "id": "305166a9",
@@ -32,8 +19,8 @@
       "keywords": [
         "Edurino"
       ],
-      "min_price": 0.0,
-      "max_price": 0.0,
+      "min_price": 0,
+      "max_price": 0,
       "sofortkauf_only": false,
       "enabled": true
     }
