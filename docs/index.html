@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Preis-Alarm</title>
-  <link rel="stylesheet" href="style.css?v=4">
+  <link rel="stylesheet" href="style.css?v=5">
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#22a04a">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -228,7 +228,11 @@ https://egun.de/market/list_items.php?cat=22    Munition</pre>
     </ul>
 
     <h2>🔑 GitHub-Token</h2>
-    <p>Die App benötigt einen GitHub Personal Access Token (Fine-grained, <code>Contents: read &amp; write</code>) um Monitore zu speichern.</p>
+    <p>Die App benötigt einen GitHub Fine-grained Personal Access Token mit:</p>
+    <ul>
+      <li><code>Contents: Read and write</code> – damit die App Suchen speichern kann</li>
+      <li><code>Actions: Read and write</code> – damit der „⚡ Jetzt prüfen"-Button funktioniert</li>
+    </ul>
     <button class="btn-ghost" id="btn-reset-token">Token neu eingeben</button>
   </section>
 
@@ -237,6 +241,6 @@ https://egun.de/market/list_items.php?cat=22    Munition</pre>
 
 </div>
 
-<script src="app.js?v=4"></script>
+<script src="app.js?v=5"></script>
 </body>
 </html>

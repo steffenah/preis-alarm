@@ -74,7 +74,11 @@ async function triggerWorkflow() {
   });
   if (res.ok) return true;
   const err = await res.json().catch(() => ({}));
-  throw new Error(`Workflow-Start fehlgeschlagen: ${err.message || res.statusText}`);
+  const msg = err.message || res.statusText;
+  if (/not accessible|permission|access/i.test(msg)) {
+    throw new Error(`Token hat keine Workflow-Berechtigung. Bitte im Token "Actions: Read and write" ergänzen (siehe Hilfe-Tab).`);
+  }
+  throw new Error(`Workflow-Start fehlgeschlagen: ${msg}`);
 }
 
 // ── GitHub API ──────────────────────────────────────────────────────────
@@ -128,7 +132,12 @@ function ensureToken() {
         <ol>
           <li>Öffne: <a href="https://github.com/settings/personal-access-tokens/new" target="_blank">github.com/settings/personal-access-tokens/new</a></li>
           <li><b>Repository access</b> → „Only select repositories" → <code>steffenah/preis-alarm</code></li>
-          <li><b>Permissions</b> → „+ Add permissions" → <b>Contents</b>: Read and write</li>
+          <li><b>Permissions</b> → „+ Add permissions":
+            <ul>
+              <li><b>Contents</b>: Read and write (für Speichern der Suchen)</li>
+              <li><b>Actions</b>: Read and write (für „Jetzt prüfen"-Button)</li>
+            </ul>
+          </li>
           <li><b>Generate token</b> klicken → Token kopieren (beginnt mit <code>github_pat_…</code>)</li>
         </ol>
 
