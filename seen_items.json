@@ -1264,5 +1264,15 @@
     "title": "TIPPMANN M4-22 MAGAZIN 25 SCHUSS KAL..22",
     "price": 20.0,
     "first_seen": "2026-06-09T11:49:29.253442"
+  },
+  "egun_softair::20374646": {
+    "title": "Konvolut Airsoft Softair Pistole UZI Full-Auto <0,5 Joule",
+    "price": 15.5,
+    "first_seen": "2026-06-09T14:09:41.621160"
+  },
+  "egun_softair::20396354": {
+    "title": "Smith & Wesson 629 Classic 6,5\" CO2 6mm BB",
+    "price": 49.99,
+    "first_seen": "2026-06-09T14:09:41.621168"
   }
 }
