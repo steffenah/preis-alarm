@@ -17,20 +17,14 @@
       "url": "",
       "max_price": 0,
       "enabled": false,
-      "typo_variants": [
-        "tnie",
-        "toie",
-        "tone",
-        "otnie",
-        "tnoie",
-        "toine"
-      ],
+      "typo_variants": [],
       "keywords": [],
       "exclude_keywords": [
         "Defekt",
         "Bastler"
       ],
-      "_last_typo_learn": "2026-06-07T18:35:39.974152"
+      "_last_typo_learn": "2026-06-07T18:35:39.974152",
+      "exclude_sellers": []
     },
     {
       "id": "0cmzskpc",
