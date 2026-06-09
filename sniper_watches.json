@@ -1,16 +1,6 @@
 {
   "watches": [
     {
-      "id": "xnga4th6",
-      "name": "Gameboy Advance SP",
-      "platform": "ebay",
-      "keyword": "Gameboy Advance SP",
-      "url": "",
-      "max_price": 0,
-      "enabled": false,
-      "_last_typo_learn": "2026-06-07T18:35:18.395773"
-    },
-    {
       "id": "ktckju4x",
       "name": "Alles",
       "platform": "egun",
