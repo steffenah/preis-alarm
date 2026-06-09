@@ -33,7 +33,7 @@
       "keyword": "Playstation 5",
       "url": "",
       "max_price": 0,
-      "enabled": false,
+      "enabled": true,
       "typo_variants": [
         "paystation 5",
         "plystation 5",
