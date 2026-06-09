@@ -1279,5 +1279,10 @@
     "title": "M1 Carbine Rail-Mount",
     "price": 10.49,
     "first_seen": "2026-06-09T16:45:41.199738"
+  },
+  "egun_softair::20396361": {
+    "title": "Rail für G36",
+    "price": 1.0,
+    "first_seen": "2026-06-09T19:01:16.335877"
   }
 }
