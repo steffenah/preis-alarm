@@ -1284,5 +1284,20 @@
     "title": "Rail für G36",
     "price": 1.0,
     "first_seen": "2026-06-09T19:01:16.335877"
+  },
+  "egun_softair::20396367": {
+    "title": "Abzug für Colt 1911 silber",
+    "price": 1.0,
+    "first_seen": "2026-06-09T21:04:00.961701"
+  },
+  "egun_softair::20396369": {
+    "title": "Colt 1911 Griffschalen Gummi",
+    "price": 5.0,
+    "first_seen": "2026-06-09T21:04:00.961711"
+  },
+  "egun_softair::20396375": {
+    "title": "Ni-MH 1200mAh 9,6V Stick-Akku",
+    "price": 1.0,
+    "first_seen": "2026-06-09T21:04:00.961715"
   }
 }

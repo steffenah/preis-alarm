@@ -17,7 +17,9 @@
       "url": "",
       "max_price": 0,
       "enabled": true,
-      "typo_variants": [],
+      "typo_variants": [
+        "tonies"
+      ],
       "keywords": [],
       "exclude_keywords": [
         "Defekt",
