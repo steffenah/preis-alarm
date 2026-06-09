@@ -1254,5 +1254,15 @@
     "title": "Airlines Magnum 850",
     "price": 430.0,
     "first_seen": "2026-06-09T08:51:09.326623"
+  },
+  "egun_softair::20355040": {
+    "title": "SOFTAIR KAMPFWESTE UND 4 MAGAZINE M4",
+    "price": 45.0,
+    "first_seen": "2026-06-09T11:49:29.253432"
+  },
+  "egun_softair::20355049": {
+    "title": "TIPPMANN M4-22 MAGAZIN 25 SCHUSS KAL..22",
+    "price": 20.0,
+    "first_seen": "2026-06-09T11:49:29.253442"
   }
 }
