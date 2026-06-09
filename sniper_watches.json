@@ -16,7 +16,7 @@
       "keyword": "Tonie",
       "url": "",
       "max_price": 0,
-      "enabled": false,
+      "enabled": true,
       "typo_variants": [],
       "keywords": [],
       "exclude_keywords": [
