@@ -1,23 +1,6 @@
 {
   "watches": [
     {
-      "id": "tz44ofo8",
-      "name": "Edurino",
-      "platform": "ebay",
-      "keyword": "Edurino",
-      "url": "",
-      "max_price": 0,
-      "enabled": false,
-      "typo_variants": [
-        "eurino",
-        "edrino",
-        "eduino",
-        "edurno",
-        "edurio",
-        "deurino"
-      ]
-    },
-    {
       "id": "xnga4th6",
       "name": "Gameboy Advance SP",
       "platform": "ebay",
