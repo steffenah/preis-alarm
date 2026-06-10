@@ -1299,5 +1299,10 @@
     "title": "Ni-MH 1200mAh 9,6V Stick-Akku",
     "price": 1.0,
     "first_seen": "2026-06-09T21:04:00.961715"
+  },
+  "egun_softair::20396410": {
+    "title": "VFC Smith & Wesson M&P9c Compact GBB",
+    "price": 120.0,
+    "first_seen": "2026-06-10T11:49:15.080852"
   }
 }
