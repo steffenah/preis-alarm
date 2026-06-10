@@ -1304,5 +1304,10 @@
     "title": "VFC Smith & Wesson M&P9c Compact GBB",
     "price": 120.0,
     "first_seen": "2026-06-10T11:49:15.080852"
+  },
+  "egun_softair::20399730": {
+    "title": "G3 A4 Einschubschulterstütze OHNE Federrohr & Feder",
+    "price": 195.0,
+    "first_seen": "2026-06-10T14:42:14.935125"
   }
 }
