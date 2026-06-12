@@ -1344,5 +1344,15 @@
     "title": "Softair Piatole Heckler & Koch GSG",
     "price": 15.0,
     "first_seen": "2026-06-12T12:14:49.773988"
+  },
+  "egun_softair::20390768": {
+    "title": "Grosman Co2 Revolver Mod.38C Defekt",
+    "price": 15.5,
+    "first_seen": "2026-06-12T15:42:35.391505"
+  },
+  "egun_softair::20397366": {
+    "title": "VFC Glock G17/18C GBB-Magazin, Long-Type, neuwertig",
+    "price": 35.0,
+    "first_seen": "2026-06-12T15:42:35.391516"
   }
 }
