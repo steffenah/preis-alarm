@@ -10,25 +10,6 @@
       "enabled": true
     },
     {
-      "id": "32j3admx",
-      "name": "Tonie",
-      "platform": "ebay",
-      "keyword": "Tonie",
-      "url": "",
-      "max_price": 0,
-      "enabled": false,
-      "typo_variants": [
-        "tonies"
-      ],
-      "keywords": [],
-      "exclude_keywords": [
-        "Defekt",
-        "Bastler"
-      ],
-      "_last_typo_learn": "2026-06-09T19:01:27.689902",
-      "exclude_sellers": []
-    },
-    {
       "id": "0cmzskpc",
       "name": "Playstation 5",
       "platform": "ebay",
