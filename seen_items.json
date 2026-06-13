@@ -1369,5 +1369,15 @@
     "title": "WE - G36C IDZ - Gasblowback, Rückstoßsystem + Griff",
     "price": 180.0,
     "first_seen": "2026-06-13T10:39:17.015065"
+  },
+  "egun_softair::20375703": {
+    "title": "Dan Wesson 8\" - Vollmetallnachbau",
+    "price": 140.0,
+    "first_seen": "2026-06-13T17:20:18.347405"
+  },
+  "egun_softair::20401164": {
+    "title": "M88 - Kunststoff Helm",
+    "price": 10.0,
+    "first_seen": "2026-06-13T17:20:18.347433"
   }
 }
