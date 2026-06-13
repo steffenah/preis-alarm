@@ -1379,5 +1379,15 @@
     "title": "M88 - Kunststoff Helm",
     "price": 10.0,
     "first_seen": "2026-06-13T17:20:18.347433"
+  },
+  "egun_softair::20398016": {
+    "title": "WE MEU/1911 GBB Vollmetall 6mm schwarz/silber",
+    "price": 60.0,
+    "first_seen": "2026-06-13T18:49:34.573744"
+  },
+  "egun_softair::20395126": {
+    "title": "Softair Kugeln",
+    "price": 6.5,
+    "first_seen": "2026-06-13T18:49:34.573754"
   }
 }
