@@ -1394,5 +1394,35 @@
     "title": "Beretta 92 / M9A1 KJWorks, 6mm BB GBB, neu!",
     "price": 89.0,
     "first_seen": "2026-06-13T21:36:27.543628"
+  },
+  "egun_softair::20402088": {
+    "title": "Red Dot Vector Optics Leuchtpunktvisier",
+    "price": 125.0,
+    "first_seen": "2026-06-14T12:18:07.886803"
+  },
+  "egun_softair::20395463": {
+    "title": "KJ Works Carbine 6mm mit F Zeichen",
+    "price": 75.0,
+    "first_seen": "2026-06-14T12:18:07.886834"
+  },
+  "egun_softair::20402192": {
+    "title": "SIG SAUER X-Five P226 S BlowBack CO2",
+    "price": 70.0,
+    "first_seen": "2026-06-14T12:18:07.886840"
+  },
+  "egun_softair::20402202": {
+    "title": "Heckler & Koch USP .45 AUTO GBB",
+    "price": 70.0,
+    "first_seen": "2026-06-14T12:18:07.886843"
+  },
+  "egun_softair::20402270": {
+    "title": "H&K G3 A3(Umarex)Teile & Kleinteile von VFC NEUWERTIG",
+    "price": 50.0,
+    "first_seen": "2026-06-14T12:18:07.886845"
+  },
+  "egun_softair::20376979": {
+    "title": "VFC Glock17 Gen4 GBB ( CO2 - 1,5 Joule ) + Zubehör",
+    "price": 150.0,
+    "first_seen": "2026-06-14T12:18:07.886856"
   }
 }
