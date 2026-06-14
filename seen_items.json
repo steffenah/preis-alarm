@@ -1449,5 +1449,25 @@
     "title": "APS M4A1 RIS ASR-Series Vollmetall BlowBack S-AEG mit Zubehör",
     "price": 200.0,
     "first_seen": "2026-06-14T16:08:42.861096"
+  },
+  "egun_softair::20393400": {
+    "title": "Schutzweste Zentauron Thor",
+    "price": 17.05,
+    "first_seen": "2026-06-14T18:58:24.350848"
+  },
+  "egun_softair::20403981": {
+    "title": "Perkussionspistole Kal. 41 u. Airsoftpistole Kal. 6mm BB",
+    "price": 149.0,
+    "first_seen": "2026-06-14T18:58:24.350858"
+  },
+  "egun_softair::20393422": {
+    "title": "Plattenträger FA. Lindnerhof Taktik Gen.V",
+    "price": 14.5,
+    "first_seen": "2026-06-14T18:58:24.350881"
+  },
+  "egun_softair::20404242": {
+    "title": "CAM870 Tactical Police schwarz - MK3",
+    "price": 350.0,
+    "first_seen": "2026-06-14T18:58:24.350885"
   }
 }
