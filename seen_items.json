@@ -1434,5 +1434,20 @@
     "title": "Chassis für die ZORAKI 925-P in 9 mm P.A.K",
     "price": 249.0,
     "first_seen": "2026-06-14T14:34:05.709850"
+  },
+  "egun_softair::20241452": {
+    "title": "Cyma CM030 CM.030 AEP 6mm Softair <0,5Joule G18C ähnlich",
+    "price": 105.0,
+    "first_seen": "2026-06-14T16:08:42.861064"
+  },
+  "egun_softair::20386770": {
+    "title": "Mauser C96 Co2 6mm Airsoft",
+    "price": 22.99,
+    "first_seen": "2026-06-14T16:08:42.861092"
+  },
+  "egun_softair::20347591": {
+    "title": "APS M4A1 RIS ASR-Series Vollmetall BlowBack S-AEG mit Zubehör",
+    "price": 200.0,
+    "first_seen": "2026-06-14T16:08:42.861096"
   }
 }
