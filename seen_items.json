@@ -1474,5 +1474,20 @@
     "title": "MadBull Silencer für M4 Serie",
     "price": 15.0,
     "first_seen": "2026-06-14T22:52:22.276140"
+  },
+  "egun_softair::20404278": {
+    "title": "MadBull Silencer für SCAR",
+    "price": 15.0,
+    "first_seen": "2026-06-15T04:05:40.146166"
+  },
+  "egun_softair::20381444": {
+    "title": "Komplettes Airsoft set",
+    "price": 300.0,
+    "first_seen": "2026-06-15T04:05:40.146176"
+  },
+  "egun_softair::20347613": {
+    "title": "Well W96G Gas-Bolt-Action Snipergewehr schwarz 6mm BB",
+    "price": 150.0,
+    "first_seen": "2026-06-15T04:05:40.146180"
   }
 }
