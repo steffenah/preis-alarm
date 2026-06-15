@@ -1494,5 +1494,20 @@
     "title": "Airsoft Paintball Konvolut",
     "price": 60.0,
     "first_seen": "2026-06-15T10:31:28.782797"
+  },
+  "egun_softair::20394135": {
+    "title": "DDR, NVA Stahlhelm Model 56",
+    "price": 25.0,
+    "first_seen": "2026-06-15T16:08:43.280263"
+  },
+  "egun_softair::20394160": {
+    "title": "Russischer Stahlhelm Model SSH-40",
+    "price": 21.0,
+    "first_seen": "2026-06-15T16:08:43.280275"
+  },
+  "egun_softair::20215177": {
+    "title": "Zielfernrohr 4x20 - originalverpackt incl. Montage - fabrikneu - für KK-Gewehr, Luftdruck, SoftAir",
+    "price": 19.9,
+    "first_seen": "2026-06-15T16:08:43.280279"
   }
 }
