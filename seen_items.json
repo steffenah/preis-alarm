@@ -1579,5 +1579,15 @@
     "title": "H&K G3 A3 Kleinteile von VFC / Umarex Neuwertig",
     "price": 25.0,
     "first_seen": "2026-06-16T15:24:41.897941"
+  },
+  "egun_softair::20040775": {
+    "title": "G&G FN F2000 Tactical S-AEG Kaliber 6mm BB Desert",
+    "price": 249.9,
+    "first_seen": "2026-06-16T19:01:05.635989"
+  },
+  "egun_softair::20401823": {
+    "title": "Heckler & Koch G36C 6mm BB AEG Full-Auto",
+    "price": 15.5,
+    "first_seen": "2026-06-16T19:01:05.636013"
   }
 }
