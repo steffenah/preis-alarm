@@ -1604,5 +1604,15 @@
     "title": "Anschlagschaft/Gehäuse PDW Pistolenkarabiner mit Reflexvisier",
     "price": 7.5,
     "first_seen": "2026-06-17T11:24:36.377686"
+  },
+  "egun_softair::20400009": {
+    "title": "HK MP5K cal. 177 (4,5 mm)",
+    "price": 61.0,
+    "first_seen": "2026-06-17T14:32:38.426255"
+  },
+  "egun_softair::20400058": {
+    "title": "Smith & Wesson M&P40 Federdruck Softair 6 mm BB",
+    "price": 5.0,
+    "first_seen": "2026-06-17T14:32:38.426266"
   }
 }
