@@ -1634,5 +1634,15 @@
     "title": "Heckler & Koch USP CO² Softair / Airsoft Pistole + Ersatzmagazin",
     "price": 61.0,
     "first_seen": "2026-06-17T19:39:04.163069"
+  },
+  "egun_softair::20400597": {
+    "title": "C96 M712 Softair 6mmBB Metall mit Karabinerschaft und langem lauf",
+    "price": 45.5,
+    "first_seen": "2026-06-18T09:45:53.735907"
+  },
+  "egun_softair::20382694": {
+    "title": "Softair / Airsoft Gewehr FN Herstal Scar L 6 mm S-AEG",
+    "price": 76.77,
+    "first_seen": "2026-06-18T09:45:53.735918"
   }
 }
