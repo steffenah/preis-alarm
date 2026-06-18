@@ -1644,5 +1644,10 @@
     "title": "Softair / Airsoft Gewehr FN Herstal Scar L 6 mm S-AEG",
     "price": 76.77,
     "first_seen": "2026-06-18T09:45:53.735918"
+  },
+  "egun_softair::20382709": {
+    "title": "Softair / Airsoft Gewehr Cybergun Colt M4A1 Carbine S-AEG 6 mm",
+    "price": 38.5,
+    "first_seen": "2026-06-18T12:41:50.380675"
   }
 }
