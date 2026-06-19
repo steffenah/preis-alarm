@@ -1654,5 +1654,15 @@
     "title": "Softair / Airsoft Gewehr Fabarm STF12 18\" schwarz 6 mm",
     "price": 30.5,
     "first_seen": "2026-06-19T06:51:56.856666"
+  },
+  "egun_softair::20373021": {
+    "title": "Heckler & Koch / HK416 T4E RAM Kaliber .43 / 7,5 Joule / + viel Zubehör",
+    "price": 699.99,
+    "first_seen": "2026-06-19T11:08:53.154343"
+  },
+  "egun_softair::20405821": {
+    "title": "Konvolut MagazinKoppler Magazin Verbinder AK47 MP7 AR15",
+    "price": 15.0,
+    "first_seen": "2026-06-19T11:08:53.154353"
   }
 }
