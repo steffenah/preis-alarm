@@ -1694,5 +1694,15 @@
     "title": "Novritsch SSP18 CO2 und Gas Trommel Magazin",
     "price": 120.0,
     "first_seen": "2026-06-20T13:03:44.483525"
+  },
+  "egun_softair::20320021": {
+    "title": "Novritsch SSE18 Magazin und Holster",
+    "price": 50.0,
+    "first_seen": "2026-06-20T18:01:23.212457"
+  },
+  "egun_softair::20401192": {
+    "title": "verschiedene Griffschalen",
+    "price": 40.0,
+    "first_seen": "2026-06-20T18:01:23.212466"
   }
 }
