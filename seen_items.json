@@ -1689,5 +1689,10 @@
     "title": "Airsoft Pumpgun Cal.6mm BB",
     "price": 30.0,
     "first_seen": "2026-06-20T11:26:34.908034"
+  },
+  "egun_softair::20319970": {
+    "title": "Novritsch SSP18 CO2 und Gas Trommel Magazin",
+    "price": 120.0,
+    "first_seen": "2026-06-20T13:03:44.483525"
   }
 }
