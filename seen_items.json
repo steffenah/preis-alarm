@@ -1734,5 +1734,15 @@
     "title": "Colt M4 GBB von WE, RA Tech getuned",
     "price": 400.0,
     "first_seen": "2026-06-21T12:21:30.237093"
+  },
+  "egun_softair::20405602": {
+    "title": "VFC Walther PPK/S GBB",
+    "price": 75.0,
+    "first_seen": "2026-06-21T14:36:56.798124"
+  },
+  "egun_softair::20405606": {
+    "title": "VFC Walther PDP Compact GBB",
+    "price": 73.0,
+    "first_seen": "2026-06-21T14:36:56.798135"
   }
 }
