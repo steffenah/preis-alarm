@@ -1714,5 +1714,25 @@
     "title": "Kriss Vector KWA GBB mit Schalldämpfer",
     "price": 203.0,
     "first_seen": "2026-06-21T10:11:51.745670"
+  },
+  "egun_softair::20405303": {
+    "title": "Glock 18 GBB von SRU",
+    "price": 100.0,
+    "first_seen": "2026-06-21T12:21:30.237075"
+  },
+  "egun_softair::20405326": {
+    "title": "Glock 18 GBB von SRU mit Laufumbau und großem Magazin, unfunktionabel",
+    "price": 100.0,
+    "first_seen": "2026-06-21T12:21:30.237085"
+  },
+  "egun_softair::20405335": {
+    "title": "Heckler und Koch MK23 Socom GBB",
+    "price": 123.22,
+    "first_seen": "2026-06-21T12:21:30.237090"
+  },
+  "egun_softair::20405353": {
+    "title": "Colt M4 GBB von WE, RA Tech getuned",
+    "price": 400.0,
+    "first_seen": "2026-06-21T12:21:30.237093"
   }
 }
