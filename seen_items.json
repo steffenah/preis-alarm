@@ -1744,5 +1744,15 @@
     "title": "VFC Walther PDP Compact GBB",
     "price": 73.0,
     "first_seen": "2026-06-21T14:36:56.798135"
+  },
+  "egun_softair::20405619": {
+    "title": "WE Springfield Armory XDM 3.8 GBB Bicolor",
+    "price": 40.0,
+    "first_seen": "2026-06-21T16:18:33.911204"
+  },
+  "egun_softair::20384824": {
+    "title": "UMAREX Glock 17 Gen5 Set / GBB 6mm / 1J",
+    "price": 170.0,
+    "first_seen": "2026-06-21T16:18:33.911213"
   }
 }
