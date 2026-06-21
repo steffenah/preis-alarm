@@ -1754,5 +1754,25 @@
     "title": "UMAREX Glock 17 Gen5 Set / GBB 6mm / 1J",
     "price": 170.0,
     "first_seen": "2026-06-21T16:18:33.911213"
+  },
+  "egun_softair::20399469": {
+    "title": "2 Magazine f. H&K USP Tactical",
+    "price": 15.0,
+    "first_seen": "2026-06-21T17:57:15.903971"
+  },
+  "egun_softair::20409463": {
+    "title": "Echo1 Full Metall M14 S aeg",
+    "price": 320.0,
+    "first_seen": "2026-06-21T17:57:15.903979"
+  },
+  "egun_softair::20409476": {
+    "title": "UTR45 SMG Full Auto",
+    "price": 80.0,
+    "first_seen": "2026-06-21T17:57:15.903996"
+  },
+  "egun_softair::20409491": {
+    "title": "G&G ARP 9 Super Ranger",
+    "price": 150.0,
+    "first_seen": "2026-06-21T17:57:15.903999"
   }
 }
