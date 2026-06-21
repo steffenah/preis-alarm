@@ -1774,5 +1774,15 @@
     "title": "G&G ARP 9 Super Ranger",
     "price": 150.0,
     "first_seen": "2026-06-21T17:57:15.903999"
+  },
+  "egun_softair::20404416": {
+    "title": "Airsoft Shotgun Pumpaction",
+    "price": 1.0,
+    "first_seen": "2026-06-21T19:26:59.454478"
+  },
+  "egun_softair::20393853": {
+    "title": "ASG Scorpin EVO 3A1",
+    "price": 220.0,
+    "first_seen": "2026-06-21T19:26:59.454486"
   }
 }
