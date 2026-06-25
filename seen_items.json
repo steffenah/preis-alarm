@@ -1894,5 +1894,30 @@
     "title": "AR16, M4 Softair, Airsoft, AEG, cal. 6mmBB, Ares PGM-140",
     "price": 1.0,
     "first_seen": "2026-06-24T15:57:41.813119"
+  },
+  "egun_softair::20409592": {
+    "title": "H&K P30 Airsoft 6mm (Umarex)  Metallschlitten  NEU & UNBENUTZT <0,5J",
+    "price": 10.0,
+    "first_seen": "2026-06-25T16:04:30.127018"
+  },
+  "egun_softair::20409604": {
+    "title": "Walther PPK/S Airsoft 6mm <0,5J  NEU & OVP  Umarex Federdruck mit Metallschlitten",
+    "price": 7.5,
+    "first_seen": "2026-06-25T16:04:30.127030"
+  },
+  "egun_softair::20409617": {
+    "title": "Walther P22Q Softair 6mm BB <0,5J Umarex  Metallschlitten  NEU & OVP + 2 Magazine",
+    "price": 7.0,
+    "first_seen": "2026-06-25T16:04:30.127035"
+  },
+  "egun_softair::20409638": {
+    "title": "Beretta Mod. 92 FS Airsoft <0,5J | Metallschlitten | NEU & OVP | Umarex",
+    "price": 8.0,
+    "first_seen": "2026-06-25T16:04:30.127039"
+  },
+  "egun_softair::20409656": {
+    "title": "Walther PPQ HME 6mm Airsoft (Federdruck <0,5J)  NEU & OVP inkl. 2 Magazine",
+    "price": 11.0,
+    "first_seen": "2026-06-25T16:04:30.127041"
   }
 }
