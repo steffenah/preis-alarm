@@ -2014,5 +2014,15 @@
     "title": "Großes Airsoft-Set: HK416 Gas + HK P8A1 Gas",
     "price": 350.0,
     "first_seen": "2026-06-28T14:27:18.125635"
+  },
+  "egun_softair::20412708": {
+    "title": "Heckler & Koch HK416 A5 Airsoft Vollmetall Gas-Blow-Back 6mm BB schwarz - Generation 3",
+    "price": 400.0,
+    "first_seen": "2026-06-28T15:48:40.548113"
+  },
+  "egun_softair::20412714": {
+    "title": "VFC Sig Sauer ProForce P320 M17 CO2 BlowBack",
+    "price": 100.0,
+    "first_seen": "2026-06-28T15:48:40.548123"
   }
 }
