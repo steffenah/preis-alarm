@@ -2024,5 +2024,10 @@
     "title": "VFC Sig Sauer ProForce P320 M17 CO2 BlowBack",
     "price": 100.0,
     "first_seen": "2026-06-28T15:48:40.548123"
+  },
+  "egun_softair::20047376": {
+    "title": "Heckler & Koch G36 C Cal. 6 mm BB AEG < 0,5 J, Full-Auto ab 14 Jahren empfohlen",
+    "price": 99.95,
+    "first_seen": "2026-06-28T16:50:44.793717"
   }
 }
