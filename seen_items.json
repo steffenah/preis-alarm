@@ -1984,5 +1984,35 @@
     "title": "Zweibein Bipod M-Lok baugleich Magpul f. AR15, etc.",
     "price": 70.0,
     "first_seen": "2026-06-28T06:00:04.169236"
+  },
+  "egun_softair::20398684": {
+    "title": "MP 40 Softair",
+    "price": 14.5,
+    "first_seen": "2026-06-28T14:27:18.125611"
+  },
+  "egun_softair::20406031": {
+    "title": "HK VP9 Tactical Airsoft GBB  Umarex / Heckler & Koch  inkl. OVP, Magazine, Gas, BBs & Holster",
+    "price": 90.0,
+    "first_seen": "2026-06-28T14:27:18.125621"
+  },
+  "egun_softair::20406032": {
+    "title": "Lancer Tactical Gen 2 Airsoft M4 / AEG  halbautomatisch  inkl. OVP, Red Dot, Magazine, Akku & BBs",
+    "price": 70.0,
+    "first_seen": "2026-06-28T14:27:18.125626"
+  },
+  "egun_softair::20412134": {
+    "title": "KJ Works CZ Shadow 2 Vollmetall CO2 BlowBack 6mm BB schwarz",
+    "price": 54.5,
+    "first_seen": "2026-06-28T14:27:18.125630"
+  },
+  "egun_softair::20391423": {
+    "title": "Softair Konvolut G36C, Shotgun, Pistole, MP5, div. Zubehör",
+    "price": 40.5,
+    "first_seen": "2026-06-28T14:27:18.125633"
+  },
+  "egun_softair::20409528": {
+    "title": "Großes Airsoft-Set: HK416 Gas + HK P8A1 Gas",
+    "price": 350.0,
+    "first_seen": "2026-06-28T14:27:18.125635"
   }
 }
