@@ -2039,5 +2039,10 @@
     "title": "Colt M4A1 Softair",
     "price": 2.0,
     "first_seen": "2026-06-28T19:04:33.438611"
+  },
+  "egun_softair::20416707": {
+    "title": "MTW Billet Unleashed 10\" Inferno Edition, HPA, AR15",
+    "price": 999.0,
+    "first_seen": "2026-06-29T15:01:48.389708"
   }
 }
