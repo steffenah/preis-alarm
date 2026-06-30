@@ -2044,5 +2044,15 @@
     "title": "MTW Billet Unleashed 10\" Inferno Edition, HPA, AR15",
     "price": 999.0,
     "first_seen": "2026-06-29T15:01:48.389708"
+  },
+  "egun_softair::20412505": {
+    "title": "UMAREX, HK MP7 A1 Maschinenpistole, Softair, Airsoft, AEG cal. 6mm BB.",
+    "price": 14.5,
+    "first_seen": "2026-06-30T05:49:30.316477"
+  },
+  "egun_softair::20320889": {
+    "title": "G14 Carbine Dark Earth 6 mm BB - Airsoft S-AEG",
+    "price": 169.9,
+    "first_seen": "2026-06-30T05:49:30.316486"
   }
 }
