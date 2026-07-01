@@ -2084,5 +2084,20 @@
     "title": "Softair / Airsoft Gewehr Cybergun FN P90 TR AEG - DEFEKT -",
     "price": 13.5,
     "first_seen": "2026-06-30T22:58:58.441124"
+  },
+  "egun_softair::20415746": {
+    "title": "UHC Super x-9 Bolt Airsoft",
+    "price": 10.5,
+    "first_seen": "2026-07-01T08:41:54.988906"
+  },
+  "egun_softair::20415768": {
+    "title": "Glock 17 Co2",
+    "price": 25.5,
+    "first_seen": "2026-07-01T08:41:54.988916"
+  },
+  "305166a9::3422218794": {
+    "title": "Edurino Robin Zahlen & Mengen Stufe 1 Lernfigur",
+    "price": null,
+    "first_seen": "2026-07-01T08:41:56.073077"
   }
 }
