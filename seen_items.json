@@ -2134,5 +2134,10 @@
     "title": "Airsoft MP7A1 Umarex Heckler & Koch",
     "price": 100.0,
     "first_seen": "2026-07-03T18:04:05.068665"
+  },
+  "egun_softair::20335670": {
+    "title": "Combat Maschine 6BB mit Zubehör",
+    "price": 150.0,
+    "first_seen": "2026-07-03T23:44:13.421112"
   }
 }
