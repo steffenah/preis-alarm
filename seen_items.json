@@ -2249,5 +2249,10 @@
     "title": "2x Real Sword Typ-56 1-2 s-aeg",
     "price": 550.0,
     "first_seen": "2026-07-06T18:29:47.133712"
+  },
+  "egun_softair::20418272": {
+    "title": "WE Beretta M92 GBB Pistole Softair 1,0 Joule",
+    "price": 90.0,
+    "first_seen": "2026-07-06T20:26:06.185856"
   }
 }
