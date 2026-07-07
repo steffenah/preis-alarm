@@ -2269,5 +2269,10 @@
     "title": "Cyma 121 AEG",
     "price": 6.0,
     "first_seen": "2026-07-07T10:41:01.537859"
+  },
+  "egun_softair::20416760": {
+    "title": "Pistole GBB Desert Eagle",
+    "price": 26.5,
+    "first_seen": "2026-07-07T13:04:17.822941"
   }
 }
