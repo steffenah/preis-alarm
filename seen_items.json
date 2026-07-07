@@ -2254,5 +2254,20 @@
     "title": "WE Beretta M92 GBB Pistole Softair 1,0 Joule",
     "price": 90.0,
     "first_seen": "2026-07-06T20:26:06.185856"
+  },
+  "egun_softair::20398420": {
+    "title": "E&L AK-74 Airsoft mit Zubehör",
+    "price": 177.0,
+    "first_seen": "2026-07-07T10:41:01.537844"
+  },
+  "egun_softair::20422992": {
+    "title": "Barrett M82A1 Full Metal - AEG",
+    "price": 500.0,
+    "first_seen": "2026-07-07T10:41:01.537855"
+  },
+  "egun_softair::20416727": {
+    "title": "Cyma 121 AEG",
+    "price": 6.0,
+    "first_seen": "2026-07-07T10:41:01.537859"
   }
 }
