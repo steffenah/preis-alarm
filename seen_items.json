@@ -2319,5 +2319,15 @@
     "title": "Real Sword Dragunov SVD originales komplettes verstärktes Gear Set",
     "price": 55.0,
     "first_seen": "2026-07-08T08:45:51.843395"
+  },
+  "egun_softair::20217158": {
+    "title": "Umarex Ruger SuperHawk 8Zoll Lauf 6mm BB C02 Softair schwarz 3 Joule",
+    "price": 120.0,
+    "first_seen": "2026-07-08T10:50:22.636838"
+  },
+  "egun_softair::20224387": {
+    "title": "Umarex IWI TAVOR 21 T21 TAR Softair 6mm S-AEG",
+    "price": 250.0,
+    "first_seen": "2026-07-08T10:50:22.636863"
   }
 }
