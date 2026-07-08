@@ -2339,5 +2339,15 @@
     "title": "2500 Schuss Box Magazin DrumMag elektrisch angetrieben für M4 M16 Softair 6mm BB passt in Firehawk",
     "price": 50.0,
     "first_seen": "2026-07-08T14:38:08.510580"
+  },
+  "egun_softair::20244182": {
+    "title": "G&G Firehawk High Cycle HC-05 < 0,5 Joule, 6mmBB AEG Softair Gewehr",
+    "price": 220.0,
+    "first_seen": "2026-07-08T16:17:48.180878"
+  },
+  "egun_softair::20244162": {
+    "title": "Ersatzmagazin Amoeba Stryker S1 Softair 6mm BB Softair",
+    "price": 17.0,
+    "first_seen": "2026-07-08T16:17:48.180904"
   }
 }
