@@ -2274,5 +2274,50 @@
     "title": "Pistole GBB Desert Eagle",
     "price": 26.5,
     "first_seen": "2026-07-07T13:04:17.822941"
+  },
+  "egun_softair::20421021": {
+    "title": "Walther P99",
+    "price": 25.0,
+    "first_seen": "2026-07-08T08:45:51.843349"
+  },
+  "egun_softair::20423441": {
+    "title": "MadBull Silencer für M4 Serie",
+    "price": 15.5,
+    "first_seen": "2026-07-08T08:45:51.843357"
+  },
+  "egun_softair::20423732": {
+    "title": "KNIGHTS ARMAMENT Silencer für M4 Serie",
+    "price": 15.0,
+    "first_seen": "2026-07-08T08:45:51.843361"
+  },
+  "egun_softair::20399710": {
+    "title": "WASP /Rauch/G TRAINING GRANATEN",
+    "price": 50.0,
+    "first_seen": "2026-07-08T08:45:51.843365"
+  },
+  "egun_softair::20423949": {
+    "title": "Mini RMR Red Dot Sight Collimator",
+    "price": 24.0,
+    "first_seen": "2026-07-08T08:45:51.843383"
+  },
+  "egun_softair::20423974": {
+    "title": "Schulterstütze Magpul Style",
+    "price": 15.0,
+    "first_seen": "2026-07-08T08:45:51.843387"
+  },
+  "egun_softair::20423997": {
+    "title": "MadBull / Daniel Defense M4 Aluminium Lite Rail 7 Zoll schwarz",
+    "price": 50.0,
+    "first_seen": "2026-07-08T08:45:51.843389"
+  },
+  "egun_softair::20422280": {
+    "title": "M&P 40",
+    "price": 20.0,
+    "first_seen": "2026-07-08T08:45:51.843392"
+  },
+  "egun_softair::20216953": {
+    "title": "Real Sword Dragunov SVD originales komplettes verstärktes Gear Set",
+    "price": 55.0,
+    "first_seen": "2026-07-08T08:45:51.843395"
   }
 }
