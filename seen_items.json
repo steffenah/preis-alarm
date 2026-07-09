@@ -2359,5 +2359,15 @@
     "title": "Pumpgun Fabarm STF12 11\" Short Tactical Softair-Gewehr Schwarz Kaliber 6 mm BB Federdruck (P18)",
     "price": 90.0,
     "first_seen": "2026-07-08T22:40:00.282976"
+  },
+  "egun_softair::20244215": {
+    "title": "Ares Amoeba M4 AM-016 Octarms EFC-System Gen. 3 S-AEG 6mm BB",
+    "price": 300.0,
+    "first_seen": "2026-07-09T14:09:03.804221"
+  },
+  "egun_softair::20424357": {
+    "title": "TTI Sandviper (EMG Airsoft )",
+    "price": 96.0,
+    "first_seen": "2026-07-09T14:09:03.804246"
   }
 }
