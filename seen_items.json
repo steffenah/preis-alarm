@@ -2369,5 +2369,10 @@
     "title": "TTI Sandviper (EMG Airsoft )",
     "price": 96.0,
     "first_seen": "2026-07-09T14:09:03.804246"
+  },
+  "egun_softair::20423006": {
+    "title": "G.S.G Softair, Winchester, Unterhebel, UHR, Luftgewehr. Cal 6mm BB",
+    "price": 55.0,
+    "first_seen": "2026-07-09T18:24:05.953515"
   }
 }
