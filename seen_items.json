@@ -2384,5 +2384,15 @@
     "title": "AR15 Schaft Paket - 3 Stück",
     "price": 20.0,
     "first_seen": "2026-07-10T12:56:53.760077"
+  },
+  "egun_softair::20424852": {
+    "title": "H&K 416 Schaft Paket - 3 Stück",
+    "price": 24.0,
+    "first_seen": "2026-07-10T15:29:57.649050"
+  },
+  "egun_softair::20424856": {
+    "title": "MadBull Handguard 32cm lang",
+    "price": 15.5,
+    "first_seen": "2026-07-10T15:29:57.649063"
   }
 }
