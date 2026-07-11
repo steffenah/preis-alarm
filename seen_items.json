@@ -2484,5 +2484,15 @@
     "title": "Glock KJW KP-13 CO2 und GAS",
     "price": 45.5,
     "first_seen": "2026-07-11T14:06:57.862383"
+  },
+  "egun_softair::20419286": {
+    "title": "G und G Firehawk",
+    "price": 150.0,
+    "first_seen": "2026-07-11T16:09:20.791138"
+  },
+  "egun_softair::20422011": {
+    "title": "Golden Eagle M1887 (Green Gas)",
+    "price": 152.0,
+    "first_seen": "2026-07-11T16:09:20.791167"
   }
 }
