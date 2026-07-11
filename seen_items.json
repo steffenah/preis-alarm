@@ -2424,5 +2424,45 @@
     "title": "Waffenkoffer # 1",
     "price": 20.0,
     "first_seen": "2026-07-10T20:08:55.741678"
+  },
+  "egun_softair::20425245": {
+    "title": "Waffenkoffer # 2 / Doppel Pistolekoffer",
+    "price": 20.0,
+    "first_seen": "2026-07-11T08:18:11.979900"
+  },
+  "egun_softair::20406239": {
+    "title": "Airsoftpistole KWC Taiwan Taurus Cybergun 24/7 6mmBB - neuwertig",
+    "price": 15.5,
+    "first_seen": "2026-07-11T08:18:11.979909"
+  },
+  "egun_softair::20418863": {
+    "title": "HK MP5",
+    "price": 22.0,
+    "first_seen": "2026-07-11T08:18:11.979913"
+  },
+  "egun_softair::20423758": {
+    "title": "AK Silencer Schalldämpfer (24mm CW + 14mm CCW) Yunker AK47 AK74",
+    "price": 21.0,
+    "first_seen": "2026-07-11T08:18:11.979917"
+  },
+  "egun_softair::20421487": {
+    "title": "TAURUS PT 92 AF 9mm Para - Cybergun Replica Airsoft 6mm BB",
+    "price": 4.5,
+    "first_seen": "2026-07-11T08:18:11.979920"
+  },
+  "egun_softair::20419076": {
+    "title": "Taschen für den BW Lochkoppel Tragesatz",
+    "price": 1.5,
+    "first_seen": "2026-07-11T08:18:11.979923"
+  },
+  "egun_softair::20401552": {
+    "title": "GSG MB08 Sniper Federdruck Softair / Airsoft Gewehr",
+    "price": 40.5,
+    "first_seen": "2026-07-11T08:18:11.979925"
+  },
+  "egun_softair::20401553": {
+    "title": "S-AEG Softair / Airsoft Gewehr BGS M4412B Sniper",
+    "price": 10.5,
+    "first_seen": "2026-07-11T08:18:11.979927"
   }
 }
