@@ -2494,5 +2494,20 @@
     "title": "Golden Eagle M1887 (Green Gas)",
     "price": 152.0,
     "first_seen": "2026-07-11T16:09:20.791167"
+  },
+  "egun_softair::20415901": {
+    "title": "Walther Top Point I und Top Point II Rotpunktvisiere - Red Dot Visiere",
+    "price": 15.5,
+    "first_seen": "2026-07-11T17:13:07.807179"
+  },
+  "egun_softair::20410165": {
+    "title": "Panzersammlung",
+    "price": 13.5,
+    "first_seen": "2026-07-11T17:13:07.807188"
+  },
+  "egun_softair::20425894": {
+    "title": "SR-25 QD Mock Schalldämpfer",
+    "price": 20.0,
+    "first_seen": "2026-07-11T17:13:07.807192"
   }
 }
