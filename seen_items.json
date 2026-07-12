@@ -2544,5 +2544,15 @@
     "title": "Wei-ETech M9 Vollmetall GBB 6mm BB schwarz",
     "price": 70.0,
     "first_seen": "2026-07-12T10:09:19.188611"
+  },
+  "egun_softair::20417364": {
+    "title": "Softair CO²-Ersatzmagazin H&K P8",
+    "price": 20.0,
+    "first_seen": "2026-07-12T13:55:05.392577"
+  },
+  "egun_softair::20411722": {
+    "title": "COLT M1911 A1 (parkerized) - CO2 6mmBB (VFC",
+    "price": 68.0,
+    "first_seen": "2026-07-12T13:55:05.392586"
   }
 }
