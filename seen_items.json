@@ -2554,5 +2554,20 @@
     "title": "COLT M1911 A1 (parkerized) - CO2 6mmBB (VFC",
     "price": 68.0,
     "first_seen": "2026-07-12T13:55:05.392586"
+  },
+  "egun_softair::20411723": {
+    "title": "Walther P38 (Maruzen) 6mm GBB Airsoft",
+    "price": 201.0,
+    "first_seen": "2026-07-12T14:47:59.063971"
+  },
+  "egun_softair::20411727": {
+    "title": "UMAREX HK G3 6mm GBB Softair (VFC)",
+    "price": 654.0,
+    "first_seen": "2026-07-12T14:47:59.063979"
+  },
+  "egun_softair::20423972": {
+    "title": "Konvolut Picatinny Handguard Abdeckungen MLOK Verkabelungsverkleidung Airsoft",
+    "price": 10.0,
+    "first_seen": "2026-07-12T14:47:59.063983"
   }
 }
