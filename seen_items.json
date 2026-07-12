@@ -2524,5 +2524,25 @@
     "title": "HK USP Softair Pistole defekt an Bastler in Einzelteilen.",
     "price": 2.0,
     "first_seen": "2026-07-12T08:31:57.634802"
+  },
+  "egun_softair::20419848": {
+    "title": "STG 44 AEG",
+    "price": 201.99,
+    "first_seen": "2026-07-12T10:09:19.188594"
+  },
+  "egun_softair::20422918": {
+    "title": "WE M1911 Tactical Vollmetall GBB 6mm BB schwarz",
+    "price": 70.0,
+    "first_seen": "2026-07-12T10:09:19.188604"
+  },
+  "egun_softair::20422921": {
+    "title": "Socom Gear N226 Tactical Vollmetall GBB 6mm BB schwarz",
+    "price": 70.0,
+    "first_seen": "2026-07-12T10:09:19.188608"
+  },
+  "egun_softair::20422923": {
+    "title": "Wei-ETech M9 Vollmetall GBB 6mm BB schwarz",
+    "price": 70.0,
+    "first_seen": "2026-07-12T10:09:19.188611"
   }
 }
