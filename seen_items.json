@@ -2609,5 +2609,10 @@
     "title": "Schwaben Arms M41",
     "price": 130.0,
     "first_seen": "2026-07-13T17:30:24.816944"
+  },
+  "egun_softair::20429566": {
+    "title": "VFC HK 416 GBB + HPA Adapter",
+    "price": 670.0,
+    "first_seen": "2026-07-13T20:11:43.067309"
   }
 }
