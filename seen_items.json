@@ -2599,5 +2599,15 @@
     "title": "Crosmann 3357 Spot Marker Softair Revolver no UMAREX Colt Walther Paintball",
     "price": 89.95,
     "first_seen": "2026-07-13T12:33:39.110020"
+  },
+  "egun_softair::20428455": {
+    "title": "Mossberg shotgun",
+    "price": 25.0,
+    "first_seen": "2026-07-13T17:30:24.816935"
+  },
+  "egun_softair::20420742": {
+    "title": "Schwaben Arms M41",
+    "price": 130.0,
+    "first_seen": "2026-07-13T17:30:24.816944"
   }
 }
