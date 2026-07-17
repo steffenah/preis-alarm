@@ -2674,5 +2674,15 @@
     "title": "AK-47 / AK-74 Airsoft (Metall/Kunststoff) – Defekt / Bastlerhit / Deko + Scope Mount",
     "price": 25.5,
     "first_seen": "2026-07-17T17:54:13.479840"
+  },
+  "egun_softair::20416044": {
+    "title": "Softair set Gewehr Pistole m89 g36",
+    "price": 110.0,
+    "first_seen": "2026-07-17T18:51:31.685931"
+  },
+  "egun_softair::20422301": {
+    "title": "Well MB4419-3D Airsoft Sniper",
+    "price": 68.0,
+    "first_seen": "2026-07-17T18:51:31.685958"
   }
 }
