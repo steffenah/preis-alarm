@@ -2769,5 +2769,10 @@
     "title": "taurus softair",
     "price": 20.0,
     "first_seen": "2026-07-19T19:45:35.244994"
+  },
+  "egun_softair::20428028": {
+    "title": "APS Striker-12 MKII Revolver Shotgun",
+    "price": 250.0,
+    "first_seen": "2026-07-20T12:33:37.834721"
   }
 }
