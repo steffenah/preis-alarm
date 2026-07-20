@@ -2774,5 +2774,10 @@
     "title": "APS Striker-12 MKII Revolver Shotgun",
     "price": 250.0,
     "first_seen": "2026-07-20T12:33:37.834721"
+  },
+  "egun_softair::20435588": {
+    "title": "Walther Nighthawk",
+    "price": 179.0,
+    "first_seen": "2026-07-20T21:16:57.867024"
   }
 }
