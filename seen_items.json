@@ -2819,5 +2819,20 @@
     "title": "H&K 417 - Upper",
     "price": 24.0,
     "first_seen": "2026-07-23T10:53:50.547558"
+  },
+  "egun_softair::20437566": {
+    "title": "VFC QRS Schaft - schwarz und TAN",
+    "price": 20.0,
+    "first_seen": "2026-07-23T14:36:26.785269"
+  },
+  "egun_softair::20437572": {
+    "title": "2 Stück Handguard TAN und Schwarz",
+    "price": 20.0,
+    "first_seen": "2026-07-23T14:36:26.785280"
+  },
+  "egun_softair::20437576": {
+    "title": "KSC M11A1 Gas Magazin",
+    "price": 10.0,
+    "first_seen": "2026-07-23T14:36:26.785285"
   }
 }
