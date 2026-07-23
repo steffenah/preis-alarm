@@ -2799,5 +2799,25 @@
     "title": "Army Armament R17 ,6mmBB",
     "price": 160.0,
     "first_seen": "2026-07-23T08:48:20.347228"
+  },
+  "egun_softair::20437302": {
+    "title": "ARES - CNC RAS Handschutz für G36 - Lang",
+    "price": 24.0,
+    "first_seen": "2026-07-23T10:53:50.547542"
+  },
+  "egun_softair::20437310": {
+    "title": "ASG B&T Rotex III A - Schalldämpfer",
+    "price": 35.0,
+    "first_seen": "2026-07-23T10:53:50.547550"
+  },
+  "egun_softair::20437319": {
+    "title": "wüstenfarbener M-LOK Handguard 240mm",
+    "price": 15.0,
+    "first_seen": "2026-07-23T10:53:50.547555"
+  },
+  "egun_softair::20437324": {
+    "title": "H&K 417 - Upper",
+    "price": 24.0,
+    "first_seen": "2026-07-23T10:53:50.547558"
   }
 }
