@@ -2794,5 +2794,10 @@
     "title": "Airsoft MG42 AGM",
     "price": 460.0,
     "first_seen": "2026-07-22T20:58:24.719987"
+  },
+  "egun_softair::20414657": {
+    "title": "Army Armament R17 ,6mmBB",
+    "price": 160.0,
+    "first_seen": "2026-07-23T08:48:20.347228"
   }
 }
