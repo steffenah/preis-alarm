@@ -2839,5 +2839,10 @@
     "title": "Edurino Set",
     "price": null,
     "first_seen": "2026-07-23T16:12:11.304825"
+  },
+  "egun_softair::20436440": {
+    "title": "Novritsch SSG24",
+    "price": 450.0,
+    "first_seen": "2026-07-24T18:44:40.777968"
   }
 }
