@@ -2904,5 +2904,15 @@
     "title": "Umarex Glock 19 Gen5 MOS BLK",
     "price": 120.0,
     "first_seen": "2026-07-27T08:20:31.721220"
+  },
+  "egun_softair::20436227": {
+    "title": "Heckler & Koch G36C Airsoft",
+    "price": 70.0,
+    "first_seen": "2026-07-27T11:45:23.286778"
+  },
+  "egun_softair::20436236": {
+    "title": "Großes Airsoft Zubehörpaket Novritsch, Joule Meter, Tracer, Helmet & mehr",
+    "price": 375.0,
+    "first_seen": "2026-07-27T11:45:23.286788"
   }
 }
