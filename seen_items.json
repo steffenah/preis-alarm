@@ -2914,5 +2914,15 @@
     "title": "Großes Airsoft Zubehörpaket Novritsch, Joule Meter, Tracer, Helmet & mehr",
     "price": 375.0,
     "first_seen": "2026-07-27T11:45:23.286788"
+  },
+  "egun_softair::20440811": {
+    "title": "VFC MP7 A1 GBB",
+    "price": 180.0,
+    "first_seen": "2026-07-27T13:59:56.159642"
+  },
+  "egun_softair::20440843": {
+    "title": "VFC Sig Sauer P229 GBB",
+    "price": 110.0,
+    "first_seen": "2026-07-27T13:59:56.159667"
   }
 }
