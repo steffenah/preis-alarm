@@ -2939,5 +2939,50 @@
     "title": "Walther CP88 Competition Nickel",
     "price": 15.5,
     "first_seen": "2026-07-28T13:20:09.362578"
+  },
+  "egun_softair::20441685": {
+    "title": "4 Stück Pistolen Taschen",
+    "price": 20.0,
+    "first_seen": "2026-07-28T15:39:09.209446"
+  },
+  "egun_softair::20441692": {
+    "title": "3 Stück Pistolen BeinHolster",
+    "price": 30.0,
+    "first_seen": "2026-07-28T15:39:09.209455"
+  },
+  "egun_softair::20441696": {
+    "title": "Taktische Weste",
+    "price": 10.0,
+    "first_seen": "2026-07-28T15:39:09.209459"
+  },
+  "egun_softair::20441697": {
+    "title": "Riemen und Tragegurte",
+    "price": 15.0,
+    "first_seen": "2026-07-28T15:39:09.209462"
+  },
+  "egun_softair::20441698": {
+    "title": "Tarn Ghillie Suits",
+    "price": 10.0,
+    "first_seen": "2026-07-28T15:39:09.209464"
+  },
+  "egun_softair::20441708": {
+    "title": "Ausrüstungs Paket 01",
+    "price": 20.0,
+    "first_seen": "2026-07-28T15:39:09.209466"
+  },
+  "egun_softair::20441712": {
+    "title": "Ausrüstungs Paket 02",
+    "price": 15.0,
+    "first_seen": "2026-07-28T15:39:09.209469"
+  },
+  "egun_softair::20441717": {
+    "title": "Holster Paket 01 - 8 Stück",
+    "price": 50.0,
+    "first_seen": "2026-07-28T15:39:09.209471"
+  },
+  "egun_softair::20441721": {
+    "title": "Holster Paket 02 - Zubehör",
+    "price": 50.0,
+    "first_seen": "2026-07-28T15:39:09.209474"
   }
 }
