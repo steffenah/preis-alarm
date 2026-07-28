@@ -2924,5 +2924,15 @@
     "title": "VFC Sig Sauer P229 GBB",
     "price": 110.0,
     "first_seen": "2026-07-27T13:59:56.159667"
+  },
+  "egun_softair::20440672": {
+    "title": "Glock 17 Umarex / Airsoft / 2 Magazine",
+    "price": 99.0,
+    "first_seen": "2026-07-28T09:43:38.523112"
+  },
+  "egun_softair::20438798": {
+    "title": "KJW KP-08 (Hi Capa)",
+    "price": 29.0,
+    "first_seen": "2026-07-28T09:43:38.523138"
   }
 }
