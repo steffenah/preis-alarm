@@ -3099,5 +3099,15 @@
     "title": "Gewehrriemen, Magpul MS3 Sling, PTS Version!",
     "price": 3.0,
     "first_seen": "2026-07-31T19:19:54.780982"
+  },
+  "egun_softair::20420804": {
+    "title": "Gewehrriemen, Magpul QD Sling, PTS Version!",
+    "price": 7.0,
+    "first_seen": "2026-07-31T20:37:50.320532"
+  },
+  "egun_softair::20420809": {
+    "title": "Gewehrriemen-Aufnahme, Magpul QD Slingaufnahme, PTS Version!",
+    "price": 1.5,
+    "first_seen": "2026-07-31T20:37:50.320543"
   }
 }
