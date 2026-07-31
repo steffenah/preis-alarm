@@ -3044,5 +3044,45 @@
     "title": "Airsoft Pistole APS-A 6mm BB - Stechkin",
     "price": 36.2,
     "first_seen": "2026-07-30T19:02:54.576235"
+  },
+  "egun_softair::20437539": {
+    "title": "3 Magazine für MP40 oder Sten",
+    "price": 7.5,
+    "first_seen": "2026-07-31T14:36:14.513967"
+  },
+  "egun_softair::20437590": {
+    "title": "Panzer Sammlung I",
+    "price": 4.5,
+    "first_seen": "2026-07-31T14:36:14.513977"
+  },
+  "egun_softair::20437606": {
+    "title": "Panzer Sammlung II",
+    "price": 11.5,
+    "first_seen": "2026-07-31T14:36:14.513981"
+  },
+  "egun_softair::20439879": {
+    "title": "ARCTURUS M4 Hybrid – Hochwertig getunt – GATE TITAN – CQB-Ready 1,3 Joule",
+    "price": 250.0,
+    "first_seen": "2026-07-31T14:36:14.513984"
+  },
+  "egun_softair::20441853": {
+    "title": "- - - -GSG Sniper Scharfschützen Gewehr wie k98 - Repetierer 6mm......Nr.1",
+    "price": 12.5,
+    "first_seen": "2026-07-31T14:36:14.513988"
+  },
+  "egun_softair::20437764": {
+    "title": "T4E Defense Training Marker HDR 50 (TR 50) Gen2 Revolver Co2 cal .50 - 7,5 Joule",
+    "price": 43.5,
+    "first_seen": "2026-07-31T14:36:14.513991"
+  },
+  "egun_softair::20437977": {
+    "title": "T4E TP 50 Gen2 CO2-RAM Pistole Kal. 50 schwarz Paintball Umarex",
+    "price": 25.0,
+    "first_seen": "2026-07-31T14:36:14.513994"
+  },
+  "egun_softair::20420779": {
+    "title": "Gewehrriemen, Magpul MS2 Sling, PTS Version!",
+    "price": 5.5,
+    "first_seen": "2026-07-31T14:36:14.513996"
   }
 }
