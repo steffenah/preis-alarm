@@ -3109,5 +3109,15 @@
     "title": "Gewehrriemen-Aufnahme, Magpul QD Slingaufnahme, PTS Version!",
     "price": 1.5,
     "first_seen": "2026-07-31T20:37:50.320543"
+  },
+  "egun_softair::20444618": {
+    "title": "Begadi M14 Sport EBR MOD.0 S-AEG",
+    "price": 450.0,
+    "first_seen": "2026-08-01T11:51:14.604546"
+  },
+  "egun_softair::20444621": {
+    "title": "Daniel Defense MK18 S-AEG",
+    "price": 409.0,
+    "first_seen": "2026-08-01T11:51:14.604567"
   }
 }
