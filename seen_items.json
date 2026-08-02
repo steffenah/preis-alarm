@@ -3139,5 +3139,10 @@
     "title": "Hämmerli 850 und Hechler u. Koch 45",
     "price": 55.5,
     "first_seen": "2026-08-02T15:29:12.227953"
+  },
+  "egun_softair::20423435": {
+    "title": "GSG 4410 Sniper Softairgewehr 6mmBB Federdruck",
+    "price": 119.0,
+    "first_seen": "2026-08-02T17:32:38.757923"
   }
 }
