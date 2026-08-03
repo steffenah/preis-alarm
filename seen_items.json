@@ -3144,5 +3144,15 @@
     "title": "GSG 4410 Sniper Softairgewehr 6mmBB Federdruck",
     "price": 119.0,
     "first_seen": "2026-08-02T17:32:38.757923"
+  },
+  "egun_softair::20335622": {
+    "title": "Gewehr Hk 416 mit Zubehör nicht bespielt",
+    "price": 350.0,
+    "first_seen": "2026-08-03T11:37:35.826167"
+  },
+  "egun_softair::20424233": {
+    "title": "G&G Armament TGM A3 E.T.U. 0,5J",
+    "price": 260.0,
+    "first_seen": "2026-08-03T11:37:35.826190"
   }
 }
