@@ -3179,5 +3179,35 @@
     "title": "- - - - UMAREX Pumpgun Softair Gewehr Schrot - Kutscher Flinte 6mm......Nr.2",
     "price": 42.5,
     "first_seen": "2026-08-06T13:22:23.088601"
+  },
+  "egun_softair::20444547": {
+    "title": "KLI SR 1911",
+    "price": 35.0,
+    "first_seen": "2026-08-06T15:35:50.541200"
+  },
+  "egun_softair::20444571": {
+    "title": "ASG CZ Scorpion EVO 3 A1 ATEK S-AEG mit Strike Systems Red Dot",
+    "price": 279.0,
+    "first_seen": "2026-08-06T15:35:50.541210"
+  },
+  "egun_softair::20444581": {
+    "title": "ICS G33 AARF Compact Assault Rifle S-AEG 6mm BB schwarz",
+    "price": 169.0,
+    "first_seen": "2026-08-06T15:35:50.541215"
+  },
+  "egun_softair::20444594": {
+    "title": "G&G GC16 Wild Hog 13.5 S-AEG 6mm mit Red Dot & Magnifier",
+    "price": 199.0,
+    "first_seen": "2026-08-06T15:35:50.541218"
+  },
+  "egun_softair::20444616": {
+    "title": "G&G GPM1911 GP2 CO2 Blowback Airsoft 6mm BB Holzgriff",
+    "price": 99.0,
+    "first_seen": "2026-08-06T15:35:50.541221"
+  },
+  "egun_softair::20444620": {
+    "title": "WE-Tech M1911 Hex Cut Gen. 2 GBB/CO2 Airsoft 6mm BB",
+    "price": 69.0,
+    "first_seen": "2026-08-06T15:35:50.541226"
   }
 }
