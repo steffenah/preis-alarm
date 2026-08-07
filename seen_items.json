@@ -3224,5 +3224,40 @@
     "title": "Edurino Starter Set",
     "price": null,
     "first_seen": "2026-08-07T03:30:38.488364"
+  },
+  "egun_softair::20442695": {
+    "title": "Dan Wesson Smith Wesson CO2 Revolver 4,5mm bb",
+    "price": 57.5,
+    "first_seen": "2026-08-07T07:53:39.239305"
+  },
+  "egun_softair::20433435": {
+    "title": "GSG 4410 Sniper",
+    "price": 99.0,
+    "first_seen": "2026-08-07T07:53:39.239314"
+  },
+  "egun_softair::20446970": {
+    "title": "Softair Shotgun Pumpgun (AGM MP003 / Mossberg-Style) – Federdruck, inkl. Magazin",
+    "price": 8.0,
+    "first_seen": "2026-08-07T07:53:39.239318"
+  },
+  "egun_softair::20446976": {
+    "title": "Golden Eagle MS70XS / M8876 Gas Shotgun (Super Shorty) – Dicht & Voll funktionsfähig",
+    "price": 75.0,
+    "first_seen": "2026-08-07T07:53:39.239321"
+  },
+  "egun_softair::20445238": {
+    "title": "Colt 1911A1 US Army WK II in phosphatiert /grau Cyber Gun (VFC ?)",
+    "price": 103.0,
+    "first_seen": "2026-08-07T07:53:39.239324"
+  },
+  "egun_softair::20426268": {
+    "title": "Softair / Airsoft Gewehr Cybergun Kalshnikov AK47",
+    "price": 17.5,
+    "first_seen": "2026-08-07T07:53:39.239326"
+  },
+  "egun_softair::20426274": {
+    "title": "S-AEG Softair / Airsoft Gewehr BGS CM022 AK47",
+    "price": 25.5,
+    "first_seen": "2026-08-07T07:53:39.239328"
   }
 }
