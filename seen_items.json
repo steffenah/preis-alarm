@@ -3209,5 +3209,15 @@
     "title": "WE-Tech M1911 Hex Cut Gen. 2 GBB/CO2 Airsoft 6mm BB",
     "price": 69.0,
     "first_seen": "2026-08-06T15:35:50.541226"
+  },
+  "egun_softair::20447861": {
+    "title": "Airsoft SAA Revolvergewehr 6 mm Gas",
+    "price": 99.0,
+    "first_seen": "2026-08-07T00:29:34.936121"
+  },
+  "egun_softair::20422884": {
+    "title": "Umarex GLOCK 17 Gen5 Gas-Airsoft-Magazin 6mm BB 22Schuss – OVP",
+    "price": 5.5,
+    "first_seen": "2026-08-07T00:29:34.936131"
   }
 }
