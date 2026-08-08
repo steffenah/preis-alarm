@@ -3274,5 +3274,20 @@
     "title": "Red Dot für Airsoft",
     "price": 15.0,
     "first_seen": "2026-08-07T16:24:13.904226"
+  },
+  "egun_softair::20445857": {
+    "title": "US M16E4 Deko, kein 98, FG 42, MP 44",
+    "price": 76.0,
+    "first_seen": "2026-08-08T11:02:07.884048"
+  },
+  "egun_softair::20440393": {
+    "title": "Airsoft Repetiergewehr ähnlich Remington 700 mit ZF + Montage",
+    "price": 52.0,
+    "first_seen": "2026-08-08T11:02:07.884057"
+  },
+  "egun_softair::20448987": {
+    "title": "MCS On Off Slide Ventil",
+    "price": 120.0,
+    "first_seen": "2026-08-08T11:02:07.884061"
   }
 }
