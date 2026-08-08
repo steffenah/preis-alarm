@@ -27,9 +27,9 @@ TELEGRAM_STATE_FILE  = BASE_DIR / "telegram_state.json"
 DEAL_THRESHOLD_PCT = 30   # 30% unter Median = 🔥 Schnäppchen
 DEAL_MIN_SAMPLES   = 5    # mindestens 5 Daten brauchen wir, um einen Median zu trauen
 
-# Sniper-Konfiguration: Auktion endet in 5-15 Minuten + 0 Gebote → benachrichtigen
+# Sniper-Konfiguration: Auktion endet in 5-30 Minuten + 0 Gebote → benachrichtigen
 SNIPER_WINDOW_MIN_LO = 5
-SNIPER_WINDOW_MIN_HI = 15
+SNIPER_WINDOW_MIN_HI = 30
 
 # Auto-Tippfehler-Vorschläge (nervig? Per env AUTO_LEARN_TYPOS=1 anschalten)
 AUTO_LEARN_TYPOS = os.environ.get("AUTO_LEARN_TYPOS", "0") == "1"
