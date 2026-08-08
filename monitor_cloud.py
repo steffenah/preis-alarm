@@ -29,6 +29,12 @@ TELEGRAM_STATE_FILE  = BASE_DIR / "telegram_state.json"
 DEAL_THRESHOLD_PCT = 30   # 30% unter Median = 🔥 Schnäppchen
 DEAL_MIN_SAMPLES   = 5    # mindestens 5 Daten brauchen wir, um einen Median zu trauen
 
+# Abstand zwischen zwei Versuchen, echte eBay-Verkaufspreise zu holen.
+# Hinweis: eBay verlangt dafür inzwischen einen Login, der Abruf schlägt derzeit
+# fehl. Der Code bleibt drin, falls sich das wieder ändert – als Marktwert dient
+# dann weiterhin der selbst gesammelte Median.
+SOLD_REFRESH_HOURS = 24
+
 # Sniper-Konfiguration: Auktion endet in 5-30 Minuten + 0 Gebote → benachrichtigen
 SNIPER_WINDOW_MIN_LO = 5
 SNIPER_WINDOW_MIN_HI = 30
@@ -641,25 +647,35 @@ def fetch_ebay_sold_median(keyword: str, history: dict) -> float:
     now = datetime.now()
     try:
         last = datetime.fromisoformat(bucket.get("last_refresh", "1970-01-01"))
-        if (now - last).total_seconds() < 6 * 3600:
+        if (now - last).total_seconds() < SOLD_REFRESH_HOURS * 3600:
             return bucket.get("median", 0.0)
     except Exception:
         pass
 
+    # Egal wie es ausgeht: erst nach SOLD_REFRESH_HOURS erneut versuchen.
+    bucket["last_refresh"] = now.isoformat()
+
     try:
         url = f"https://www.ebay.de/sch/i.html?_nkw={keyword.replace(' ', '+')}&LH_Sold=1&LH_Complete=1"
-        log(f"  ↻ Sold-Refresh: {keyword}")
         soup = fetch(url)
+        title = soup.find("title")
+        title_text = title.get_text(strip=True).lower() if title else ""
+        if "einloggen" in title_text or "sign in" in title_text:
+            # eBay verlangt seit 2026 einen Login für verkaufte Artikel.
+            # Kein Drama: es wird einfach der selbst gesammelte Median genutzt.
+            log(f"  ℹ Verkaufspreise für »{keyword}« nicht abrufbar (eBay verlangt Login) "
+                f"– nutze eigenen Median")
+            return bucket.get("median", 0.0)
+
         sold = parse_ebay_sold(soup)
         if sold:
-            # Letzte 50 verkaufte Preise behalten
-            bucket["samples"] = [s["price"] for s in sold[:50]]
+            bucket["samples"] = [s["price"] for s in sold[:50]]     # letzte 50 Verkäufe
             if len(bucket["samples"]) >= 5:
                 bucket["median"] = _median(bucket["samples"])
-            bucket["last_refresh"] = now.isoformat()
-            log(f"  ↻ Sold-Median für »{keyword}«: {bucket['median']:.2f} € aus {len(bucket['samples'])} Verkäufen")
+            log(f"  ↻ Verkaufs-Median für »{keyword}«: {bucket['median']:.2f} € "
+                f"aus {len(bucket['samples'])} Verkäufen")
     except Exception as e:
-        log(f"  Sold-Fehler: {e}")
+        log(f"  ℹ Verkaufspreise für »{keyword}« nicht abrufbar ({str(e)[:60]}) – nutze eigenen Median")
 
     return bucket.get("median", 0.0)
 
