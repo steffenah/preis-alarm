@@ -1,15 +1,17 @@
 """
-eGun / Kleinanzeigen Monitor – Cloud-Version für GitHub Actions.
-Liest alle Monitore aus monitors.json und prüft jede Quelle.
+Preis-Alarm – Cloud-Version für GitHub Actions.
+
+Zwei Arten von Suchen:
+  · monitors.json        → meldet NEUE Inserate (eGun, Kleinanzeigen, beliebige Seiten)
+  · sniper_watches.json  → meldet AUKTIONEN, die bald enden und noch 0 Gebote haben
+
+Benachrichtigt wird ausschließlich per Telegram.
 """
 
 import json
 import os
 import re
-import smtplib
 from datetime import datetime
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
 from pathlib import Path
 
 import requests
@@ -45,12 +47,6 @@ def _is_quiet_now() -> bool:
     if QUIET_HOURS_START < QUIET_HOURS_END:
         return QUIET_HOURS_START <= h < QUIET_HOURS_END
     return h >= QUIET_HOURS_START or h < QUIET_HOURS_END
-
-# E-Mail-Versand (per env-Var EMAIL_ENABLED=1 wieder aktivierbar)
-EMAIL_ENABLED   = os.environ.get("EMAIL_ENABLED", "0") == "1"
-SENDER_EMAIL    = os.environ.get("SENDER_EMAIL", "")
-SENDER_PASSWORD = os.environ.get("SENDER_PASSWORD", "")
-RECIPIENT_EMAIL = os.environ.get("RECIPIENT_EMAIL", "")
 
 # Telegram (optional - leer wenn nicht gesetzt)
 TELEGRAM_BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "")
@@ -129,7 +125,8 @@ def send_telegram_photo(photo_url: str, caption: str, urgent: bool = False) -> b
     return send_telegram(caption, urgent=urgent)
 
 
-def send_email(monitor_name: str, new_items: list[dict], min_price: float, max_price: float = 0):
+def notify_new_items(monitor_name: str, new_items: list[dict], min_price: float, max_price: float = 0):
+    """Telegram-Push für neue Inserate: bis zu 5 Bild-Pushes, Rest als Sammelnachricht."""
     count = len(new_items)
     price_hint = ""
     if min_price and max_price:
@@ -138,42 +135,7 @@ def send_email(monitor_name: str, new_items: list[dict], min_price: float, max_p
         price_hint = f" · ab {min_price:.0f} €"
     elif max_price:
         price_hint = f" · bis {max_price:.0f} €"
-    subject = f"🔔 {monitor_name}: {count} neues Inserat{'e' if count > 1 else ''}{price_hint}"
 
-    lines = [f"Neue Treffer für »{monitor_name}«:\n"]
-    for item in new_items:
-        score = item.get("deal_score") or 0
-        fire = " 🔥 SCHNÄPPCHEN!" if score >= DEAL_THRESHOLD_PCT else ""
-        lines.append(f"• {item['title']}{fire}")
-        if item.get("auction_price") is not None:
-            lines.append(f"  Aktuelles Gebot:  {item['auction_price']:.2f} €")
-        if item.get("sofortkauf_price") is not None:
-            lines.append(f"  Sofortkauf:       {item['sofortkauf_price']:.2f} €")
-        if not item.get("auction_price") and not item.get("sofortkauf_price"):
-            p = item.get("price")
-            lines.append(f"  Preis: {f'{p:.2f} €' if p else 'nicht angegeben'}")
-        if item.get("median_price") and score >= DEAL_THRESHOLD_PCT:
-            lines.append(f"  Markt-Median:     {item['median_price']:.2f} €  (-{score:.0f}% Schnäppchen)")
-        elif item.get("median_price"):
-            lines.append(f"  Markt-Median:     {item['median_price']:.2f} €")
-        lines += [f"  Link:  {item['url']}", ""]
-    lines += [
-        f"\nGefunden am: {datetime.now().strftime('%d.%m.%Y um %H:%M Uhr')}",
-    ]
-
-    msg = MIMEMultipart("alternative")
-    msg["Subject"] = subject
-    msg["From"]    = SENDER_EMAIL
-    msg["To"]      = RECIPIENT_EMAIL
-    msg.attach(MIMEText("\n".join(lines), "plain", "utf-8"))
-
-    if EMAIL_ENABLED and SENDER_EMAIL and SENDER_PASSWORD and RECIPIENT_EMAIL:
-        with smtplib.SMTP_SSL("smtp.gmail.com", 465) as s:
-            s.login(SENDER_EMAIL, SENDER_PASSWORD)
-            s.sendmail(SENDER_EMAIL, RECIPIENT_EMAIL, msg.as_string())
-        log(f"  → E-Mail gesendet: {subject}")
-
-    # Telegram-Push: pro Item ein Bild-Push (max 5 um nicht zu spammen)
     header_sent = False
     items_with_image = [it for it in new_items if it.get("image_url")]
     items_without    = [it for it in new_items if not it.get("image_url")]
@@ -574,36 +536,10 @@ def save_sniper_notified(notified: dict):
         json.dump(pruned, f, ensure_ascii=False, indent=2)
 
 
-def send_sniper_email(watch_name: str, alerts: list[dict], platform: str = "ebay"):
-    count = len(alerts)
+def notify_sniper(watch_name: str, alerts: list[dict], platform: str = "ebay"):
+    """Telegram-Push für bald endende Auktionen ohne Gebote – immer mit Ton."""
     plat_label = "eGun" if platform == "egun" else "eBay"
-    subject = f"🔨 {plat_label} AUKTION ENDET BALD · {watch_name} ({count})"
-    lines = [f"Diese {plat_label}-Auktionen für »{watch_name}« enden bald OHNE Gebote:\n"]
-    for a in alerts:
-        lines.append(f"• {a['title']}")
-        p = a.get("auction_price") or a.get("price")
-        lines.append(f"  Aktueller Preis: {p:.2f} €" if p else "  Preis unbekannt")
-        lines.append(f"  Endet in:        ~{a['time_left_min']} Min")
-        lines.append(f"  Gebote:          {a.get('bids', 0)}")
-        lines.append(f"  Link:            {a['url']}")
-        lines.append("")
-    lines += [f"\nGefunden am: {datetime.now().strftime('%d.%m.%Y um %H:%M Uhr')}"]
 
-    msg = MIMEMultipart("alternative")
-    msg["Subject"] = subject
-    msg["From"]    = SENDER_EMAIL
-    msg["To"]      = RECIPIENT_EMAIL
-    msg["X-Priority"] = "1"
-    msg["Importance"] = "high"
-    msg.attach(MIMEText("\n".join(lines), "plain", "utf-8"))
-
-    if EMAIL_ENABLED and SENDER_EMAIL and SENDER_PASSWORD and RECIPIENT_EMAIL:
-        with smtplib.SMTP_SSL("smtp.gmail.com", 465) as s:
-            s.login(SENDER_EMAIL, SENDER_PASSWORD)
-            s.sendmail(SENDER_EMAIL, RECIPIENT_EMAIL, msg.as_string())
-        log(f"  → Sniper-Mail gesendet: {subject}")
-
-    # Telegram-Push: pro Auktion 1 Bild-Push (zeitkritisch!)
     for a in alerts[:5]:    # max 5 Bilder pro Lauf um nicht zu spammen
         p = a.get("auction_price") or a.get("price")
         caption = (
@@ -838,9 +774,9 @@ def run_sniper(history: dict = None):
 
         if alerts:
             try:
-                send_sniper_email(name, alerts, platform)
+                notify_sniper(name, alerts, platform)
             except Exception as e:
-                log(f"[{name}] Mail-Fehler: {e}")
+                log(f"[{name}] Telegram-Fehler: {e}")
         else:
             log(f"[{name}] keine Schnäppchen-Auktionen.")
 
@@ -925,9 +861,10 @@ def main():
 
         if new_items:
             try:
-                send_email(monitor["name"], new_items, monitor.get("min_price", 0), monitor.get("max_price", 0))
+                notify_new_items(monitor["name"], new_items,
+                                 monitor.get("min_price", 0), monitor.get("max_price", 0))
             except Exception as e:
-                log(f"  E-Mail Fehler: {e}")
+                log(f"  Telegram-Fehler: {e}")
         else:
             log(f"[{monitor['name']}] keine neuen Treffer.")
 

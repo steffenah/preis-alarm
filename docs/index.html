@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Preis-Alarm</title>
-  <link rel="stylesheet" href="style.css?v=6">
+  <link rel="stylesheet" href="style.css?v=7">
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#22a04a">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -20,7 +20,7 @@
   <div class="login-card">
     <div class="logo">🛒</div>
     <h1>Preis-Alarm</h1>
-    <p class="muted">Anmeldung erforderlich</p>
+    <p class="muted">Bitte anmelden</p>
     <input type="password" id="login-password" placeholder="Passwort" autocomplete="current-password">
     <button id="btn-login" class="btn-primary">Anmelden</button>
     <p class="error" id="login-error"></p>
@@ -32,215 +32,226 @@
 
   <header>
     <div class="brand">🛒 <span>Preis-Alarm</span></div>
-    <div style="display:flex;gap:0.5rem;align-items:center">
-      <button id="btn-run-now" class="btn-ghost" title="Alle Monitore + Sniper jetzt sofort prüfen">⚡ Jetzt prüfen</button>
+    <div class="header-actions">
+      <button id="btn-run-now" class="btn-ghost" title="Alle Suchen sofort prüfen">⚡ Jetzt prüfen</button>
       <button id="btn-logout" class="btn-ghost">Abmelden</button>
     </div>
   </header>
 
   <nav class="tabs">
-    <button class="tab active" data-tab="monitors">📋 Monitore</button>
-    <button class="tab" data-tab="sniper">🔨 Sniper</button>
-    <button class="tab" data-tab="install">📱 Installieren</button>
+    <button class="tab active" data-tab="searches">🔍 Meine Suchen</button>
+    <button class="tab" data-tab="install">📱 App</button>
     <button class="tab" data-tab="help">ℹ️ Hilfe</button>
   </nav>
 
-  <!-- TAB: Monitore -->
-  <section id="tab-monitors" class="tab-content active">
-    <div class="loading" id="monitors-loading">Lade…</div>
-    <div id="monitors-list"></div>
+  <!-- ══ TAB: Meine Suchen ══════════════════════════════════════════════ -->
+  <section id="tab-searches" class="tab-content active">
 
-    <details class="add-card">
-      <summary>➕ Neuer Monitor</summary>
-      <div class="form-grid">
-        <label>Name <input id="new-mon-name" placeholder="z.B. Kleinanzeigen Airsoft"></label>
-        <label>URL <input id="new-mon-url" placeholder="https://www.kleinanzeigen.de/s-…"></label>
-        <label>Suchbegriffe (kommagetrennt) <input id="new-mon-kw" placeholder="airsoft, sniper"></label>
-        <label>🚫 Ausschluss-Wörter (optional) <input id="new-mon-excl" placeholder="defekt, bastler"></label>
-        <label>Mindestpreis € <input type="number" id="new-mon-min" value="0" min="0" step="5"></label>
-        <label>Maximalpreis € <input type="number" id="new-mon-max" value="0" min="0" step="5"></label>
-        <label class="checkbox"><input type="checkbox" id="new-mon-sofort"> Nur Sofortkauf / Festpreis</label>
-        <label class="checkbox"><input type="checkbox" id="new-mon-active" checked> Sofort aktivieren</label>
+    <div class="loading" id="searches-loading">Lade…</div>
+    <div id="searches-list"></div>
+
+    <button class="btn-primary btn-add" id="btn-open-new">➕ Neue Suche anlegen</button>
+
+    <!-- Anlege-Formular (versteckt bis Klick) -->
+    <div class="card new-card hidden" id="new-form">
+      <div class="card-body-open">
+
+        <h3 class="form-title">Worauf soll ich achten?</h3>
+        <div class="kind-picker">
+          <button class="kind-option active" data-kind="monitor">
+            <span class="kind-icon">🔔</span>
+            <span class="kind-name">Neue Inserate</span>
+            <span class="kind-desc">Melde mir, sobald etwas Neues eingestellt wird</span>
+          </button>
+          <button class="kind-option" data-kind="sniper">
+            <span class="kind-icon">🔨</span>
+            <span class="kind-name">Auktions-Ende</span>
+            <span class="kind-desc">Melde mir Auktionen, die gleich enden und noch 0 Gebote haben</span>
+          </button>
+        </div>
+
+        <div class="form-grid">
+          <label class="full">Name der Suche
+            <input id="f-name" placeholder="z.B. Airsoft Oldenburg">
+          </label>
+
+          <!-- Plattform: nur beim Sniper -->
+          <label class="full only-sniper">Plattform
+            <select id="f-platform">
+              <option value="ebay">eBay</option>
+              <option value="egun">eGun</option>
+            </select>
+          </label>
+
+          <!-- eBay-Sniper: Suchbegriff -->
+          <label class="full only-sniper-ebay">eBay-Suchbegriff
+            <input id="f-keyword" placeholder="playstation 5">
+            <span class="hint">Genau das, was du sonst bei eBay ins Suchfeld tippen würdest.</span>
+          </label>
+
+          <!-- Monitor + eGun-Sniper: URL -->
+          <label class="full only-url">Wo soll ich suchen?
+            <input id="f-url" placeholder="https://www.kleinanzeigen.de/s-oldenburg/airsoft/k0">
+            <span class="hint">Suche die Seite normal im Browser, dann die Adresse hierher kopieren.
+              <a href="#" id="link-url-help">Beispiele zeigen</a></span>
+          </label>
+
+          <label class="full">Nur melden, wenn der Titel eines dieser Wörter enthält
+            <input id="f-keywords" placeholder="leer lassen = alle Treffer melden">
+            <span class="hint">Mehrere mit Komma trennen. <code>a &amp; b</code> = beide nötig, <code>"a b"</code> = genau diese Wortfolge.</span>
+          </label>
+
+          <label class="full">Nie melden, wenn der Titel eines dieser Wörter enthält
+            <input id="f-exclude" placeholder="z.B. defekt, bastler, ersatzteil">
+          </label>
+
+          <label class="full">Diese Verkäufer ignorieren
+            <input id="f-sellers" placeholder="optional, mehrere mit Komma">
+          </label>
+
+          <label class="only-monitor">Preis ab
+            <input type="number" id="f-min" placeholder="egal" min="0" step="5">
+          </label>
+          <label>Preis bis
+            <input type="number" id="f-max" placeholder="egal" min="0" step="5">
+          </label>
+
+          <label class="checkbox only-monitor full">
+            <input type="checkbox" id="f-sofort"> Nur Sofortkauf / Festpreis (keine Auktionen)
+          </label>
+        </div>
+
+        <div class="btn-row">
+          <button class="btn-primary" id="btn-create">Suche anlegen</button>
+          <button class="btn-ghost" id="btn-cancel-new">Abbrechen</button>
+        </div>
       </div>
-      <button class="btn-primary" id="btn-add-monitor">Hinzufügen</button>
-    </details>
-  </section>
-
-  <!-- TAB: Sniper -->
-  <section id="tab-sniper" class="tab-content">
-    <p class="info">
-      Findet <b>eBay</b>- oder <b>eGun</b>-Auktionen, die in <b>5–30 Minuten</b> enden und noch
-      <b>0 Gebote</b> haben – perfekt für Schnäppchen. Du bekommst sofort eine E-Mail + Telegram-Push.
-      <br>
-      💡 Tipp: Beim eBay-Sniper gibt es einen <b>„Tippfehler-Varianten anlegen"</b>-Button, der automatisch Schreibfehler-Suchen anlegt (klassischer Schnäppchen-Trick).
-    </p>
-    <div class="loading" id="sniper-loading">Lade…</div>
-    <div id="sniper-list"></div>
-
-    <details class="add-card">
-      <summary>➕ Neue Sniper-Suche</summary>
-      <div class="form-grid">
-        <label>Name <input id="new-snip-name" placeholder="z.B. PS5 Schnäppchen"></label>
-        <label>Plattform
-          <select id="new-snip-platform">
-            <option value="ebay">eBay</option>
-            <option value="egun">eGun</option>
-          </select>
-        </label>
-        <label id="new-snip-keyword-label">eBay-Suchbegriff <input id="new-snip-keyword" placeholder="playstation 5"></label>
-        <label id="new-snip-url-label" class="hidden">eGun Kategorie-URL <input id="new-snip-url" placeholder="https://egun.de/market/list_items.php?cat=492"></label>
-        <label id="new-snip-filter-label" class="hidden full">Schlagwort-Filter (optional, kommagetrennt – leer = alle Auktionen)
-          <input id="new-snip-filter" placeholder="z.B. mp5, glock, ak47">
-        </label>
-        <label class="full">🚫 Ausschluss-Wörter (optional)
-          <input id="new-snip-excl" placeholder="defekt, bastler, ersatzteil">
-        </label>
-        <label>Maximalpreis € (0 = egal) <input type="number" id="new-snip-max" value="0" min="0" step="5"></label>
-        <label class="checkbox"><input type="checkbox" id="new-snip-active" checked> Sofort aktivieren</label>
-      </div>
-      <button class="btn-primary" id="btn-add-sniper">Hinzufügen</button>
-    </details>
-
-    <div class="info-box">
-      <b>So funktioniert's:</b>
-      <ul>
-        <li>Alle <b>5 Minuten</b> durchsuchen wir die gewählte Plattform</li>
-        <li>Endet eine Auktion in <b>5–30 Min</b> UND hat <b>0 Gebote</b> → 📧 + 📲 sofort Alarm</li>
-        <li>Maximalpreis filtert zu teure Auktionen</li>
-        <li>🚫 Ausschluss-Wörter filtern Schrott (defekt, bastler, …)</li>
-        <li>🎯 <b>„Tippfehler-Varianten anlegen"</b>-Button im eBay-Sniper: legt mit einem Klick 4-6 typische Schreibfehler-Suchen an (Konkurrenz-Trick)</li>
-        <li>🔨 Bei eBay: Direkt-Link zu <a href="https://www.gixen.com" target="_blank">Gixen.com</a> für echtes Last-Second-Snipen</li>
-        <li>Jede Auktion wird nur einmal gemeldet</li>
-      </ul>
     </div>
   </section>
 
-  <!-- TAB: Installieren -->
+  <!-- ══ TAB: App installieren ══════════════════════════════════════════ -->
   <section id="tab-install" class="tab-content">
     <h2>📱 Als App installieren</h2>
-    <p>Die Seite kann wie eine echte App aufs Handy oder den PC – mit eigenem Icon im Vollbild.</p>
+    <p>Preis-Alarm lässt sich wie eine echte App aufs Handy oder den PC legen – mit eigenem Icon und ohne Browser-Leiste.</p>
 
-    <h3>📱 Android (Chrome / Edge)</h3>
+    <button class="btn-primary" id="btn-install" style="display:none">Jetzt installieren</button>
+
+    <h3>📱 Android (Chrome)</h3>
     <ol>
-      <li>Tippe oben rechts auf das <b>⋮ Menü</b></li>
-      <li>Wähle <b>„App installieren"</b></li>
-      <li>Bestätigen → 🛒 Icon auf dem Startbildschirm</li>
+      <li>Oben rechts auf das <b>⋮ Menü</b> tippen</li>
+      <li><b>„App installieren"</b> wählen</li>
+      <li>Bestätigen – das 🛒 Icon liegt danach auf dem Startbildschirm</li>
     </ol>
 
     <h3>🍎 iPhone (Safari)</h3>
     <ol>
-      <li>Tippe unten auf das <b>Teilen-Symbol</b></li>
-      <li>Wähle <b>„Zum Home-Bildschirm hinzufügen"</b></li>
+      <li>Unten auf das <b>Teilen-Symbol</b> tippen</li>
+      <li><b>„Zum Home-Bildschirm hinzufügen"</b> wählen</li>
     </ol>
 
-    <h3>💻 Desktop (Chrome / Edge)</h3>
+    <h3>💻 Windows / Mac (Chrome oder Edge)</h3>
     <ol>
-      <li>In der Adressleiste rechts: <b>Install-Icon</b> klicken</li>
-      <li>App wird wie normales Programm installiert</li>
+      <li>In der Adressleiste rechts auf das <b>Installieren-Symbol</b> klicken</li>
+      <li>Die App startet danach wie ein normales Programm</li>
     </ol>
-
-    <button class="btn-primary" id="btn-install" style="display:none">Jetzt installieren</button>
   </section>
 
-  <!-- TAB: Hilfe -->
+  <!-- ══ TAB: Hilfe ═════════════════════════════════════════════════════ -->
   <section id="tab-help" class="tab-content">
 
-    <h2>🔔 Was du bekommst</h2>
+    <h2>Wie funktioniert das Ganze?</h2>
     <div class="info-box">
-      Alle <b>5 Minuten</b> prüft die App im Hintergrund alle aktiven Monitore und Sniper-Suchen.
-      Bei einem Treffer bekommst du:
-      <ul>
-        <li>📧 <b>E-Mail</b> von <code>preisalarmahlers@gmail.com</code></li>
-        <li>📲 <b>Telegram-Push</b> mit Bild, Preis und Link</li>
-        <li>🔥 Bei Schnäppchen (≥ 30 % unter Markt-Median) zusätzlich mit Push-Sound</li>
-      </ul>
+      Alle <b>5 Minuten</b> läuft im Hintergrund automatisch eine Prüfung – ganz ohne deinen PC.
+      Findet sie etwas, bekommst du sofort eine <b>Telegram-Nachricht</b> mit Bild, Preis und Link.
     </div>
 
-    <h2>📊 Markt-Median &amp; Schnäppchen-Score</h2>
-    <p>Die App lernt aus allen gesehenen Inseraten den typischen Marktwert.</p>
-    <ul>
-      <li>Pro <b>Suchbegriff</b> wird ein eigener Median berechnet (statt 1 Median für alles)</li>
-      <li>Ab <b>5 Datenpunkten</b> wird der Score aktiv</li>
-      <li>Score = <code>(1 − Preis / Median) × 100</code></li>
-      <li><b>🔥 SCHNÄPPCHEN</b> wenn Score ≥ 30 %</li>
-      <li>Je spezifischer dein Suchbegriff (z.B. „edurino mika" statt nur „edurino"), desto präziser der Median</li>
-    </ul>
+    <h2>Die zwei Arten von Suchen</h2>
+    <table class="cmp">
+      <tr>
+        <th>🔔 Neue Inserate</th>
+        <th>🔨 Auktions-Ende</th>
+      </tr>
+      <tr>
+        <td>Meldet alles, was <b>neu eingestellt</b> wird.</td>
+        <td>Meldet Auktionen, die in <b>5–30 Minuten enden</b> und noch <b>0 Gebote</b> haben.</td>
+      </tr>
+      <tr>
+        <td>Für: Kleinanzeigen, eGun, beliebige Webseiten.</td>
+        <td>Für: eBay (Suchbegriff) und eGun (Kategorie).</td>
+      </tr>
+      <tr>
+        <td>Jedes Inserat wird nur einmal gemeldet.</td>
+        <td>Push kommt mit Ton – auch nachts, weil es zeitkritisch ist.</td>
+      </tr>
+    </table>
 
-    <h2>🚫 Ausschluss-Wörter</h2>
-    <p>Bei jedem Monitor + Sniper gibt's ein Feld <b>Ausschluss-Wörter</b>. Inserate mit diesen Wörtern im Titel werden ignoriert.</p>
-    <pre>defekt, bastler, ersatzteil, geknackt, nur abholung berlin</pre>
-
-    <h2>🎯 Tippfehler-Trick (nur eBay-Sniper)</h2>
-    <p>Bei einer eBay-Sniper-Suche → Karte aufklappen → Button <b>„Tippfehler-Varianten anlegen"</b>.
-    Die App generiert automatisch typische Schreibfehler des Suchbegriffs (z.B. <code>playstation</code> → <code>plystation</code>, <code>playsation</code>, …) und legt sie als eigene Watches an.</p>
-    <p class="muted">Warum? Verkäufer mit Tippfehlern bekommen weniger Konkurrenz → die Auktionen enden oft günstiger.</p>
-
-    <h2>🔨 Sniper-Modi (eGun)</h2>
-    <p>Beim eGun-Sniper kannst du <b>3 Modi</b> kombinieren:</p>
-    <ol>
-      <li><b>Alle Auktionen ohne Bieter:</b> URL angeben, Filter leer lassen</li>
-      <li><b>Bestimmte Schlagworte:</b> URL + Schlagwort-Filter (kommagetrennt)</li>
-      <li><b>Bestimmte Kategorien:</b> für jede Kategorie eine eigene Sniper-Suche</li>
-    </ol>
-
-    <h2>💡 URL-Tipps</h2>
+    <h2>Adressen für „Wo soll ich suchen?"</h2>
     <h3>Kleinanzeigen</h3>
+    <p class="muted">Auf kleinanzeigen.de normal suchen, dann die Adresse aus dem Browser kopieren.</p>
     <pre>https://www.kleinanzeigen.de/s-oldenburg/airsoft/k0
 https://www.kleinanzeigen.de/s-oldenburg/iphone-15/k0</pre>
 
-    <h3>eGun (Kategorien)</h3>
+    <h3>eGun</h3>
+    <p class="muted">Die Zahl hinter <code>cat=</code> ist die Kategorie.</p>
     <pre>https://egun.de/market/list_items.php?cat=492   Softair
 https://egun.de/market/list_items.php?cat=14    Pistolen
 https://egun.de/market/list_items.php?cat=22    Munition</pre>
 
-    <h3>eBay (Sniper-Suchen)</h3>
-    <p>Im Sniper-Tab einfach den Suchbegriff eintragen (z.B. „playstation 5"). Die App durchsucht automatisch nur Auktionen mit baldigem Ende.</p>
+    <h3>eBay</h3>
+    <p class="muted">Keine Adresse nötig – beim Auktions-Ende-Typ einfach den Suchbegriff eintippen.</p>
 
-    <h2>⚙️ Technik</h2>
+    <h2>Suchwörter genauer steuern</h2>
+    <table class="cmp">
+      <tr><th>Eingabe</th><th>Bedeutung</th></tr>
+      <tr><td><code>iphone, samsung</code></td><td>Eines der beiden reicht</td></tr>
+      <tr><td><code>iphone &amp; 256gb</code></td><td>Beide müssen vorkommen</td></tr>
+      <tr><td><code>"iphone 15 pro"</code></td><td>Genau diese Wortfolge</td></tr>
+      <tr><td><code>"iphone 15" &amp; 256gb, "s24 ultra"</code></td><td>Beides kombiniert</td></tr>
+    </table>
+
+    <h2>📊 Was bedeutet „Markt" und 🔥?</h2>
+    <p>Die App merkt sich die Preise aller gesehenen Inserate und bildet daraus einen typischen Preis (Median) – getrennt pro Suchwort.</p>
     <ul>
-      <li>Alle <b>5 Minuten</b> läuft <a href="https://github.com/steffenah/preis-alarm/actions" target="_blank">GitHub Actions</a></li>
-      <li>Änderungen werden direkt zu GitHub gepusht (siehe Commit-Historie)</li>
-      <li>Diese App ist eine statische Single-Page-App auf GitHub Pages – kein Server, kein Schlafen</li>
-      <li>Preishistorie wird in <code>price_history.json</code> gespeichert (200 Samples pro Bucket)</li>
+      <li>Bei <b>eBay-Auktionen</b> nutzt sie stattdessen <b>echte verkaufte Preise</b> – deutlich genauer.</li>
+      <li>Liegt ein Treffer <b>30 % oder mehr darunter</b>, gilt er als 🔥 Schnäppchen und der Push kommt mit Ton.</li>
+      <li>Der Wert wird erst ab 5 gesammelten Preisen angezeigt.</li>
     </ul>
 
-    <h2>📲 Telegram-Bot</h2>
-    <p>Der Bot <b>@preisalarm_steffenbot</b> verschickt Push-Nachrichten mit Bild, Preis und Score.
-    Sniper-Alarms sind laut, normale Treffer still. Zwischen <b>23–7 Uhr</b> sind auch normale Pushes lautlos (Nachtruhe).</p>
+    <h2>🎯 Tippfehler-Varianten</h2>
+    <p>Bei einer eBay-Auktions-Suche gibt es den Knopf <b>„Tippfehler-Varianten hinzufügen"</b>.
+    Er erzeugt typische Vertipper deines Suchbegriffs (<code>playstation</code> → <code>plystation</code>, <code>playsation</code> …)
+    und sucht künftig zusätzlich danach – <b>ohne</b> dass eine zweite Suche entsteht.</p>
+    <p class="muted">Der Trick dahinter: Inserate mit Tippfehlern findet kaum jemand, deshalb enden sie oft deutlich günstiger.</p>
 
-    <h3>Befehle (im Telegram-Chat eingeben)</h3>
+    <h2>📲 Telegram</h2>
+    <p>Alle Benachrichtigungen kommen über den Bot <b>@preisalarm_steffenbot</b>.
+    Zwischen <b>23 und 7 Uhr</b> sind normale Meldungen lautlos, Auktions-Alarme bleiben laut.</p>
+    <h3>Befehle im Chat</h3>
     <ul>
-      <li><code>/list</code> – alle Monitore + Sniper anzeigen</li>
+      <li><code>/list</code> – alle Suchen anzeigen</li>
       <li><code>/stats</code> – kurze Statistik</li>
-      <li><code>/pause &lt;name&gt;</code> – Watch pausieren (z.B. <code>/pause edurino</code>)</li>
-      <li><code>/resume &lt;name&gt;</code> – Watch reaktivieren</li>
-      <li><code>/typoadd &lt;name&gt; &lt;variante&gt;</code> – Tippfehler hinzufügen</li>
+      <li><code>/pause &lt;name&gt;</code> – Suche pausieren</li>
+      <li><code>/resume &lt;name&gt;</code> – Suche wieder starten</li>
+      <li><code>/typoadd &lt;name&gt; &lt;variante&gt;</code> – Tippfehler ergänzen</li>
       <li><code>/help</code> – Hilfe</li>
     </ul>
-    <p class="muted">Befehle werden beim nächsten Cron-Lauf (alle 5 Min) verarbeitet – Antwort kommt dann.</p>
+    <p class="muted">Befehle werden beim nächsten Durchlauf verarbeitet, die Antwort kommt also innerhalb von 5 Minuten.</p>
 
-    <h2>🔍 Erweiterte Such-Syntax</h2>
+    <h2>🔑 Zugriff auf GitHub</h2>
+    <p>Die App speichert deine Suchen direkt in deinem GitHub-Repository. Dafür braucht sie einmalig einen Token mit:</p>
     <ul>
-      <li><code>iphone, samsung</code> → ODER (mind. 1 Wort matched)</li>
-      <li><code>iphone & 256gb</code> → UND (beide Wörter nötig)</li>
-      <li><code>"iphone 15 pro"</code> → exakte Phrase</li>
-      <li>Kombi: <code>"iphone 15 pro" & 256gb, "samsung s24"</code></li>
+      <li><code>Contents: Read and write</code> – zum Speichern der Suchen</li>
+      <li><code>Actions: Read and write</code> – für den Knopf „⚡ Jetzt prüfen"</li>
     </ul>
-
-    <h2>🔑 GitHub-Token</h2>
-    <p>Die App benötigt einen GitHub Fine-grained Personal Access Token mit:</p>
-    <ul>
-      <li><code>Contents: Read and write</code> – damit die App Suchen speichern kann</li>
-      <li><code>Actions: Read and write</code> – damit der „⚡ Jetzt prüfen"-Button funktioniert</li>
-    </ul>
-    <button class="btn-ghost" id="btn-reset-token">Token neu eingeben</button>
+    <div class="btn-row">
+      <button class="btn-ghost" id="btn-reset-token">Token neu eingeben</button>
+      <a class="btn-ghost" href="https://github.com/steffenah/preis-alarm/actions" target="_blank">Protokoll der Läufe</a>
+    </div>
   </section>
 
-  <!-- ── TOAST ─────────────────────────────────────────────────────── -->
   <div id="toast" class="toast"></div>
-
 </div>
 
-<script src="app.js?v=6"></script>
+<script src="app.js?v=7"></script>
 </body>
 </html>
