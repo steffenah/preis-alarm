@@ -30,6 +30,19 @@
       ],
       "_last_typo_learn": "2026-08-08T00:34:56.046105",
       "exclude_sellers": []
+    },
+    {
+      "id": "dk0ag3a3",
+      "name": "Viture Beast",
+      "platform": "ebay",
+      "keyword": "Viture Beast",
+      "url": "",
+      "keywords": [],
+      "exclude_keywords": [
+        "Defekt"
+      ],
+      "max_price": 0,
+      "enabled": true
     }
   ]
 }
