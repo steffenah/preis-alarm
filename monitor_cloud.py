@@ -31,6 +31,9 @@ DEAL_MIN_SAMPLES   = 5    # mindestens 5 Daten brauchen wir, um einen Median zu 
 SNIPER_WINDOW_MIN_LO = 5
 SNIPER_WINDOW_MIN_HI = 15
 
+# Auto-Tippfehler-Vorschläge (nervig? Per env AUTO_LEARN_TYPOS=1 anschalten)
+AUTO_LEARN_TYPOS = os.environ.get("AUTO_LEARN_TYPOS", "0") == "1"
+
 # Nachtruhe (Telegram still zwischen QUIET_HOURS_START und QUIET_HOURS_END)
 # Sniper-Alarme sind IMMER laut (zeitkritisch).
 QUIET_HOURS_START = 23   # 23 Uhr
@@ -842,7 +845,7 @@ def run_sniper(history: dict = None):
             log(f"[{name}] keine Schnäppchen-Auktionen.")
 
         # Auto-Tippfehler-Lernen (max 1x pro 24h pro Watch)
-        if platform == "ebay" and auctions:
+        if AUTO_LEARN_TYPOS and platform == "ebay" and auctions:
             last_learn = w.get("_last_typo_learn", "1970-01-01")
             try:
                 last_dt = datetime.fromisoformat(last_learn)
