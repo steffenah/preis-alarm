@@ -8,7 +8,7 @@
       "keywords": [],
       "min_price": 50,
       "sofortkauf_only": true,
-      "enabled": false,
+      "enabled": true,
       "max_price": 0
     },
     {
