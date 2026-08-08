@@ -42,7 +42,11 @@
         "Defekt"
       ],
       "max_price": 0,
-      "enabled": true
+      "enabled": true,
+      "typo_variants": [
+        "Vitur Beast"
+      ],
+      "exclude_sellers": []
     }
   ]
 }
