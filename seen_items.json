@@ -3354,5 +3354,15 @@
     "title": "HFC P229 Nachbau (SUPER) GBB Kurzwaffe, Pistole, 6mm BB, mit Ersatzmagazin",
     "price": 69.0,
     "first_seen": "2026-08-10T17:23:19.505530"
+  },
+  "egun_softair::20451805": {
+    "title": "M4 Aluminium CNC RAS Tactical Handguard",
+    "price": 20.0,
+    "first_seen": "2026-08-10T18:08:53.836643"
+  },
+  "egun_softair::20451808": {
+    "title": "MP5 PDW QD SPITFIRE Tracer Unit [5KU]",
+    "price": 40.0,
+    "first_seen": "2026-08-10T18:08:53.836652"
   }
 }
