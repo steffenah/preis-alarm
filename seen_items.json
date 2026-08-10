@@ -3364,5 +3364,10 @@
     "title": "MP5 PDW QD SPITFIRE Tracer Unit [5KU]",
     "price": 40.0,
     "first_seen": "2026-08-10T18:08:53.836652"
+  },
+  "egun_softair::20451828": {
+    "title": "CAM870 Mariner - MK3",
+    "price": 400.0,
+    "first_seen": "2026-08-10T19:13:00.168680"
   }
 }
