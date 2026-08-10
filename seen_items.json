@@ -3369,5 +3369,10 @@
     "title": "CAM870 Mariner - MK3",
     "price": 400.0,
     "first_seen": "2026-08-10T19:13:00.168680"
+  },
+  "egun_softair::20430656": {
+    "title": "WE F229 GBB Kurzwaffe, Pistole, 6mm BB, mit Ersatzmagazin",
+    "price": 112.34,
+    "first_seen": "2026-08-10T20:01:29.113218"
   }
 }
