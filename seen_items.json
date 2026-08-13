@@ -3404,5 +3404,10 @@
     "title": "Action Army AAC T11 Full Stock Bolt Action Snipergewehr Springer 6mm BB",
     "price": 100.0,
     "first_seen": "2026-08-11T18:14:13.815818"
+  },
+  "egun_softair::20453691": {
+    "title": "Leuchtpunktvisier Walther RS55 3x32",
+    "price": 1.0,
+    "first_seen": "2026-08-13T14:51:33.983593"
   }
 }
