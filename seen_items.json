@@ -3409,5 +3409,35 @@
     "title": "Leuchtpunktvisier Walther RS55 3x32",
     "price": 1.0,
     "first_seen": "2026-08-13T14:51:33.983593"
+  },
+  "egun_softair::20431960": {
+    "title": "2500 Schuss Box Magazin DrumMag elektrisch angetrieben für M4 M16 Softair 6mm BB passt in Firehawk",
+    "price": 50.0,
+    "first_seen": "2026-08-14T14:03:06.565965"
+  },
+  "egun_softair::20450093": {
+    "title": "Airsoft Vollmetall CO2 Revolver mit Zubehör",
+    "price": 56.0,
+    "first_seen": "2026-08-14T14:03:06.565992"
+  },
+  "egun_softair::20448392": {
+    "title": "GHK Glock 45 MOS",
+    "price": 229.0,
+    "first_seen": "2026-08-14T14:03:06.566000"
+  },
+  "egun_softair::20439519": {
+    "title": "NOVRITSCH SSR4 Metal AEG 6mm BB mit Zubehör",
+    "price": 100.0,
+    "first_seen": "2026-08-14T14:03:06.566013"
+  },
+  "egun_softair::20448421": {
+    "title": "Sig Sauer P320 M18",
+    "price": 149.0,
+    "first_seen": "2026-08-14T14:03:06.566017"
+  },
+  "egun_softair::20452200": {
+    "title": "MP5k von Wellfire 6mm GBB",
+    "price": 49.99,
+    "first_seen": "2026-08-14T14:03:06.566026"
   }
 }
