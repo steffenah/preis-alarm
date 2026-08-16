@@ -3524,5 +3524,15 @@
     "title": "Noname Langwaffe",
     "price": 90.0,
     "first_seen": "2026-08-16T16:18:19.327695"
+  },
+  "egun_softair::20435757": {
+    "title": "Novritsch Ssg24",
+    "price": 400.0,
+    "first_seen": "2026-08-16T17:55:33.777185"
+  },
+  "egun_softair::20435759": {
+    "title": "Czp 09",
+    "price": 70.0,
+    "first_seen": "2026-08-16T17:55:33.777195"
   }
 }
