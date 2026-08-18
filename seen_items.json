@@ -3554,5 +3554,20 @@
     "title": "MaxTact Derringer Double Barrel Vollmetall Gas 6mm BB gold",
     "price": 67.66,
     "first_seen": "2026-08-18T07:06:27.743512"
+  },
+  "egun_softair::20454929": {
+    "title": "SSG10 von Novritsch",
+    "price": 250.0,
+    "first_seen": "2026-08-18T14:47:36.839761"
+  },
+  "egun_softair::20454943": {
+    "title": "Smith & Wesson M&P 9 Softair- Gas Blowback",
+    "price": 40.0,
+    "first_seen": "2026-08-18T14:47:36.839771"
+  },
+  "egun_softair::20449564": {
+    "title": "Heckler & Kock P7 M13 Softair mit Garantie",
+    "price": 153.0,
+    "first_seen": "2026-08-18T14:47:36.839775"
   }
 }
