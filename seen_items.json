@@ -3579,5 +3579,15 @@
     "title": "Magpul + Konvolut",
     "price": 100.0,
     "first_seen": "2026-08-18T16:47:43.732169"
+  },
+  "egun_softair::20458410": {
+    "title": "Ares/Secutor Rapax S-AEG",
+    "price": 850.0,
+    "first_seen": "2026-08-18T20:21:20.179177"
+  },
+  "egun_softair::20458417": {
+    "title": "SRS Silverback A2",
+    "price": 750.0,
+    "first_seen": "2026-08-18T20:21:20.179204"
   }
 }
