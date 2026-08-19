@@ -47,6 +47,22 @@
         "Vitur Beast"
       ],
       "exclude_sellers": []
+    },
+    {
+      "id": "cr7m42zl",
+      "name": "Xbox series x",
+      "keywords": [],
+      "exclude_keywords": [
+        "Defekt",
+        "bastler"
+      ],
+      "exclude_sellers": [],
+      "max_price": 0,
+      "enabled": true,
+      "platform": "ebay",
+      "keyword": "Xbox Series x",
+      "url": "",
+      "typo_variants": []
     }
   ]
 }
