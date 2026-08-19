@@ -23,6 +23,19 @@
       "max_price": 0,
       "sofortkauf_only": false,
       "enabled": false
+    },
+    {
+      "id": "8w6lx1nu",
+      "name": "Xbox series x",
+      "keywords": [],
+      "exclude_keywords": [],
+      "exclude_sellers": [],
+      "max_price": 0,
+      "enabled": true,
+      "url": "https://www.kleinanzeigen.de/s-oldenburg/xbox-series-x/k0l3108",
+      "site_type": "kleinanzeigen",
+      "min_price": 150,
+      "sofortkauf_only": false
     }
   ]
 }
