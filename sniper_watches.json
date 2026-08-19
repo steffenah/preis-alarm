@@ -63,6 +63,24 @@
       "keyword": "Xbox Series x",
       "url": "",
       "typo_variants": []
+    },
+    {
+      "id": "56nf3tul",
+      "name": "Tonie Box",
+      "keywords": [
+        "Tonie Box"
+      ],
+      "exclude_keywords": [
+        "Defekt",
+        "Bastler"
+      ],
+      "exclude_sellers": [],
+      "max_price": 0,
+      "enabled": true,
+      "platform": "ebay",
+      "keyword": "Tonie Box",
+      "url": "",
+      "typo_variants": []
     }
   ]
 }
