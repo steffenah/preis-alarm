@@ -3719,5 +3719,20 @@
     "title": "APS / K&Z AKS-74U S-AEG (ASK205) >0,5J mit F-Zeichen, Echtholz, Schalldämpfer & Zubehör",
     "price": 159.0,
     "first_seen": "2026-08-20T10:12:47.123782"
+  },
+  "egun_softair::20459442": {
+    "title": "Wei-ETech M16A3 Open-Bolt GBB - tan inkl. Koffer",
+    "price": 350.0,
+    "first_seen": "2026-08-20T12:53:31.200988"
+  },
+  "egun_softair::20459454": {
+    "title": "Wei-ETech Socom-H GBB Magazin 30 Schuss tan - 3 Stück",
+    "price": 80.0,
+    "first_seen": "2026-08-20T12:53:31.200997"
+  },
+  "egun_softair::20459465": {
+    "title": "Vortex AMG UH1 Gen 1",
+    "price": 70.0,
+    "first_seen": "2026-08-20T12:53:31.201001"
   }
 }
