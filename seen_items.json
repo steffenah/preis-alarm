@@ -3739,5 +3739,15 @@
     "title": "Beretta 92FS Airsoft 6mm BBs HFC Airultimate",
     "price": 9.9,
     "first_seen": "2026-08-21T06:58:07.045153"
+  },
+  "egun_softair::20460207": {
+    "title": "KJ Works M9 GBB Vollmetall - 3 Magazine",
+    "price": 120.0,
+    "first_seen": "2026-08-21T11:39:08.944079"
+  },
+  "egun_softair::20460215": {
+    "title": "KJ Works KP-01 Vollmetall - Model - P226",
+    "price": 65.0,
+    "first_seen": "2026-08-21T11:39:08.944093"
   }
 }
