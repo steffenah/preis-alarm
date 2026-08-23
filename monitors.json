@@ -31,7 +31,7 @@
       "exclude_keywords": [],
       "exclude_sellers": [],
       "max_price": 0,
-      "enabled": true,
+      "enabled": false,
       "url": "https://www.kleinanzeigen.de/s-oldenburg/xbox-series-x/k0l3108",
       "site_type": "kleinanzeigen",
       "min_price": 150,
