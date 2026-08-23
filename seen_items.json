@@ -3814,5 +3814,10 @@
     "title": "Hk416 halb Automatik",
     "price": 103.0,
     "first_seen": "2026-08-23T12:27:29.669201"
+  },
+  "egun_softair::20458813": {
+    "title": "APS Phantom Extremis",
+    "price": 300.0,
+    "first_seen": "2026-08-23T16:08:15.871759"
   }
 }
