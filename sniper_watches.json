@@ -58,7 +58,7 @@
       ],
       "exclude_sellers": [],
       "max_price": 0,
-      "enabled": true,
+      "enabled": false,
       "platform": "ebay",
       "keyword": "Xbox Series x",
       "url": "",
