@@ -3919,5 +3919,10 @@
     "title": "Smith & Wesson M&P 9 Softair- Gas Blowback",
     "price": 40.0,
     "first_seen": "2026-08-27T20:44:55.469112"
+  },
+  "egun_softair::20457457": {
+    "title": "Cyma CM123 Airsoftpistole AEP",
+    "price": 40.5,
+    "first_seen": "2026-08-28T16:52:41.983328"
   }
 }
