@@ -3939,5 +3939,15 @@
     "title": "Army Armament R27, 1911 Airsoft Pistole",
     "price": 50.0,
     "first_seen": "2026-08-29T13:16:56.415791"
+  },
+  "egun_softair::20464091": {
+    "title": "Softair Mini Uzi VZ?",
+    "price": 25.0,
+    "first_seen": "2026-08-29T19:43:42.295231"
+  },
+  "egun_softair::20464165": {
+    "title": "ASG Dan Wesson 715 4\" CO2 Air Gun",
+    "price": 300.0,
+    "first_seen": "2026-08-29T19:43:42.295239"
   }
 }
