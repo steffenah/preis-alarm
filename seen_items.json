@@ -3924,5 +3924,10 @@
     "title": "Cyma CM123 Airsoftpistole AEP",
     "price": 40.5,
     "first_seen": "2026-08-28T16:52:41.983328"
+  },
+  "egun_softair::20457481": {
+    "title": "Cyma CM.121 \"Gen 2\" Airsoftpistole AEP",
+    "price": 42.0,
+    "first_seen": "2026-08-29T00:45:47.187181"
   }
 }
