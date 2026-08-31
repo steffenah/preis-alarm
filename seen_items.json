@@ -3974,5 +3974,20 @@
     "title": "CM.127 AIRSOFT ELECTRIC GUN",
     "price": 33.0,
     "first_seen": "2026-08-30T22:38:42.385741"
+  },
+  "egun_softair::20468942": {
+    "title": "Walther P99 fast nicht benutzt 2 Mags",
+    "price": 75.0,
+    "first_seen": "2026-08-31T13:59:56.251906"
+  },
+  "egun_softair::20465815": {
+    "title": "Ares Airsoft Ersatzteilspender",
+    "price": 13.8,
+    "first_seen": "2026-08-31T13:59:56.251932"
+  },
+  "egun_softair::20464456": {
+    "title": "AGM M700 Schaft Kunststoff",
+    "price": 1.0,
+    "first_seen": "2026-08-31T13:59:56.251936"
   }
 }
