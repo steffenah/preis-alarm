@@ -3989,5 +3989,15 @@
     "title": "AGM M700 Schaft Kunststoff",
     "price": 1.0,
     "first_seen": "2026-08-31T13:59:56.251936"
+  },
+  "egun_softair::20470311": {
+    "title": "NOVRITSCH SSP-5 GBB inkl. 3 Magazine",
+    "price": 180.0,
+    "first_seen": "2026-09-01T23:58:05.828732"
+  },
+  "egun_softair::20470314": {
+    "title": "Well MB4418-3D",
+    "price": 100.0,
+    "first_seen": "2026-09-01T23:58:05.828739"
   }
 }
