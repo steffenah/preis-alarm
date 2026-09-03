@@ -4004,5 +4004,15 @@
     "title": "Walther P99",
     "price": 59.0,
     "first_seen": "2026-09-02T12:18:07.100079"
+  },
+  "egun_softair::20469636": {
+    "title": "Umarex Thompson M1A1",
+    "price": 180.0,
+    "first_seen": "2026-09-03T18:34:02.856717"
+  },
+  "egun_softair::20461817": {
+    "title": "+++ Double Eagle GAS Shotgun 870 Style (Pistolgrip) +++",
+    "price": 58.0,
+    "first_seen": "2026-09-03T18:34:02.856726"
   }
 }
