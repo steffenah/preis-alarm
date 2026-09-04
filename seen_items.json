@@ -4019,5 +4019,15 @@
     "title": "Softair Vollmetall AEG AK-47",
     "price": 150.0,
     "first_seen": "2026-09-04T14:00:39.599969"
+  },
+  "egun_softair::20468073": {
+    "title": "Unity Tactical FTC Omni & Riser",
+    "price": 10.0,
+    "first_seen": "2026-09-04T23:26:33.916423"
+  },
+  "egun_softair::20468127": {
+    "title": "3 Muster Deserttarnung US Army Trageweste",
+    "price": 20.0,
+    "first_seen": "2026-09-04T23:26:33.916432"
   }
 }
