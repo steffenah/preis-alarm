@@ -4129,5 +4129,15 @@
     "title": "AK Seitenmontage",
     "price": 15.0,
     "first_seen": "2026-09-06T16:01:18.381091"
+  },
+  "egun_softair::20458405": {
+    "title": "Bolt B4A1 Carbine S-AEG",
+    "price": 340.0,
+    "first_seen": "2026-09-06T18:12:48.858436"
+  },
+  "egun_softair::20458406": {
+    "title": "Bolt B4A1 Carbine",
+    "price": 370.0,
+    "first_seen": "2026-09-06T18:12:48.858445"
   }
 }
