@@ -4099,5 +4099,30 @@
     "title": "UFC - PRO Chronograph",
     "price": 30.0,
     "first_seen": "2026-09-06T09:24:44.890651"
+  },
+  "egun_softair::20463882": {
+    "title": "AK - SVD ROTPUNKT VISIER 1x28 RED DOT",
+    "price": 91.0,
+    "first_seen": "2026-09-06T12:59:06.597607"
+  },
+  "egun_softair::20470124": {
+    "title": "AK highcap",
+    "price": 10.0,
+    "first_seen": "2026-09-06T12:59:06.597615"
+  },
+  "egun_softair::20470130": {
+    "title": "Konvolut M16 Magazine",
+    "price": 30.0,
+    "first_seen": "2026-09-06T12:59:06.597619"
+  },
+  "egun_softair::20470135": {
+    "title": "Ak Mid/Lowcaps",
+    "price": 25.0,
+    "first_seen": "2026-09-06T12:59:06.597623"
+  },
+  "egun_softair::20470145": {
+    "title": "Military Knieschoner",
+    "price": 20.0,
+    "first_seen": "2026-09-06T12:59:06.597625"
   }
 }
