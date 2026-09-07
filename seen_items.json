@@ -4154,5 +4154,25 @@
     "title": "H&K .45 Pistole",
     "price": 50.5,
     "first_seen": "2026-09-07T12:29:38.062154"
+  },
+  "egun_softair::20470361": {
+    "title": "Safariland 6395RDS Gürtelholster - für Glock 17, 19 und 45 mit Reddot.",
+    "price": 50.0,
+    "first_seen": "2026-09-07T17:51:37.742103"
+  },
+  "egun_softair::20467416": {
+    "title": "Softairpistole Beretta 84 fs mit Zubehör",
+    "price": 40.0,
+    "first_seen": "2026-09-07T17:51:37.742113"
+  },
+  "egun_softair::20451336": {
+    "title": "Sig Sauer ProForce P320 M17 CO2 BB-F-6mm tan",
+    "price": 150.0,
+    "first_seen": "2026-09-07T17:51:37.742117"
+  },
+  "egun_softair::20451377": {
+    "title": "VFC AVALON CALIBUR CQC DESERT",
+    "price": 380.0,
+    "first_seen": "2026-09-07T17:51:37.742120"
   }
 }
