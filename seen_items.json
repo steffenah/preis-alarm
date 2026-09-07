@@ -4179,5 +4179,15 @@
     "title": "Begadi Universalpouch, flecktarn",
     "price": 5.0,
     "first_seen": "2026-09-07T20:48:33.709318"
+  },
+  "egun_softair::20467647": {
+    "title": "Thompson M1a1 SAEG 0,5J",
+    "price": 200.0,
+    "first_seen": "2026-09-07T23:01:55.697563"
+  },
+  "egun_softair::20470724": {
+    "title": "APS Phantom Extremis",
+    "price": 200.0,
+    "first_seen": "2026-09-07T23:01:55.697574"
   }
 }
