@@ -4139,5 +4139,20 @@
     "title": "Bolt B4A1 Carbine",
     "price": 370.0,
     "first_seen": "2026-09-06T18:12:48.858445"
+  },
+  "egun_softair::20458411": {
+    "title": "Tippmann Tactical Recon",
+    "price": 200.0,
+    "first_seen": "2026-09-07T12:29:38.062124"
+  },
+  "egun_softair::20458427": {
+    "title": "E&C Hornet AEG MK18 Spc. Ops Umbau",
+    "price": 300.0,
+    "first_seen": "2026-09-07T12:29:38.062149"
+  },
+  "egun_softair::20458431": {
+    "title": "H&K .45 Pistole",
+    "price": 50.5,
+    "first_seen": "2026-09-07T12:29:38.062154"
   }
 }
